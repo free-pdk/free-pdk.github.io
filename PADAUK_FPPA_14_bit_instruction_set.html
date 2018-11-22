@@ -62,6 +62,52 @@
 <td align="left">No operation
 </td></tr>
 <tr>
+<td>0x0006</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td align="left">LDSPTL</td>
+<td>??</td>
+<td>??</td>
+<td>??</td>
+<td>??</td>
+<td align="left">A ← [SP]
+</td></tr>
+<tr>
+<td>0x0007</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td align="left">LDSPTH</td>
+<td>??</td>
+<td>??</td>
+<td>??</td>
+<td>??</td>
+<td align="left">A ← [SP+1]
+</td></tr>
+<tr>
 <td colspan="21">
 </td></tr>
 <tr>
@@ -832,7 +878,7 @@
 <td>1</td>
 <td colspan="6"><i>IO</i></td>
 <td align="left">MOV A, IO</td>
-<td></td>
+<td>ZF</td>
 <td></td>
 <td></td>
 <td></td>
@@ -1191,10 +1237,10 @@
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td colspan="7"><i>M</i></td>
 <td align="left">MOV M, A</td>
-<td>ZF</td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1343,7 +1389,7 @@
 <tr>
 <th></th>
 <th>0</th>
-<th>0</th>
+<th>1</th>
 <th colspan="5"><i>opcode</i></th>
 <th colspan="7"><i>7-bit MEM addr</i></th>
 <th colspan="6">Operations with memory
@@ -1927,8 +1973,7 @@
 <th>1</th>
 <th>1</th>
 <th><i>c</i></th>
-<th>0</th>
-<th colspan="10"><i>k</i></th>
+<th colspan="11"><i>k</i></th>
 <th colspan="6">Control transfers
 </th></tr>
 <tr>
@@ -2004,9 +2049,31 @@
 <td colspan="7">*</td>
 <td colspan="6"><i>?</i>
 </td></tr>
+<tr>
+<td>0x0E00<br>...<br>0x0EFF</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="8">*</td>
+<td colspan="6"><i>?</i>
+</td></tr>
+<tr>
+<td>0x0F00<br>...<br>0x0F7F</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="7">*</td>
+<td colspan="6"><i>?</i>
+</td></tr>
 
 </tbody></table>
-
 </div>
 </body>
 </html>
