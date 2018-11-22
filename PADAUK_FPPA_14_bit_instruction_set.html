@@ -938,12 +938,12 @@
 <td>0</td>
 <td colspan="6"><i>M</i></td>
 <td>0</td>
-<td align="left">LDT16 M</td>
+<td align="left">STT16 M</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Timer16 ← M (last bit of M set to 0, M must be word aligned)
+<td align="left">M ← Timer16 (last bit of M set to 0, M must be word aligned)
 </td></tr>
 <tr>
 <td>0x03..</td>
@@ -956,12 +956,12 @@
 <td>0</td>
 <td colspan="6"><i>M</i></td>
 <td>1</td>
-<td align="left">STT16 M</td>
+<td align="left">LDT16 M</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td align="left">M ← Timer16 (last bit of M set to 1, M must be word aligned)
+<td align="left">Timer16 ← M (last bit of M set to 1, M must be word aligned)
 </td></tr>
 <tr>
 <td>0x03..</td>
@@ -2072,6 +2072,7 @@
 <td colspan="7">*</td>
 <td colspan="6"><i>?</i>
 </td></tr>
+
 
 </tbody></table>
 </div>
