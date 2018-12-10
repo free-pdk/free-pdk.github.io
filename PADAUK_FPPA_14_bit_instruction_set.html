@@ -78,10 +78,10 @@
 <td>1</td>
 <td>0</td>
 <td align="left">LDSPTL</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td align="left">A ← LowByte@CodeMem(WORD[SP])
 </td></tr>
 <tr>
@@ -101,10 +101,10 @@
 <td>1</td>
 <td>1</td>
 <td align="left">LDSPTH</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
-<td>??</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td align="left">A ← HighByteB@Codemem(WORD[SP])
 </td></tr>
 <tr>
@@ -923,8 +923,13 @@
 <th></th>
 <th>0</th>
 <th>0</th>
-<th colspan="5"><i>opcode</i></th>
-<th colspan="7"><i>7-bit MEM addr</i></th>
+<th>0</th>
+<th>0</th>
+<th>1</th>
+<th>1</th>
+<th><i>c</i></th>
+<th colspan="6"><i>7-bit MEM addr</i></th>
+<th><i>c</i></th>
 <th colspan="6">16 bit memory operations
 </th></tr>
 <tr>
@@ -1390,7 +1395,8 @@
 <th></th>
 <th>0</th>
 <th>1</th>
-<th colspan="5"><i>opcode</i></th>
+<th>0</th>
+<th colspan="4"><i>opcode</i></th>
 <th colspan="7"><i>7-bit MEM addr</i></th>
 <th colspan="6">Operations with memory
 </th></tr>
@@ -2006,75 +2012,9 @@
 <td colspan="21">
 </td></tr>
 
-<tr>
-<th></th>
-<th colspan="14"></th>
-<th colspan="6"><i>UNKNOWN</i>
-</th></tr>
-<tr>
-<td>0x0001<br>...<br>0x005F</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>*</td>
-<td colspan="6">*</td>
-<td colspan="6"><i>?</i>
-</td></tr>
-<tr>
-<td>0x0080<br>...<br>0x00BF</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td colspan="6">*</td>
-<td colspan="6"><i>?</i>
-</td></tr>
-<tr>
-<td>0x0100<br>...<br>0x017F</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td colspan="7">*</td>
-<td colspan="6"><i>?</i>
-</td></tr>
-<tr>
-<td>0x0E00<br>...<br>0x0EFF</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8">*</td>
-<td colspan="6"><i>?</i>
-</td></tr>
-<tr>
-<td>0x0F00<br>...<br>0x0F7F</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="7">*</td>
-<td colspan="6"><i>?</i>
-</td></tr>
-
 
 </tbody></table>
+
 </div>
 </body>
 </html>
