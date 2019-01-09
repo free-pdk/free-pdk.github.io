@@ -7,7 +7,7 @@
 </style>
 <body>
 <div class="mw-parser-output"><h2><span id="PADAUK_FPPA_core_devices_.2816_bit.29"></span><span class="mw-headline" id="PADAUK_FPPA_core_devices_(16_bit)">PADAUK FPPA core devices (16 bit)</span></h2>
-<p>These devices feature a 16-bit wide code memory. Byte order is little endian.
+<p>These devices feature a 16-bit wide code memory. Byte order is little endian. The instruction set is called SYM_83A in Padauk include files. The SDCC backend will be called pdk16.
 </p>
 <table class="wikitable" style="text-align:center">
 <caption>16-bit FPPA instruction set
@@ -956,7 +956,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Set PMODE k
+<td align="left">Set PMODE k (if available)
 </td></tr>
 <tr>
 <td>0x0060</td>
@@ -981,7 +981,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Pop word PC(core n) from stack
+<td align="left">Pop word PC(core n) from stack (if available)
 </td></tr>
 <tr>
 <td>0x0070</td>
@@ -1006,7 +1006,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Push word PC(core n) to stack
+<td align="left">Push word PC(core n) to stack (if available)
 </td></tr>
 <tr>
 <td colspan="23">
@@ -1132,7 +1132,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Pop word from stack to memory M (last bit of M set to 0, M must be word aligned)
+<td align="left">Pop word from stack to memory M (last bit of M set to 0, M must be word aligned) (if available)
 </td></tr>
 <tr>
 <td>0x05..<br>0x05..</td>
@@ -1150,7 +1150,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Push word from memory M to stack (last bit of M set to 1, M must be word aligned)
+<td align="left">Push word from memory M to stack (last bit of M set to 1, M must be word aligned) (if available)
 </td></tr>
 <tr>
 <td>0x06..<br>0x07..</td>
@@ -2560,6 +2560,100 @@
 <td colspan="23">
 </td></tr>
 
+</tbody></table>
+<table class="wikitable" style="text-align:center">
+<caption>Instruction support by device
+</caption>
+<tbody><tr>
+<th>Device</th>
+<th>MUL</th>
+<th>PMODE N</th>
+<th>PUSHW pcN</th>
+<th>PUSHW M</th>
+<th>POPW M</th>
+<th>POPW PCn
+</th></tr>
+<tr>
+<td>MCS11</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMC232</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMC234</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMC251</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMC271</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMC884</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMS232</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMS234</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMS271</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
 </tbody></table>
 
 </div>
