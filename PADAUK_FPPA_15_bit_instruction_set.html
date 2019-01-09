@@ -6,10 +6,8 @@
  table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th, table.wikitable > * > tr > td { border: 1px solid #a2a9b1; padding: 0.2em 0.4em; }
 </style>
 <body>
-<div class="mw-parser-output"><p><br>
-</p>
-<h2><span id="PADAUK_FPPA_core_devices_.2815_bit.29"></span><span class="mw-headline" id="PADAUK_FPPA_core_devices_(15_bit)">PADAUK FPPA core devices (15 bit)</span></h2>
-<p>These devices feature a 15-bit wide code memory. Byte order is little endian.
+<div class="mw-parser-output"><h2><span id="PADAUK_FPPA_core_devices_.2815_bit.29"></span><span class="mw-headline" id="PADAUK_FPPA_core_devices_(15_bit)">PADAUK FPPA core devices (15 bit)</span></h2>
+<p>These devices feature a 15-bit wide code memory. Byte order is little endian. The instruction set is called SYM_86B in Padauk include files. The SDCC backend will be called pdk15.
 </p>
 <table class="wikitable" style="text-align:center">
 <caption>15-bit FPPA instruction set
@@ -2045,7 +2043,7 @@
 <th colspan="6">Special operation with CF and IO
 </th></tr>
 <tr>
-<td>0x5C00<br>...<br>0x05FF</td>
+<td>0x5C00<br>...<br>0x5FFF</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
@@ -2105,6 +2103,43 @@
 
 
 </tbody></table>
+<table class="wikitable" style="text-align:center">
+<caption>Instruction support by device
+</caption>
+<tbody><tr>
+<th>Device</th>
+<th>MUL</th>
+<th>NMOV A, M</th>
+<th>NMOV M, A</th>
+<th>SWAP M</th>
+<th>XOR A, IO
+</th></tr>
+<tr>
+<td>PFS173</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMC133</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMS134</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+</tbody></table>
+
 </div>
 </body>
 </html>
