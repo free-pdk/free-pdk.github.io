@@ -7,7 +7,7 @@
 </style>
 <body>
 <div class="mw-parser-output"><h2><span id="PADAUK_FPPA_core_devices_.2814_bit.29"></span><span class="mw-headline" id="PADAUK_FPPA_core_devices_(14_bit)">PADAUK FPPA core devices (14 bit)</span></h2>
-<p>These devices feature a 14-bit wide code memory. Byte order is little endian.
+<p>These devices feature a 14-bit wide code memory. Byte order is little endian. The instruction set is called SYM_85A in Padauk include files. The SDCC backend is called pdk14.
 </p>
 <table class="wikitable" style="text-align:center">
 <caption>14-bit FPPA instruction set
@@ -846,7 +846,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">IO ← IO ^ A
+<td align="left">IO ← IO ^ A (if available)
 </td></tr>
 <tr>
 <td>0x01..</td>
@@ -1062,7 +1062,7 @@
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">Compare A with M (flags changed according to (A-M))
+<td align="left">Compare A with M (flags changed according to (A-M)) (if available)
 </td></tr>
 <tr>
 <td>0x06..</td>
@@ -1079,7 +1079,7 @@
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">Compare M with A (flags changed according to (M-A))
+<td align="left">Compare M with A (flags changed according to (M-A)) (if available)
 </td></tr>
 <tr>
 <td>0x07..</td>
@@ -1096,7 +1096,7 @@
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">A ← M + NEG(A)
+<td align="left">A ← M + NEG(A) (if available)
 </td></tr>
 <tr>
 <td>0x07..</td>
@@ -1113,7 +1113,7 @@
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">M ← NEG(M) + A
+<td align="left">M ← NEG(M) + A (if available)
 </td></tr>
 <tr>
 <td>0x08..</td>
@@ -2013,6 +2013,111 @@
 </td></tr>
 
 
+</tbody></table>
+<p><br>
+</p>
+<table class="wikitable" style="text-align:center">
+<caption>Instruction support by device
+</caption>
+<tbody><tr>
+<th>Device</th>
+<th>COMP A, M</th>
+<th>COMP M, A</th>
+<th>MUL</th>
+<th>NADD A, M</th>
+<th>NADD M, A</th>
+<th>XOR IO, A
+</th></tr>
+<tr>
+<td>PFS154</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMC131</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMS130</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMS131</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMS132</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMS132B</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMS152</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMS154B</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMS154C</td>
+<td>Y</td>
+<td>Y</td>
+<td>-</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMS171B</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Y
+</td></tr>
 </tbody></table>
 
 </div>
