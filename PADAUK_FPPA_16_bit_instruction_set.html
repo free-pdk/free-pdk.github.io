@@ -608,7 +608,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Push A and flags to stack
+<td align="left">Push A and flags to stack: [SP] ← A, [SP + 1] ← F, SP ← SP + 2
 </td></tr>
 <tr>
 <td>0x0033</td>
@@ -633,7 +633,7 @@
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">Pop A and flags from stack
+<td align="left">Pop A and flags from stack: SP ← SP + 2, F ← [SP + 1], [SP] ← A
 </td></tr>
 <tr>
 <td>0x0034</td>
@@ -2573,6 +2573,24 @@
 <th>POPW M</th>
 <th>POPW PCn
 </th></tr>
+<tr>
+<td>DF329</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?
+</td></tr>
+<tr>
+<td>DF69</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
 <tr>
 <td>MCS11</td>
 <td>Y</td>
