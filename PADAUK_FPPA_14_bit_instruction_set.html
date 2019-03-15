@@ -534,7 +534,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Push A and flags to stack
+<td align="left">Push A and flags to stack: [SP] ← A, [SP + 1] ← F, SP ← SP + 2
 </td></tr>
 <tr>
 <td>0x0073</td>
@@ -557,7 +557,7 @@
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">Pop A and flags from stack
+<td align="left">Pop A and flags from stack: SP ← SP + 2, F ← [SP + 1], [SP] ← A
 </td></tr>
 <tr>
 <td>0x0074</td>
