@@ -5,8 +5,7 @@
  table.wikitable > tr > th, table.wikitable > * > tr > th { background-color: #eaecf0; text-align: center; }
  table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th, table.wikitable > * > tr > td { border: 1px solid #a2a9b1; padding: 0.2em 0.4em; }
 </style>
-<body>
-<div class="mw-parser-output"><h2><span id="PADAUK_FPPA_core_devices_.2815_bit.29"></span><span class="mw-headline" id="PADAUK_FPPA_core_devices_(15_bit)">PADAUK FPPA core devices (15 bit)</span></h2>
+<body><div class="mw-parser-output"><h2><span id="PADAUK_FPPA_core_devices_.2815_bit.29"></span><span class="mw-headline" id="PADAUK_FPPA_core_devices_(15_bit)">PADAUK FPPA core devices (15 bit)</span></h2>
 <p>These devices feature a 15-bit wide code memory. Byte order is little endian. The instruction set is called SYM_86B in Padauk include files. The SDCC backend will be called pdk15.
 </p>
 <table class="wikitable" style="text-align:center">
@@ -558,7 +557,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">Push A and flags to stack
+<td align="left">Push A and flags to stack: [SP] ← A, [SP + 1] ← F, SP ← SP + 2
 </td></tr>
 <tr>
 <td>0x0073</td>
@@ -582,7 +581,7 @@
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">Pop A and flags from stack
+<td align="left">Pop A and flags from stack: SP ← SP + 2, F ← [SP + 1], [SP] ← A
 </td></tr>
 <tr>
 <td>0x0074</td>
@@ -864,9 +863,8 @@
 <th>0</th>
 <th>0</th>
 <th>0</th>
-<th>0</th>
 <th colspan="2"><i>c</i></th>
-<th colspan="6"><i>6-bit IO addr</i></th>
+<th colspan="7"><i>7-bit IO addr</i></th>
 <th colspan="6">Operations with A and IO
 </th></tr>
 <tr>
@@ -878,9 +876,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
 <td>1</td>
-<td colspan="6"><i>IO</i></td>
+<td colspan="7"><i>IO</i></td>
 <td align="left">XOR IO, A</td>
 <td></td>
 <td></td>
@@ -896,10 +893,9 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
 <td>1</td>
 <td>0</td>
-<td colspan="6"><i>IO</i></td>
+<td colspan="7"><i>IO</i></td>
 <td align="left">MOV IO, A</td>
 <td></td>
 <td></td>
@@ -915,10 +911,9 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
 <td>1</td>
 <td>1</td>
-<td colspan="6"><i>IO</i></td>
+<td colspan="7"><i>IO</i></td>
 <td align="left">MOV A, IO</td>
 <td>ZF</td>
 <td></td>
@@ -991,7 +986,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">A ← LowByte@CodeMem(M) (last bit of M set to 0, M must be word aligned), 2 cycles
+<td align="left">A ← LowByte@CodeMem(M) (last bit of M set to 0, M must be word aligned), 2 cycles. The top nibble at M is ignored, resulting in a 12-bit address. If the 12-bit address does not point to a valid address, the behaviour is undefined.
 </td></tr>
 <tr>
 <td>0x05..</td>
@@ -1009,7 +1004,7 @@
 <td></td>
 <td></td>
 <td></td>
-<td align="left">A ← HighByte@CodeMem(M) (last bit of M set to 1, M must be word aligned), 2 cycles
+<td align="left">A ← HighByte@CodeMem(M) (last bit of M set to 1, M must be word aligned), 2 cycles. The top nibble at M is ignored, resulting in a 12-bit address. If the 12-bit address does not point to a valid address, the behaviour is undefined.
 </td></tr>
 <tr>
 <td>0x06..</td>
@@ -2123,7 +2118,7 @@
 <td>-
 </td></tr>
 <tr>
-<td>PMC133</td>
+<td>PMS133</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
