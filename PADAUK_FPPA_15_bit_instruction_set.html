@@ -6,14 +6,15 @@
  table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th, table.wikitable > * > tr > td { border: 1px solid #a2a9b1; padding: 0.2em 0.4em; }
 </style>
 <body>
-<div class="mw-parser-output"><h2><span id="PADAUK_FPPA_core_devices_.2815_bit.29"></span><span class="mw-headline" id="PADAUK_FPPA_core_devices_(15_bit)">PADAUK FPPA core devices (15 bit)</span></h2>
-<p>These devices feature a 15-bit wide code memory. Byte order is little endian. The instruction set is called SYM_86B in Padauk include files. The SDCC backend will be called pdk15.
+<div class="mw-parser-output"><h2><span id="PADAUK_FPPA_core_devices_.2816_bit.29"></span><span class="mw-headline" id="PADAUK_FPPA_core_devices_(16_bit)">PADAUK FPPA core devices (16 bit)</span></h2>
+<p>These devices feature a 16-bit wide code memory. Byte order is little endian. The instruction set is called SYM_83A in Padauk include files. The SDCC backend will be called pdk16.
 </p>
 <table class="wikitable" style="text-align:center">
-<caption>15-bit FPPA instruction set
+<caption>16-bit FPPA instruction set
 </caption>
 <tbody><tr>
 <th>Hex</th>
+<th>1<br>5</th>
 <th>1<br>4</th>
 <th>1<br>3</th>
 <th>1<br>2</th>
@@ -37,10 +38,11 @@
 <th>Description
 </th></tr>
 <tr>
-<td colspan="22">
+<td colspan="23">
 </td></tr>
 <tr>
 <td>0x0000</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -64,7 +66,7 @@
 <td align="left">No operation
 </td></tr>
 <tr>
-<td colspan="22">
+<td colspan="23">
 </td></tr>
 <tr>
 <th></th>
@@ -76,13 +78,18 @@
 <th>0</th>
 <th>0</th>
 <th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
 <th>1</th>
-<th>1</th>
-<th colspan="5"><i>opcode</i></th>
+<th colspan="4"><i>opcode</i></th>
 <th colspan="6">Miscellaneous instructions
 </th></tr>
 <tr>
-<td>0x0060</td>
+<td>0x0010</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -92,8 +99,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -106,7 +111,10 @@
 <td align="left">A ← A + CF
 </td></tr>
 <tr>
-<td>0x0061</td>
+<td>0x0011</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -116,8 +124,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -130,7 +136,10 @@
 <td align="left">A ← A - CF
 </td></tr>
 <tr>
-<td>0x0062</td>
+<td>0x0012</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -140,8 +149,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -154,7 +161,10 @@
 <td align="left">Increment A and skip next instruction if A is zero
 </td></tr>
 <tr>
-<td>0x0063</td>
+<td>0x0013</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -164,8 +174,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -178,7 +186,10 @@
 <td align="left">Decrement A and skip next instruction if A is zero
 </td></tr>
 <tr>
-<td>0x0064</td>
+<td>0x0014</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -188,8 +199,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -197,7 +206,10 @@
 <td colspan="6"><i>?</i>
 </td></tr>
 <tr>
-<td>0x0065</td>
+<td>0x0015</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -207,8 +219,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -216,7 +226,10 @@
 <td colspan="6"><i>?</i>
 </td></tr>
 <tr>
-<td>0x0066</td>
+<td>0x0016</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -226,8 +239,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
@@ -235,7 +246,10 @@
 <td colspan="6"><i>?</i>
 </td></tr>
 <tr>
-<td>0x0067</td>
+<td>0x0017</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -245,8 +259,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
@@ -259,7 +271,10 @@
 <td align="left">Add A to PC
 </td></tr>
 <tr>
-<td>0x0068</td>
+<td>0x0018</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -269,8 +284,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -283,7 +296,10 @@
 <td align="left">A ← ~A
 </td></tr>
 <tr>
-<td>0x0069</td>
+<td>0x0019</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -293,8 +309,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -307,7 +321,10 @@
 <td align="left">A ← NEG(A)
 </td></tr>
 <tr>
-<td>0x006A</td>
+<td>0x001A</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -317,8 +334,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
@@ -331,7 +346,10 @@
 <td align="left">A ← A &gt;&gt; 1
 </td></tr>
 <tr>
-<td>0x006B</td>
+<td>0x001B</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -341,8 +359,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
@@ -355,7 +371,10 @@
 <td align="left">A ← A &lt;&lt; 1
 </td></tr>
 <tr>
-<td>0x006C</td>
+<td>0x001C</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -365,8 +384,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -379,7 +396,10 @@
 <td align="left">A ← CF:A &gt;&gt; 1
 </td></tr>
 <tr>
-<td>0x006D</td>
+<td>0x001D</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -389,8 +409,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -403,7 +421,10 @@
 <td align="left">A ← A:CF &lt;&lt; 1
 </td></tr>
 <tr>
-<td>0x006E</td>
+<td>0x001E</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -413,8 +434,6 @@
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -427,7 +446,10 @@
 <td align="left">Swap the high nibble and low nibble of A
 </td></tr>
 <tr>
-<td>0x006F</td>
+<td>0x001F</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -438,15 +460,38 @@
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td>1</td>
-<td colspan="6"><i>?</i>
+<td align="left">DELAY A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Delay A+1 cycles, at end A ← 0
 </td></tr>
 <tr>
-<td>0x0070</td>
+<td colspan="23">
+</td></tr>
+<tr>
+<th></th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>1</th>
+<th>1</th>
+<th colspan="4"><i>opcode</i></th>
+<th colspan="6">Miscellaneous instructions
+</th></tr>
+<tr>
+<td>0x0030</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -455,7 +500,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -470,7 +516,7 @@
 <td align="left">Reset Watchdog timer
 </td></tr>
 <tr>
-<td>0x0071</td>
+<td>0x0031</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -479,7 +525,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -489,7 +536,7 @@
 <td colspan="6"><i>?</i>
 </td></tr>
 <tr>
-<td>0x0072</td>
+<td>0x0032</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -498,7 +545,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -513,7 +561,7 @@
 <td align="left">Push A and flags to stack: [SP] ← A, [SP + 1] ← F, SP ← SP + 2
 </td></tr>
 <tr>
-<td>0x0073</td>
+<td>0x0033</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -522,7 +570,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -537,7 +586,7 @@
 <td align="left">Pop A and flags from stack: SP ← SP + 2, F ← [SP + 1], [SP] ← A
 </td></tr>
 <tr>
-<td>0x0074</td>
+<td>0x0034</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -546,7 +595,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -556,7 +606,7 @@
 <td colspan="6"><i>?</i>
 </td></tr>
 <tr>
-<td>0x0075</td>
+<td>0x0035</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -565,7 +615,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -580,7 +631,7 @@
 <td align="left">Reset the whole chip
 </td></tr>
 <tr>
-<td>0x0076</td>
+<td>0x0036</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -589,7 +640,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -604,7 +656,7 @@
 <td align="left">System halt (OSC disabled)
 </td></tr>
 <tr>
-<td>0x0077</td>
+<td>0x0037</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -613,7 +665,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -628,7 +681,7 @@
 <td align="left">CPU halt (OSC active to output clock, SYSCLK disabled to save power)
 </td></tr>
 <tr>
-<td>0x0078</td>
+<td>0x0038</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -637,7 +690,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -652,7 +706,7 @@
 <td align="left">Global interrupt enbale
 </td></tr>
 <tr>
-<td>0x0079</td>
+<td>0x0039</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -661,7 +715,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -676,7 +731,7 @@
 <td align="left">Global interrupt disable
 </td></tr>
 <tr>
-<td>0x007A</td>
+<td>0x003A</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -685,7 +740,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -700,7 +756,7 @@
 <td align="left">Return from subroutine
 </td></tr>
 <tr>
-<td>0x007B</td>
+<td>0x003B</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -709,7 +765,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -724,7 +781,7 @@
 <td align="left">Return from interrupt
 </td></tr>
 <tr>
-<td>0x007C</td>
+<td>0x003C</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -733,7 +790,8 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -748,26 +806,9 @@
 <td align="left">Multiply (if available)
 </td></tr>
 <tr>
-<td>0x007D</td>
+<td>0x003D</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="6"><i>?</i>
-</td></tr>
-<tr>
-<td>0x007E</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -780,32 +821,145 @@
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td>1</td>
-<td>1</td>
 <td>0</td>
-<td colspan="6"><i>?</i>
-</td></tr>
-<tr>
-<td>0x007F</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
 <td>1</td>
 <td colspan="6"><i>?</i>
 </td></tr>
 <tr>
-<td colspan="22">
+<td>0x003E</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="6"><i>?</i>
+</td></tr>
+<tr>
+<td>0x003F</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td colspan="6"><i>?</i>
+</td></tr>
+<tr>
+<td colspan="23">
+</td></tr>
+<tr>
+<th></th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>1</th>
+<th colspan="6"></th>
+<th colspan="6">Miscellaneous instructions
+</th></tr>
+<tr>
+<td>0x004.<br>0x005.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>k</td>
+<td>k</td>
+<td>k</td>
+<td>k</td>
+<td>k</td>
+<td align="left">PMODE k</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Set PMODE k (if available)
+</td></tr>
+<tr>
+<td>0x0060</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td align="left">POPWPC n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Pop word PC(core n) from stack (if available)
+</td></tr>
+<tr>
+<td>0x0070</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td>n</td>
+<td align="left">PUSHWPC n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Push word PC(core n) to stack (if available)
+</td></tr>
+<tr>
+<td colspan="23">
 </td></tr>
 
 <tr>
@@ -816,30 +970,16 @@
 <th>0</th>
 <th>0</th>
 <th>0</th>
+<th>0</th>
+<th>0</th>
 <th colspan="2"><i>c</i></th>
-<th colspan="7"><i>7-bit IO addr</i></th>
+<th colspan="6"><i>6-bit IO addr</i></th>
 <th colspan="6">Operations with A and IO
 </th></tr>
 <tr>
-<td>0x0080<br>...<br>0x00FF</td>
+<td>0x008.<br>...<br>0x00B.</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td colspan="7"><i>IO</i></td>
-<td align="left">XOR IO, A</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">IO ← IO ^ A
-</td></tr>
-<tr>
-<td>0x0100<br>...<br>0x017F</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -848,7 +988,7 @@
 <td>0</td>
 <td>1</td>
 <td>0</td>
-<td colspan="7"><i>IO</i></td>
+<td colspan="6"><i>IO</i></td>
 <td align="left">MOV IO, A</td>
 <td></td>
 <td></td>
@@ -857,7 +997,9 @@
 <td align="left">IO ← A
 </td></tr>
 <tr>
-<td>0x0180<br>...<br>0x01FF</td>
+<td>0x00C.<br>...<br>0x00F.</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -866,7 +1008,7 @@
 <td>0</td>
 <td>1</td>
 <td>1</td>
-<td colspan="7"><i>IO</i></td>
+<td colspan="6"><i>IO</i></td>
 <td align="left">MOV A, IO</td>
 <td>ZF</td>
 <td></td>
@@ -875,7 +1017,7 @@
 <td align="left">A ← IO
 </td></tr>
 <tr>
-<td colspan="22">
+<td colspan="23">
 </td></tr>
 
 <tr>
@@ -884,91 +1026,20 @@
 <th>0</th>
 <th>0</th>
 <th>0</th>
-<th>0</th>
-<th>1</th>
-<th>0</th>
-<th colspan="8"><i>8-bit immediate</i></th>
-<th colspan="6">Return with A
-</th></tr>
-<tr>
-<td>0x02..</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>k</i></td>
-<td align="left">RET <i>k</i></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">A ← k and return from subroutine
-</td></tr>
-<tr>
-<td colspan="22">
-</td></tr>
-
-<tr>
-<th></th>
-<th>0</th>
-<th>0</th>
-<th>0</th>
-<th>0</th>
-<th>1</th>
-<th colspan="2"><i>c</i></th>
-<th colspan="7"><i>8-bit MEM addr</i></th>
-<th><i>c</i></th>
+<th colspan="3"><i>opcode</i></th>
+<th colspan="9"><i>9-bit MEM addr</i></th>
 <th colspan="6">16 bit memory operations
 </th></tr>
 <tr>
-<td>0x05..</td>
+<td>0x02..<br>0x03..</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="7"><i>M</i></td>
-<td>0</td>
-<td align="left">LDTABL M</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">A ← LowByte@CodeMem(M) (last bit of M set to 0, M must be word aligned), 2 cycles.<br>The top nibble at M is ignored, resulting in a 12-bit address.<br>If the 12-bit address does not point to a valid address, the behaviour is undefined.
-</td></tr>
-<tr>
-<td>0x05..</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="7"><i>M</i></td>
-<td>1</td>
-<td align="left">LDTABH M</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">A ← HighByte@CodeMem(M) (last bit of M set to 1, M must be word aligned), 2 cycles.<br>The top nibble at M is ignored, resulting in a 12-bit address.<br>If the 12-bit address does not point to a valid address, the behaviour is undefined.
-</td></tr>
-<tr>
-<td>0x06..</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="7"><i>M</i></td>
+<td colspan="8"><i>M</i></td>
 <td>0</td>
 <td align="left">STT16 M</td>
 <td></td>
@@ -978,15 +1049,15 @@
 <td align="left">Timer16 ← M (last bit of M set to 0, M must be word aligned)
 </td></tr>
 <tr>
-<td>0x06..</td>
+<td>0x02..<br>0x03..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="7"><i>M</i></td>
+<td colspan="8"><i>M</i></td>
 <td>1</td>
 <td align="left">LDT16 M</td>
 <td></td>
@@ -996,476 +1067,225 @@
 <td align="left">M ← Timer16 (last bit of M set to 1, M must be word aligned)
 </td></tr>
 <tr>
-<td>0x07..</td>
+<td>0x04..<br>0x05..</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="8"><i>M</i></td>
+<td>0</td>
+<td align="left">POPW M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Pop word from stack to memory M (last bit of M set to 0, M must be word aligned) (if available)
+</td></tr>
+<tr>
+<td>0x05..<br>0x05..</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="8"><i>M</i></td>
+<td>1</td>
+<td align="left">PUSHW M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Push word from memory M to stack (last bit of M set to 1, M must be word aligned) (if available)
+</td></tr>
+<tr>
+<td>0x06..<br>0x07..</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
+<td colspan="8"><i>M</i></td>
+<td>0</td>
+<td align="left">IGOTO M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">TODO (last bit of M set to 0, M must be word aligned)
+</td></tr>
+<tr>
+<td>0x06..<br>0x07..</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
-<td colspan="7"><i>M</i></td>
+<td>1</td>
+<td colspan="8"><i>M</i></td>
+<td>1</td>
+<td align="left">ICALL M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">TODO (last bit of M set to 1, M must be word aligned)
+</td></tr>
+<tr>
+<td>0x08..<br>0x09..</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td colspan="8"><i>M</i></td>
 <td>0</td>
 <td align="left">IDXM M, A</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td align="left">[M] ← A (last bit of M set to 0, M must be word aligned, 2 cycles)
+<td align="left">[M] ← A (last bit of M set to 0, M must be word aligned), 2 cycles
 </td></tr>
 <tr>
-<td>0x07..</td>
+<td>0x08..<br>0x09..</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
-<td>1</td>
-<td>1</td>
-<td colspan="7"><i>M</i></td>
+<td>0</td>
+<td>0</td>
+<td colspan="8"><i>M</i></td>
 <td>1</td>
 <td align="left">IDXM A, M</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td align="left">A ← [M] (last bit of M set to 1, M must be word aligned, 2 cycles)
+<td align="left">A ← [M] (last bit of M set to 1, M must be word aligned), 2 cycles
 </td></tr>
 <tr>
-<td colspan="22">
+<td>0x0A..<br>0x0B..</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td colspan="8"><i>M</i></td>
+<td>0</td>
+<td align="left">LDTABL M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← LowByte@CodeMem(M) (last bit of M set to 0, M must be word aligned), 2 cycles
+</td></tr>
+<tr>
+<td>0x0A..<br>0x0B..</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td colspan="8"><i>M</i></td>
+<td>1</td>
+<td align="left">LDTABH M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← HighByte@CodeMem(M) (last bit of M set to 1, M must be word aligned), 2 cycles
+</td></tr>
+<tr>
+<td colspan="23">
 </td></tr>
 
 <tr>
 <th></th>
 <th>0</th>
 <th>0</th>
-<th colspan="5"><i>opcode</i></th>
-<th colspan="8"><i>8-bit MEM addr</i></th>
-<th colspan="6">Operations with A and memory
+<th>0</th>
+<th>0</th>
+<th>1</th>
+<th>1</th>
+<th>1</th>
+<th><i>c</i></th>
+<th colspan="8"><i>8-bit immediate</i></th>
+<th colspan="6">Operations with 8-bit literal
 </th></tr>
-<tr>
-<td>0x08..</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">NMOV A, M</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">A ← NEG(M)
-</td></tr>
-<tr>
-<td>0x09..</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">NMOV M, A</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">M ← NEG(A)
-</td></tr>
-<tr>
-<td>0x0A..</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SWAP M</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Swap the high nibble and low nibble of M
-</td></tr>
-<tr>
-<td>0x0B..</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">?</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">?
-</td></tr>
-<tr>
-<td>0x0C..</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">COMP A, M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">Compare A with M (flags changed according to (A-M))
-</td></tr>
-<tr>
-<td>0x0D..</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">COMP M, A</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">Compare M with A (flags changed according to (M-A))
-</td></tr>
 <tr>
 <td>0x0E..</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">NADD A, M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">A ← M + NEG(A)
+<td colspan="8"><i>k</i></td>
+<td align="left">DELAY <i>k</i></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Delay k+1 cycles, at end A ← 0
 </td></tr>
 <tr>
 <td>0x0F..</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">NADD M, A</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← NEG(M) + A
+<td colspan="8"><i>k</i></td>
+<td align="left">RET <i>k</i></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← k and return from subroutine
 </td></tr>
 <tr>
-<td>0x10..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">ADD M, A</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M + A
-</td></tr>
-<tr>
-<td>0x11..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SUB M, A</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M - A
-</td></tr>
-<tr>
-<td>0x12..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">ADDC M, A</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M + A + CF
-</td></tr>
-<tr>
-<td>0x13..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SUBC M, A</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M - A - CF
-</td></tr>
-<tr>
-<td>0x14..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">AND M, A</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">M ← M &amp; A
-</td></tr>
-<tr>
-<td>0x15..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">OR M, A</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">M ← M | A
-</td></tr>
-<tr>
-<td>0x16..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">XOR M, A</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">M ← M ^ A
-</td></tr>
-<tr>
-<td>0x17..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">MOV M, A</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">M ← A
-</td></tr>
-<tr>
-<td>0x18..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">ADD A, M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">A ← A + M
-</td></tr>
-<tr>
-<td>0x19..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SUB A, M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">A ← A - M
-</td></tr>
-<tr>
-<td>0x1A..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">ADDC A, M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">A ← A + M + CF
-</td></tr>
-<tr>
-<td>0x1B..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SUBC A, M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">A ← A - M - CF
-</td></tr>
-<tr>
-<td>0x1C..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">AND A, M</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">A ← A &amp; M
-</td></tr>
-<tr>
-<td>0x1D..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">OR A, M</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">A ← A | M
-</td></tr>
-<tr>
-<td>0x1E..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">XOR A, M</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">A ← A ^ M
-</td></tr>
-<tr>
-<td>0x1F..</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">MOV A, M</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">A ← M
-</td></tr>
-<tr>
-<td colspan="22">
+<td colspan="23">
 </td></tr>
 
 <tr>
 <th></th>
 <th>0</th>
+<th>0</th>
+<th>0</th>
 <th>1</th>
 <th>0</th>
-<th colspan="4"><i>opcode</i></th>
-<th colspan="8"><i>8-bit MEM addr</i></th>
-<th colspan="6">Operations with memory
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th><i>c</i></th>
+<th colspan="6"><i>6-bit IO addr</i></th>
+<th colspan="6">Operations with A and IO
 </th></tr>
 <tr>
-<td>0x20..</td>
+<td>0x1000<br>...<br>0x103F</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -1473,446 +1293,107 @@
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">ADDC M</td>
+<td>0</td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">XOR IO, A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">IO ← IO ^ A
+</td></tr>
+<tr>
+<td>0x1040<br>...<br>0x107F</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">XOR A, IO</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← A ^ IO
+</td></tr>
+<tr>
+<td colspan="23">
+</td></tr>
+
+<tr>
+<th></th>
+<th>0</th>
+<th>0</th>
+<th>0</th>
+<th>1</th>
+<th>0</th>
+<th>1</th>
+<th><i>c</i></th>
+<th colspan="9"><i>9-bit MEM addr</i></th>
+<th colspan="6">Operations with A and memory
+</th></tr>
+<tr>
+<td>0x14..<br>0x15..</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">CNEQSN M, A</td>
 <td>ZF</td>
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">M ← M + CF
+<td align="left">Skip next instruction if M is not equal to A (flags changed according to (M-A))
 </td></tr>
 <tr>
-<td>0x21..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SUBC M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M - CF
-</td></tr>
-<tr>
-<td>0x22..</td>
-<td>0</td>
-<td>1</td>
+<td>0x16..<br>0x17..</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">IZSN M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M + 1 , skip next instruction if M is 0
-</td></tr>
-<tr>
-<td>0x23..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
 <td>1</td>
 <td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">DZSN M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M - 1 , skip next instruction if M is 0
-</td></tr>
-<tr>
-<td>0x24..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">INC M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M + 1
-</td></tr>
-<tr>
-<td>0x25..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">DEC M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">M ← M - 1
-</td></tr>
-<tr>
-<td>0x26..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">CLEAR M</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">M ← 0
-</td></tr>
-<tr>
-<td>0x27..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">XCH M</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Exchange A with M
-</td></tr>
-<tr>
-<td>0x28..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">NOT M</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">M ← ~M
-</td></tr>
-<tr>
-<td>0x29..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">NEG M</td>
-<td>ZF</td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">M ← NEG(M)
-</td></tr>
-<tr>
-<td>0x2A..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SR M</td>
-<td></td>
-<td>CF</td>
-<td></td>
-<td></td>
-<td align="left">M ← M &gt;&gt; 1
-</td></tr>
-<tr>
-<td>0x2B..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SL M</td>
-<td></td>
-<td>CF</td>
-<td></td>
-<td></td>
-<td align="left">M ← M &lt;&lt; 1
-</td></tr>
-<tr>
-<td>0x2C..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SRC M</td>
-<td></td>
-<td>CF</td>
-<td></td>
-<td></td>
-<td align="left">M ← CF:M &gt;&gt; 1
-</td></tr>
-<tr>
-<td>0x2D..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">SLC M</td>
-<td></td>
-<td>CF</td>
-<td></td>
-<td></td>
-<td align="left">M ← M:CF &lt;&lt; 1
-</td></tr>
-<tr>
-<td>0x2E..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="8"><i>M</i></td>
-<td align="left">CEQSN A, M</td>
-<td>ZF</td>
-<td>CF</td>
-<td>AC</td>
-<td>OV</td>
-<td align="left">Skip next instruction if M is equal to A
-</td></tr>
-<tr>
-<td>0x2F..</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td colspan="8"><i>M</i></td>
+<td colspan="9"><i>M</i></td>
 <td align="left">CNEQSN A, M</td>
 <td>ZF</td>
 <td>CF</td>
 <td>AC</td>
 <td>OV</td>
-<td align="left">Skip next instruction if M is not equal to A
+<td align="left">Skip next instruction if M is not equal to A (flags changed according to (A-M))
 </td></tr>
 <tr>
-<td colspan="22">
-</td></tr>
-
-<tr>
-<th></th>
-<th>0</th>
-<th>1</th>
-<th>1</th>
-<th colspan="2"><i>c</i></th>
-<th colspan="3"><i>bit pos</i></th>
-<th colspan="7"><i>7-bit IO addr</i></th>
-<th colspan="6">Bit operations with IO
-</th></tr>
-<tr>
-<td>0x3000<br>...<br>33FF</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td colspan="3"><i>n</i></td>
-<td colspan="7"><i>IO</i></td>
-<td align="left">T0SN IO.n</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Test bit n of IO and skip next instruction if clear
-</td></tr>
-<tr>
-<td>0x3400<br>...<br>37FF</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td colspan="3"><i>n</i></td>
-<td colspan="7"><i>IO</i></td>
-<td align="left">T1SN IO.n</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Test bit n of IO and skip next instruction if set
-</td></tr>
-<tr>
-<td>0x3800<br>...<br>3BFF</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td colspan="3"><i>n</i></td>
-<td colspan="7"><i>IO</i></td>
-<td align="left">SET0 IO.n</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Clear bit n of IO
-</td></tr>
-<tr>
-<td>0x3C00<br>...<br>3FFF</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td colspan="3"><i>n</i></td>
-<td colspan="7"><i>IO</i></td>
-<td align="left">SET1 IO.n</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Set bit n of IO
-</td></tr>
-<tr>
-<td colspan="22">
+<td colspan="23">
 </td></tr>
 
 <tr>
 <th></th>
-<th>1</th>
 <th>0</th>
 <th>0</th>
-<th colspan="2"><i>c</i></th>
-<th colspan="3"><i>bit pos</i></th>
-<th colspan="7"><i>7-bit MEM addr</i></th>
-<th colspan="6">Bit operations with memory
-</th></tr>
-<tr>
-<td>0x4000<br>...<br>43FF</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td colspan="3"><i>n</i></td>
-<td colspan="7"><i>M</i></td>
-<td align="left">T0SN M.n</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Test bit n of memory M and skip next instruction if clear
-</td></tr>
-<tr>
-<td>0x4400<br>...<br>47FF</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td colspan="3"><i>n</i></td>
-<td colspan="7"><i>M</i></td>
-<td align="left">T1SN M.n</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Test bit n of memory M and skip next instruction if set
-</td></tr>
-<tr>
-<td>0x4800<br>...<br>4BFF</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td colspan="3"><i>n</i></td>
-<td colspan="7"><i>M</i></td>
-<td align="left">SET0 M.n</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Clear bit n of memory M
-</td></tr>
-<tr>
-<td>0x4C00<br>...<br>4FFF</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td colspan="3"><i>n</i></td>
-<td colspan="7"><i>M</i></td>
-<td align="left">SET1 M.n</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td align="left">Set bit n of memory M
-</td></tr>
-<tr>
-<td colspan="22">
-</td></tr>
-
-
-<tr>
-<th></th>
-<th>1</th>
 <th>0</th>
 <th>1</th>
-<th>0</th>
+<th>1</th>
 <th colspan="3"><i>opcode</i></th>
 <th colspan="8"><i>8-bit immediate</i></th>
 <th colspan="6">Operations with A and 8-bit literal
 </th></tr>
 <tr>
-<td>0x50..</td>
-<td>1</td>
+<td>0x18..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -1925,11 +1406,12 @@
 <td align="left">A ← A + k
 </td></tr>
 <tr>
-<td>0x51..</td>
-<td>1</td>
+<td>0x19..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -1942,11 +1424,12 @@
 <td align="left">A ← A - k
 </td></tr>
 <tr>
-<td>0x52..</td>
-<td>1</td>
+<td>0x1A..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>0</td>
 <td>1</td>
 <td>0</td>
@@ -1959,11 +1442,12 @@
 <td align="left">Skip next instruction if A equals k
 </td></tr>
 <tr>
-<td>0x53..</td>
-<td>1</td>
+<td>0x1B..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
@@ -1976,11 +1460,12 @@
 <td align="left">Skip next instruction if A not equals k
 </td></tr>
 <tr>
-<td>0x54..</td>
-<td>1</td>
+<td>0x1C..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -1993,11 +1478,12 @@
 <td align="left">A ← A &amp; k
 </td></tr>
 <tr>
-<td>0x55..</td>
-<td>1</td>
+<td>0x1D..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
@@ -2010,11 +1496,12 @@
 <td align="left">A ← A | k
 </td></tr>
 <tr>
-<td>0x56..</td>
-<td>1</td>
+<td>0x1E..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
@@ -2027,11 +1514,12 @@
 <td align="left">A ← A ^ k
 </td></tr>
 <tr>
-<td>0x57..</td>
-<td>1</td>
+<td>0x1F..</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>1</td>
-<td>0</td>
+<td>1</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
@@ -2044,55 +1532,960 @@
 <td align="left">A ← k
 </td></tr>
 <tr>
-<td colspan="22">
+<td colspan="23">
 </td></tr>
 
 <tr>
 <th></th>
-<th>1</th>
+<th>0</th>
 <th>0</th>
 <th>1</th>
-<th>1</th>
-<th>1</th>
+<th>0</th>
+<th colspan="3"><i>c</i></th>
 <th colspan="3"><i>bit pos</i></th>
-<th colspan="7"><i>7-bit IO addr</i></th>
-<th colspan="6">Special operation with CF and IO
+<th colspan="6"><i>6-bit IO addr</i></th>
+<th colspan="6">Bit operations with IO
 </th></tr>
 <tr>
-<td>0x5C00<br>...<br>0x5FFF</td>
+<td>0x20..<br>0x21..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">T0SN IO.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Test bit n of IO and skip next instruction if clear
+</td></tr>
+<tr>
+<td>0x22..<br>0x23..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">T1SN IO.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Test bit n of IO and skip next instruction if set
+</td></tr>
+<tr>
+<td>0x24..<br>0x25..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">SET0 IO.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Clear bit n of IO
+</td></tr>
+<tr>
+<td>0x26..<br>0x27..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">SET1 IO.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Set bit n of IO
+</td></tr>
+<tr>
+<td>0x28..<br>0x29..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">TOG IO.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Toggle bit n of IO
+</td></tr>
+<tr>
+<td>0x2A..<br>0x2B..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">WAIT0 IO.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Stop execution until bit n of IO is low
+</td></tr>
+<tr>
+<td>0x2C..<br>0x2D..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="6"><i>IO</i></td>
+<td align="left">WAIT1 IO.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Stop execution until bit n of IO is high
+</td></tr>
+<tr>
+<td>0x2E..<br>0x2F..</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
 <td>0</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
 <td colspan="3"><i>n</i></td>
-<td colspan="7"><i>IO</i></td>
+<td colspan="6"><i>IO</i></td>
 <td align="left">SWAPC IO.n</td>
 <td></td>
 <td>CF</td>
 <td></td>
 <td></td>
-<td align="left">Swap bit IO.n with CF
+<td align="left">Swap bit IO.n with CF is high
 </td></tr>
 <tr>
-<td colspan="22">
+<td colspan="23">
 </td></tr>
 
+<tr>
+<th></th>
+<th>0</th>
+<th>0</th>
+<th colspan="5"><i>opcode</i></th>
+<th colspan="9"><i>9-bit MEM addr</i></th>
+<th colspan="6">Operations with A and memory
+</th></tr>
+<tr>
+<td>0x30..<br>0x31..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">NMOV A, M</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← NEG(M)
+</td></tr>
+<tr>
+<td>0x32..<br>0x33..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">NMOV M, A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">M ← NEG(A)
+</td></tr>
+<tr>
+<td>0x34..<br>0x35..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">NADD A, M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">A ← M + NEG(A)
+</td></tr>
+<tr>
+<td>0x36..<br>0x37..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">NADD M, A</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← NEG(M) + A
+</td></tr>
+<tr>
+<td>0x38..<br>0x39..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">CEQSN A, M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">Skip next instruction if M is equal to A (flags changed according to (A-M))
+</td></tr>
+<tr>
+<td>0x3A..<br>0x3B..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">CEQSN M, A</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">Skip next instruction if A is equal to M (flags changed according to (M-A))
+</td></tr>
+<tr>
+<td>0x3C..<br>0x3D..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">COMP A, M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">Compare A with M (flags changed according to (A-M))
+</td></tr>
+<tr>
+<td>0x3E..<br>0x3F..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">COMP M, A</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">Compare M with A (flags changed according to (M-A))
+</td></tr>
+<tr>
+<td>0x40..<br>0x41..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">ADD M, A</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M + A
+</td></tr>
+<tr>
+<td>0x42..<br>0x43..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">ADD A, M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">A ← A + M
+</td></tr>
+<tr>
+<td>0x44..<br>0x45..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SUB M, A</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M - A
+</td></tr>
+<tr>
+<td>0x46..<br>0x47..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SUB A, M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">A ← A - M
+</td></tr>
+<tr>
+<td>0x48..<br>0x49..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">ADDC M, A</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M + A + CF
+</td></tr>
+<tr>
+<td>0x4A..<br>0x4B..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">ADDC A, M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">A ← A + M + CF
+</td></tr>
+<tr>
+<td>0x4C..<br>0x4D..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SUBC M, A</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M - A - CF
+</td></tr>
+<tr>
+<td>0x4E..<br>0x4F..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SUBC A, M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">A ← A - M - CF
+</td></tr>
+<tr>
+<td>0x50..<br>0x51..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">AND M, A</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">M ← M &amp; A
+</td></tr>
+<tr>
+<td>0x52..<br>0x53..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">AND A, M</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← A &amp; M
+</td></tr>
+<tr>
+<td>0x54..<br>0x55..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">OR M, A</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">M ← M | A
+</td></tr>
+<tr>
+<td>0x56..<br>0x57..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">OR A, M</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← A | M
+</td></tr>
+<tr>
+<td>0x58..<br>0x59..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">XOR M, A</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">M ← M ^ A
+</td></tr>
+<tr>
+<td>0x5A..<br>0x5B..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">XOR A, M</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← A ^ M
+</td></tr>
+<tr>
+<td>0x5C..<br>0x5D..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">MOV M, A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">M ← A
+</td></tr>
+<tr>
+<td>0x5E..<br>0x5F..</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">MOV A, M</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">A ← M
+</td></tr>
+<tr>
+<td colspan="23">
+</td></tr>
+
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>1</th>
+<th colspan="4"><i>opcode</i></th>
+<th colspan="9"><i>9-bit MEM addr</i></th>
+<th colspan="6">Operations with memory
+</th></tr>
+<tr>
+<td>0x60..<br>0x61..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">ADDC M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M + CF
+</td></tr>
+<tr>
+<td>0x62..<br>0x63..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SUBC M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M - CF
+</td></tr>
+<tr>
+<td>0x64..<br>0x65..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">IZSN M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M + 1 , skip next instruction if M is 0
+</td></tr>
+<tr>
+<td>0x66..<br>0x67..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">DZSN M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M - 1 , skip next instruction if M is 0
+</td></tr>
+<tr>
+<td>0x68..<br>0x69..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">INC M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M + 1
+</td></tr>
+<tr>
+<td>0x6A..<br>0x6B..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">DEC M</td>
+<td>ZF</td>
+<td>CF</td>
+<td>AC</td>
+<td>OV</td>
+<td align="left">M ← M - 1
+</td></tr>
+<tr>
+<td>0x6C..<br>0x6D..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">CLEAR M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">M ← 0
+</td></tr>
+<tr>
+<td>0x6E..<br>0x6F..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">XCH M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Exchange A with M
+</td></tr>
+<tr>
+<td>0x70..<br>0x71..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">NOT M</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">M ← ~M
+</td></tr>
+<tr>
+<td>0x72..<br>0x73..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">NEG M</td>
+<td>ZF</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">M ← NEG(M)
+</td></tr>
+<tr>
+<td>0x73..<br>0x75..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SR M</td>
+<td></td>
+<td>CF</td>
+<td></td>
+<td></td>
+<td align="left">M ← M &gt;&gt; 1
+</td></tr>
+<tr>
+<td>0x76..<br>0x77..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SL M</td>
+<td></td>
+<td>CF</td>
+<td></td>
+<td></td>
+<td align="left">M ← M &lt;&lt; 1
+</td></tr>
+<tr>
+<td>0x78..<br>0x79..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SRC M</td>
+<td></td>
+<td>CF</td>
+<td></td>
+<td></td>
+<td align="left">M ← CF:M &gt;&gt; 1
+</td></tr>
+<tr>
+<td>0x7A..<br>0x7B..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SLC M</td>
+<td></td>
+<td>CF</td>
+<td></td>
+<td></td>
+<td align="left">M ← M:CF &lt;&lt; 1
+</td></tr>
+<tr>
+<td>0x7C..<br>0x7D..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SWAP M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Swap the high nibble and low nibble of M
+</td></tr>
+<tr>
+<td>0x7E..<br>0x7F..</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td colspan="9"><i>M</i></td>
+<td align="left">DELAY M</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Delay M+1 cycles, at end A ← 0
+</td></tr>
+<tr>
+<td colspan="23">
+</td></tr>
+
+<tr>
+<th></th>
+<th>1</th>
+<th>0</th>
+<th colspan="2"><i>c</i></th>
+<th colspan="3"><i>bit pos</i></th>
+<th colspan="9"><i>9-bit MEM addr</i></th>
+<th colspan="6">Bit operations with memory
+</th></tr>
+<tr>
+<td>0x8...</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="9"><i>M</i></td>
+<td align="left">T0SN M.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Test bit n of memory M and skip next instruction if clear
+</td></tr>
+<tr>
+<td>0x9...</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="9"><i>M</i></td>
+<td align="left">T1SN M.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Test bit n of memory M and skip next instruction if set
+</td></tr>
+<tr>
+<td>0xA...</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SET0 M.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Clear bit n of memory M
+</td></tr>
+<tr>
+<td>0xB...</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td colspan="3"><i>n</i></td>
+<td colspan="9"><i>M</i></td>
+<td align="left">SET1 M.n</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align="left">Set bit n of memory M
+</td></tr>
+<tr>
+<td colspan="23">
+</td></tr>
 
 <tr>
 <th></th>
 <th>1</th>
 <th>1</th>
 <th><i>c</i></th>
-<th colspan="12"><i>k</i></th>
+<th colspan="13"><i>k</i></th>
 <th colspan="6">Control transfers
 </th></tr>
 <tr>
-<td>0x6000<br>...<br>0x6FFF</td>
+<td>0xC000<br>...<br>0xDFFF</td>
 <td>1</td>
 <td>1</td>
 <td>0</td>
-<td colspan="12"><i>k</i></td>
+<td colspan="13"><i>k</i></td>
 <td align="left">GOTO <i>k</i></td>
 <td></td>
 <td></td>
@@ -2101,11 +2494,11 @@
 <td align="left">Jump to k (address in words, 2 cycles)
 </td></tr>
 <tr>
-<td>0x7000<br>...<br>0x7FFF</td>
+<td>0xE000<br>...<br>0xFFFF</td>
 <td>1</td>
 <td>1</td>
 <td>1</td>
-<td colspan="12"><i>k</i></td>
+<td colspan="13"><i>k</i></td>
 <td align="left">CALL <i>k</i></td>
 <td></td>
 <td></td>
@@ -2114,32 +2507,88 @@
 <td align="left">Call subroutine k (address in words, 2 cycles)
 </td></tr>
 <tr>
-<td colspan="22">
+<td colspan="23">
 </td></tr>
-
 
 </tbody></table>
 <table class="wikitable" style="text-align:center">
-<caption>Instruction support by device<br>(Y = supported, u = undocumented but working)
+<caption>Instruction support by device
 </caption>
 <tbody><tr>
 <th>Device</th>
 <th>MUL</th>
-<th>NMOV A, M</th>
-<th>NMOV M, A</th>
-<th>SWAP M</th>
-<th>XOR A, IO
+<th>PMODE N</th>
+<th>PUSHW pcN</th>
+<th>PUSHW M</th>
+<th>POPW M</th>
+<th>POPW PCn
 </th></tr>
 <tr>
-<td>PFS173</td>
+<td>DF329</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?
+</td></tr>
+<tr>
+<td>DF69</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>MCS11</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y
+</td></tr>
+<tr>
+<td>PMC232</td>
 <td>-</td>
-<td>u</td>
-<td>u</td>
-<td>u</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
 <td>-
 </td></tr>
 <tr>
-<td>PMS133</td>
+<td>PMC234</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMC251</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMC271</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMC884</td>
+<td>Y</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
@@ -2147,12 +2596,31 @@
 <td>Y
 </td></tr>
 <tr>
-<td>PMS134</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y
+<td>PMS232</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMS234</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
+</td></tr>
+<tr>
+<td>PMS271</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-
 </td></tr>
 </tbody></table>
 
