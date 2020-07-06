@@ -16,46 +16,28 @@ layout: default
       <li><strong>Programming Mode</strong>: {{ page.programming | upcase }}</li>
     </ul>
 
-
-
-{% if page.has_pinout_diagram %}
+    {{ content }}
   </div>
 </article>
 
+{% include edit-page.html %}
+
+{% if page.has_pinout_diagram %}
 </div> <!-- Close wrapper div of parent layout -->
+
 <div class="pinout-diagram">
-  <div class="iframe-wrapper">
-    <iframe id="pinout-diagram"
-      frameborder="0" allowtransparency="true"
-      height="400"
-      src="https://christianflach.de/ic-pinout-diagram-generator?ic={{ page.title | url_encode }}&embed=1">
-    </iframe>
-  </div>
-  <div class="show-more">
-    <button>show all pinout diagrams</button>
-  </div>
+  <iframe id="pinout-diagram" frameborder="0" allowtransparency="true"
+    src="https://christianflach.de/ic-pinout-diagram-generator?ic={{ page.title | url_encode }}&embed=1">
+  </iframe>
 </div>
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"
   integrity="sha512-HY1lApSG7xxx8mYzs/lxRs+c5AaDThRaa3pvQB6puiswvf2lWqMJVf+8qSGiL4ZXfHQoPIqbd1TlpqfycPo3cQ=="
   crossorigin="anonymous"></script>
 <script>
-  const showMoreBtn = document.querySelector('.pinout-diagram button');
-  showMoreBtn.addEventListener('click', () => {
-    document.querySelector('.pinout-diagram .show-more').remove();
-    iFrameResize({ sizeHeight: true, scrolling: 'omit' }, '#pinout-diagram');
-  });
+  iFrameResize({ sizeHeight: true, sizeWidth: false, scrolling: 'omit' }, '#pinout-diagram');
 </script>
 <div class="wrapper"> <!-- Reopen wrapper div of parent layout -->
 
-<article class="post">
-  <div class="post-content">
 {% endif %}
 
-
-
-    {{ content }}
-  </div>
-</article>
-
-{% include edit-page.html %}
