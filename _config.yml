@@ -1,0 +1,30 @@
+repository: free-pdk/free-pdk.github.io
+baseurl: ~
+
+title: Free PDK
+description: |
+  Free PDK is an effort to create an open source alternative to the proprietary
+  Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.
+github_username: free-pdk
+lang: en_US
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+theme: minima
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-titles-from-headings
+  - jekyll-mentions
+  - jemoji
+
+header_pages:
+  - padauk-sdcc-tutorial/index.md
+
+# https://github.com/benbalter/jekyll-titles-from-headings#configuration
+titles_from_headings:
+  enabled:     true
+  strip_title: true
