@@ -1,0 +1,47 @@
+---
+---
+
+@import "minima";
+
+.badge {
+  border-radius: 0.25em;
+  padding: 0.125em;
+  background: #f6d66c;
+  font-size: 0.85em;
+}
+
+.pinout-diagram {
+  position: relative;
+  margin-bottom: 2em;
+
+  iframe {
+    width: 1px;
+    min-width: 100%;
+  }
+
+  .iframe-wrapper {
+    -webkit-box-shadow:
+      inset 0px  39px 28px -34px rgba(140,140,140,0.75),
+      inset 0px -39px 28px -34px rgba(140,140,140,0.75);
+    -moz-box-shadow:
+      inset 0px  39px 28px -34px rgba(140,140,140,0.75),
+      inset 0px -39px 28px -34px rgba(140,140,140,0.75);
+    box-shadow:
+      inset 0px  39px 28px -34px rgba(140,140,140,0.75),
+      inset 0px -39px 28px -34px rgba(140,140,140,0.75);
+  }
+
+  .show-more {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: rgba(0.3, 0.3, 0.3, 0.5);
+    padding: 0.5em 0;
+  }
+}
+
+.edit-page {
+  text-align: right;
+}
