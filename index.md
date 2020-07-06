@@ -54,13 +54,14 @@ outdated and may not have support or only limited support for the Padauk µCs.
 ## µC-specific Information and Pinouts
 
 Note: Other µCs than the µCs listed here are supported.
-It is an ongoing effor to create pinout diagrams for all supported Padauk µCs.
+It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 
 {% for page in site.pages -%}
 {%- if page.layout == "chip" -%}
 - **[{{ page.title }}]({{ page.url }})**
   <span class="badge">{{ page.instruction_set }} bit instruction set</span>
-  <span class="badge">{{ page.programming | upcase }}</span>
+  <span class="badge">{{ page.rom_size }} {{ page.programming | upcase }}</span>
+  <span class="badge">{{ page.ram_size }} bytes RAM</span>
 {% endif -%}
 {%- endfor %}
 
