@@ -32,7 +32,7 @@ All sources for the programmer are available at:
 - [Easy PDK Programmer Hardware](https://github.com/free-pdk/easy-pdk-programmer-hardware)
 - [Easy PDK Programmer Software](https://github.com/free-pdk/easy-pdk-programmer-software)
 
-## SDCC-based open source tool-chain
+## SDCC-based Open Source Tool-Chain
 
 Padauk's own tool-chain is based on a custom programming language called "Mini-C" with a syntax based on the C-language. This language is only supported by their own tool-chain, including IDE ("Padauk Developer Studio") and programmer ("Writer"). The tool-chain also uses a custom binary format with encryption/obfuscation. Should you be interested in code samples in that custom language, take a look at [free-pdk/simple-pdk-code-examples](https://github.com/free-pdk/simple-pdk-code-examples).
 
