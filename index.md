@@ -36,9 +36,9 @@ All sources for the programmer are available at:
 
 Padauk themselves use a custom programming language that looks a bit like C for programming the µCs
 that is compiled by their proprietary IDE.
-While code created using this custom language can be programmed using the Easy PDK Programmer,
-we still recommend using SDCC, especially if you want support for proper C code.
-Should you be interested in code samples in that custom language, look at
+Code created using Padauk's custom language CAN NOT currently be programmed using the Easy PDK Programmer,
+so we recommend using SDCC which has support for proper C code.
+Should you be interested in code samples written in Padauk's custom language, look at
 [free-pdk/simple-pdk-code-examples](https://github.com/free-pdk/simple-pdk-code-examples).
 
 Padauk µCs use different kinds of instruction sets: 13, 14, 15, or 16 bit
