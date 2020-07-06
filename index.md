@@ -12,7 +12,7 @@ The main focus is on supporting µCs of two Padauk series:
 - [F series MTP](http://www.padauk.com.tw/en/product/index.aspx?kind=42) (MTP = *multiple time programmable*)
 
 Padauk µCs are extremely cheap (as cheap as $0.03 per µC), which is why
-David from the EEVblog made the [first video](https://youtu.be/VYhAGnsnO7w)
+Dave from the EEVblog made the [first video](https://youtu.be/VYhAGnsnO7w)
 and [a bunch of follow-up videos](https://www.youtube.com/watch?v=r45r4rV5JOI&list=PLvOlSehNtuHsiF93KOLoF1KAHArmIW9lC) on them.
 There is an extensive and active
 [thread on the EEVblog forum](http://eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/)
