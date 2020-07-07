@@ -71,7 +71,7 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 <th>RAM</th>
 <th>Timers</th>
 <th>PWM</th>
-<th>COMP</th>
+<th>CMP</th>
 <th>ADC</th>
 <th>Special</th>
 </tr>
@@ -81,7 +81,7 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 {% for page in site.pages -%}
 {%- if page.layout == "chip" and page.programming== "mtp" -%}
 <tr>
-<td markdown="span">**[{{ page.title }}]({{ page.product_page }})**<br>[Pinout]({{ page.url }})</td>
+<td markdown="span">**[{{ page.title }}]({{ page.url }})**<br><small>[@Padauk]({{ page.product_page }})</small></td>
 <td>{{ page.oss_status }}</td>
 <td>PDK{{ page.instruction_set }}</td>
 <td>{{ page.maxio}}</td>
@@ -113,7 +113,7 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 <th>RAM</th>
 <th>Timers</th>
 <th>PWM</th>
-<th>COMP</th>
+<th>CMP</th>
 <th>ADC</th>
 <th>Special</th>
 </tr>
@@ -122,7 +122,7 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 {% for page in site.pages -%}
 {%- if page.layout == "chip" and page.programming== "otp" -%}
 <tr>
-<td markdown="span">**[{{ page.title }}]({{ page.product_page }})**<br>[Pinout]({{ page.url }})</td>
+<td markdown="span">**[{{ page.title }}]({{ page.url }})**<br><small>[@Padauk]({{ page.product_page }})</small></td>
 <td>{{ page.oss_status }}</td>
 <td>PDK{{ page.instruction_set }}</td>
 <td>{{ page.maxio}}</td>
