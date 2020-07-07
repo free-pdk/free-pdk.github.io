@@ -142,7 +142,7 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 
 ## Evaluation Boards
 
-These are evalution boards for the online-programmable MTP (as opposed to the OTP parts, which can only be programmed offline and once) Padauk µC.
+These are evaluation boards for the online-programmable MTP (as opposed to the OTP parts, which can only be programmed offline and once) Padauk µC.
 [free-pdk/f-eval-boards](https://github.com/free-pdk/f-eval-boards).
 
 ## Instruction Sets, Opcodes, and Programming Sequence
