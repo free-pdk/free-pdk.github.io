@@ -6,7 +6,9 @@ description: |
   Free PDK is an effort to create an open source alternative to the proprietary
   Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.
 github_username: free-pdk
-lang: en_US
+lang: en
+
+permalink: /:title
 
 markdown: kramdown
 kramdown:
