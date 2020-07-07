@@ -9,7 +9,7 @@ has_pinout_diagram: true
 programming: otp
 maxio: 6
 timers: T16<br>T2
-PWM: 1x 8-Bit<br>
+PWM: 1x 8-Bit
 Comp: 1
 ADC: "-"
 Special: "-"
