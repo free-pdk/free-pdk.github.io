@@ -43,3 +43,54 @@ th {
     margin-bottom: 0;
   }
 }
+
+
+.community-projects {
+  $card-margin: 1em;
+  $card-padding: 1em;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin: -$card-margin;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    // TODO: Use less columns on smaller screens.
+    max-width: calc(33% - 4 * #{$card-margin});
+    flex-grow: 1;
+
+    border: 1px solid #ececec;
+    border-radius: 0.5em;
+    padding: $card-padding;
+    margin: $card-margin;
+
+    text-decoration: none;
+    color: inherit;
+
+    // Generated at https://neumorphism.io/#ffffff
+    box-shadow: 10px 10px 20px #e6e6e6,
+                -10px -10px 20px #ffffff;
+
+    transition: box-shadow 0.1s;
+    &:hover {
+      box-shadow: 10px 10px 20px #cccccc,
+                  -10px -10px 20px #ffffff;
+    }
+
+    .spacer {
+      flex-grow: 1;
+    }
+
+    .meta {
+      text-align: right;
+      .emoji {
+        height: 15px;
+        width: 15px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
