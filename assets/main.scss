@@ -1,6 +1,7 @@
 ---
 ---
 
+$content-width: 1040px;
 @import "minima";
 
 .badge {
@@ -30,4 +31,17 @@
 
 .edit-page {
   text-align: right;
+}
+
+// Wrap tables in <div class="table-responsive>...</div> to make them scroll horizontally.
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  margin-bottom: $spacing-unit;
+
+  table {
+    margin-bottom: 0;
+  }
 }
