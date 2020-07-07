@@ -1,6 +1,9 @@
 ---
 ---
 
+
+$content-width: 1040px;
+
 @import "minima";
 
 .badge {
@@ -16,18 +19,27 @@
   iframe {
     width: 100%;
   }
-
-  -webkit-box-shadow:
-    inset 0px  39px 28px -34px rgba(140,140,140,0.75),
-    inset 0px -39px 28px -34px rgba(140,140,140,0.75);
-  -moz-box-shadow:
-    inset 0px  39px 28px -34px rgba(140,140,140,0.75),
-    inset 0px -39px 28px -34px rgba(140,140,140,0.75);
-  box-shadow:
-    inset 0px  39px 28px -34px rgba(140,140,140,0.75),
-    inset 0px -39px 28px -34px rgba(140,140,140,0.75);
+}
+td {
+  text-align: center;
+}
+th {
+  text-align: center;
 }
 
 .edit-page {
   text-align: right;
+}
+
+// Wrap tables in <div class="table-responsive>...</div> to make them scroll horizontally.
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  margin-bottom: $spacing-unit;
+
+  table {
+    margin-bottom: 0;
+  }
 }
