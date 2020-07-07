@@ -1,7 +1,7 @@
 ---
 layout: chip
 instruction_set: 14
-rom_size: 2KW
+rom_size: 2 KW
 ram_size: 128
 product_page: http://www.padauk.com.tw/en/product/show.aspx?num=66&kind=42
 easypdk_supported: true
