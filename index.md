@@ -58,6 +58,7 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 
 ### Flash (MTP) Variants ###
 
+<div class="table-responsive">
 <table>
 
 <thead>
@@ -96,9 +97,11 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 {%- endfor %}
 </tbody>
 </table>
+</div>
 
 ### OTP Variants ###
 
+<div class="table-responsive">
 <table>
 <thead>
 <tr class="header">
@@ -135,7 +138,7 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 {%- endfor %}
 </tbody>
 </table>
-
+</div>
 
 ## Evaluation Boards
 
