@@ -1,7 +1,9 @@
 ---
 ---
 
+
 $content-width: 1040px;
+
 @import "minima";
 
 .badge {
@@ -17,6 +19,12 @@ $content-width: 1040px;
   iframe {
     width: 100%;
   }
+}
+td {
+  text-align: center;
+}
+th {
+  text-align: center;
 }
 
 .edit-page {
