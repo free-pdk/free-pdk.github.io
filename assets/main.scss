@@ -1,6 +1,8 @@
 ---
 ---
 
+$content-width:  1100px;
+
 @import "minima";
 
 .badge {
@@ -26,6 +28,12 @@
   box-shadow:
     inset 0px  39px 28px -34px rgba(140,140,140,0.75),
     inset 0px -39px 28px -34px rgba(140,140,140,0.75);
+}
+td {
+  text-align: center;
+}
+th {
+  text-align: center;
 }
 
 .edit-page {
