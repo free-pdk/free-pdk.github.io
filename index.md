@@ -58,87 +58,11 @@ It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
 
 ### Flash (MTP) Variants ###
 
-<div class="table-responsive">
-<table>
-
-<thead>
-<tr class="header">
-<th>Padauk MCU</th>
-<th>OSS Support</th>
-<th>Arch.</th>
-<th>max IO</th>
-<th>ROM</th>
-<th>RAM</th>
-<th>Timers</th>
-<th>PWM</th>
-<th>CMP</th>
-<th>ADC</th>
-<th>Special</th>
-</tr>
-</thead>
-
-<tbody>
-{% for page in site.pages -%}
-{%- if page.layout == "chip" and page.programming== "mtp" -%}
-<tr>
-<td markdown="span">**[{{ page.title }}]({{ page.url }})**<br><small>[@Padauk]({{ page.product_page }})</small></td>
-<td>{{ page.oss_status }}</td>
-<td>PDK{{ page.instruction_set }}</td>
-<td>{{ page.maxio}}</td>
-<td>{{ page.rom_size }}</td>
-<td>{{ page.ram_size }}</td>
-<td>{{ page.timers}}</td>
-<td>{{ page.PWM}}</td>
-<td>{{ page.Comp}}</td>
-<td>{{ page.ADC}}</td>
-<td>{{ page.Special}}</td>
-</tr>
-{% endif -%}
-{%- endfor %}
-</tbody>
-</table>
-</div>
+{% include device-table.html memorytype= "mtp" %}
 
 ### OTP Variants ###
 
-<div class="table-responsive">
-<table>
-<thead>
-<tr class="header">
-<th>Padauk MCU</th>
-<th>OSS Support</th>
-<th>Arch.</th>
-<th>max IO</th>
-<th>ROM</th>
-<th>RAM</th>
-<th>Timers</th>
-<th>PWM</th>
-<th>CMP</th>
-<th>ADC</th>
-<th>Special</th>
-</tr>
-</thead>
-<tbody>
-{% for page in site.pages -%}
-{%- if page.layout == "chip" and page.programming== "otp" -%}
-<tr>
-<td markdown="span">**[{{ page.title }}]({{ page.url }})**<br><small>[@Padauk]({{ page.product_page }})</small></td>
-<td>{{ page.oss_status }}</td>
-<td>PDK{{ page.instruction_set }}</td>
-<td>{{ page.maxio}}</td>
-<td>{{ page.rom_size }}</td>
-<td>{{ page.ram_size }}</td>
-<td>{{ page.timers}}</td>
-<td>{{ page.PWM}}</td>
-<td>{{ page.Comp}}</td>
-<td>{{ page.ADC}}</td>
-<td>{{ page.Special}}</td>
-</tr>
-{% endif -%}
-{%- endfor %}
-</tbody>
-</table>
-</div>
+{% include device-table.html memorytype= "otp" %}
 
 ## Evaluation Boards
 
