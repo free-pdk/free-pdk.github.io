@@ -5,7 +5,7 @@ module GitHubPadaukTopics
   class Generator < Jekyll::Generator
     safe true
 
-    QUERY = 'topic:padauk -language:shell -user:free-pdk archived:false sort:updated'
+    QUERY = 'topic:padauk -language:shell archived:false sort:updated'  # -user:free-pdk 
 
     def cache
       @@cache ||= Jekyll::Cache.new("GitHubPadaukTopics")
