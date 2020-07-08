@@ -1,0 +1,43 @@
+name: Build and deploy Jekyll site to GitHub Pages
+
+on:
+  schedule:
+    # update site once per day so that the list of projects using Padauk is refreshed even if we don't push to master.
+    - cron:  '0 0 * * *'
+  push:
+    branches:
+      - master
+
+jobs:
+  github-pages:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: 💎 setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.5
+
+      - name: Jekyll build
+        run: |
+          bundle install
+          bundle exec jekyll build
+
+      - name: Upload to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
+          CLEAN: true
+          SINGLE_COMMIT: true
+          GIT_CONFIG_NAME: GitHub Actions
+          GIT_CONFIG_EMAIL: gh-actions@example.com
