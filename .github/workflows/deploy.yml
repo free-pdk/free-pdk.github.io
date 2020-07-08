@@ -39,7 +39,7 @@ jobs:
         with:
           GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: dist
+          FOLDER: _site
           CLEAN: true
           SINGLE_COMMIT: true
           GIT_CONFIG_NAME: GitHub Actions
