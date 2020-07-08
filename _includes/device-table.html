@@ -25,7 +25,7 @@
     <td>{{ page.oss_status }}</td>
     <td>PDK{{ page.instruction_set }}</td>
     <td>{{ page.maxio}}</td>
-    <td>{{ page.rom_size }}</td>
+    <td>{{ page.rom_size | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;"}}</td>
     <td>{{ page.ram_size }}</td>
     <td>{{ page.timers | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;"  }}</td>
     <td>{{ page.PWM | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
