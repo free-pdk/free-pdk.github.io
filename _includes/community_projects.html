@@ -1,0 +1,23 @@
+<div markdown="0" class="community-projects">
+{% for project in site.projects_using_padauk %}
+<div>
+  <a class="card" href="{{ project.html_url }}">
+    <h4>
+      <span class="owner">{{ project.owner.login }}</span>
+      <br />
+      <strong>{{ project.name }}</strong>
+    </h4>
+    <p>
+      {{ project.description }}
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      updated {{ project.updated_at | timeago }}
+      {% if project.stargazers_count > 0 %}
+        · {{ project.stargazers_count }} :star:
+      {% endif %}
+    </div>
+  </a>
+</div>
+{% endfor %}
+</div>

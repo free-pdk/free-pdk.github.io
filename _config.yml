@@ -22,6 +22,7 @@ plugins:
   - jekyll-titles-from-headings
   - jekyll-mentions
   - jemoji
+  - jekyll-timeago
 
 header_pages:
   - padauk-sdcc-tutorial/index.md
@@ -30,3 +31,8 @@ header_pages:
 titles_from_headings:
   enabled:     true
   strip_title: true
+
+# https://github.com/markets/jekyll-timeago#configuration
+jekyll_timeago:
+  depth: 2
+  threshold: 0.5
