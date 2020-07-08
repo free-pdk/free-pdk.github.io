@@ -6,7 +6,7 @@ on:
     - cron:  '0 0 * * *'
   push:
     branches:
-      - master
+      - production
 
 jobs:
   github-pages:
@@ -38,7 +38,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
+          BRANCH: master
           FOLDER: _site
           CLEAN: true
           SINGLE_COMMIT: true
