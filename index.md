@@ -74,11 +74,12 @@ These are evaluation boards for the online-programmable MTP (as opposed to the O
 The different Padauk µCs use either 13, 14, 15, or 16 bit instruction sets.
 The following files provide an overview over the different instruction sets.
 
-- [Padauk µC 13 bit Instruction Set](PADAUK_FPPA_13_bit_instruction_set.html)
-- [Padauk µC 14 bit Instruction Set](PADAUK_FPPA_14_bit_instruction_set.html)
-- [Padauk µC 15 bit Instruction Set](PADAUK_FPPA_15_bit_instruction_set.html)
-- [Padauk µC 16 bit Instruction Set](PADAUK_FPPA_16_bit_instruction_set.html)
-- More information, including information on the programming sequence, can be found at
+- {{ "13" | link_instruction_set }}
+- {{ "14" | link_instruction_set }}
+- {{ "15" | link_instruction_set }}
+- {{ "16" | link_instruction_set }}
+
+More information, including information on the programming sequence, can be found at
   [free-pdk/fppa-pdk-documentation](https://github.com/free-pdk/fppa-pdk-documentation)
 
 ## Other Tools
