@@ -8,7 +8,7 @@ easypdk_supported: true
 has_pinout_diagram: true
 programming: otp
 maxio: 6
-timers: T16<br>T2
+timers: T16,T2
 PWM: 1x 8-Bit
 Comp: 1
 ADC: "-"

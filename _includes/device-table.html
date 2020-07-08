@@ -27,15 +27,15 @@
     <td>{{ page.maxio}}</td>
     <td>{{ page.rom_size }}</td>
     <td>{{ page.ram_size }}</td>
-    <td>{{ page.timers}}</td>
-    <td>{{ page.PWM}}</td>
+    <td>{{ page.timers | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;"  }}</td>
+    <td>{{ page.PWM | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
     <td>{{ page.Comp}}</td>
-    <td>{{ page.ADC}}</td>
+    <td>{{ page.ADC | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
     <td>{{ page.Special}}</td>
     </tr>
     {% endif -%}
     {%- endfor %}
     </tbody>
     </table>
-    </div>
+</div>
     
