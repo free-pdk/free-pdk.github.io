@@ -44,23 +44,37 @@ th {
   }
 }
 
-
 .community-projects {
   $card-margin: 1em;
   $card-padding: 1em;
 
   display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: stretch;
   margin: -$card-margin;
 
+  & > div {
+    display: flex;
+
+    flex-basis: 33%;
+    max-width: 33%;
+
+    @include media-query($on-laptop) {
+      flex-basis: 50%;
+      max-width: 50%;
+    }
+    @include media-query($on-palm) {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+  }
+
   .card {
+    width: 100%;
     display: flex;
     flex-direction: column;
-
-    // TODO: Use less columns on smaller screens.
-    max-width: calc(33% - 4 * #{$card-margin});
-    flex-grow: 1;
 
     border: 1px solid #ececec;
     border-radius: 0.5em;
@@ -71,12 +85,12 @@ th {
     color: inherit;
 
     // Generated at https://neumorphism.io/#ffffff
-    box-shadow: 10px 10px 20px #e6e6e6,
+    box-shadow:  10px 10px 20px #e6e6e6,
                 -10px -10px 20px #ffffff;
 
     transition: box-shadow 0.1s;
     &:hover {
-      box-shadow: 10px 10px 20px #cccccc,
+      box-shadow:  10px 10px 20px #cccccc,
                   -10px -10px 20px #ffffff;
     }
 
@@ -84,11 +98,17 @@ th {
       flex-grow: 1;
     }
 
+    .owner {
+      font-size: $small-font-size;
+    }
+
     .meta {
+      color: $grey-color;
+      font-size: $small-font-size;
       text-align: right;
       .emoji {
-        height: 15px;
-        width: 15px;
+        height: $small-font-size;
+        width: $small-font-size;
         vertical-align: middle;
       }
     }
