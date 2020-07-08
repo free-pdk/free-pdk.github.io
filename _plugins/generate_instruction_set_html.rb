@@ -49,14 +49,10 @@ module InstructionSetParser
       instruction_sets = cache.getset("instruction-sets") do
         result = {}
         for bit in bits
-          if ENV['CI']
-            Jekyll.logger.info "Converting instruction set #{bit}"
-            mediawiki = download_file_from_docs_repo("PADAUK_FPPA_#{bit}_bit_instruction_set.wikitext")
-            html = mediawiki_to_html(mediawiki)
-            result[bit.to_s] = html
-          else
-            result[bit.to_s] = "<p>This page is only populated when running in CI. Set the \"CI\" environment variable if you want to also populate it locally.</p>"
-          end
+          Jekyll.logger.info "Converting instruction set #{bit} from mediawiki format to HTML"
+          mediawiki = download_file_from_docs_repo("PADAUK_FPPA_#{bit}_bit_instruction_set.wikitext")
+          html = mediawiki_to_html(mediawiki)
+          result[bit.to_s] = html
         end
         result
       end
