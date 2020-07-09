@@ -5,7 +5,12 @@ module GitHubPadaukTopics
   class Generator < Jekyll::Generator
     safe true
 
-    QUERY = 'topic:padauk -language:shell archived:false sort:updated'  # -user:free-pdk 
+    # Exclude projects that use the padauk tag but are not actually about Padauk microcontrollers
+    excluded_projects = [
+      'kaiz16/zg-xkb',
+    ]
+
+    QUERY = 'topic:padauk archived:false sort:updated ' + excluded_projects.map { |name| "-repo:#{name}" }.join(" ")
 
     def cache
       @@cache ||= Jekyll::Cache.new("GitHubPadaukTopics")
