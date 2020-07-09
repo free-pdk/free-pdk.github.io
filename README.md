@@ -18,3 +18,5 @@ The `development` branch is automatically deployed by [netlify](https://www.netl
 Logs can be viewed by clicking on this badge: [![Netlify Status](https://api.netlify.com/api/v1/badges/d2729f79-e836-460b-a65f-7199eb8f3b97/deploy-status)](https://app.netlify.com/sites/free-pdk-preview/deploys)
 
 All pull requests are also built and deployed by netlify so that you can easily review pull requests without having to check them out locally.
+
+There is one difference between the versions deployed to netlify and the version deployed to GitHub Pages: All URLs on netlify are automatically transformed to lower case, whereas URLs on GitHub Pages are case sensitive. For example, the URL `/chips/PFS173` works as expected on GitHub Pages and redirects to `/chips/pfs173` on netlify, whereas the URL `/chips/pfs173` works on netlify but returns 404 on GitHub Pages.
