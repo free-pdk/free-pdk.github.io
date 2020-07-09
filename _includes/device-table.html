@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <table>
-    
+
     <thead>
     <tr class="header">
     <th>Padauk MCU</th>
@@ -16,14 +16,14 @@
     <th>Special</th>
     </tr>
     </thead>
-    
+
     <tbody>
     {% for page in site.pages -%}
     {%- if page.layout == "chip" and page.programming== include.memorytype -%}
     <tr>
     <td markdown="span">**[{{ page.title }}]({{ page.url }})**<br><small>[@Padauk]({{ page.product_page }})</small></td>
     <td>{{ page.oss_status }}</td>
-    <td>PDK{{ page.instruction_set }}</td>
+    <td>{{ page.instruction_set | link_instruction_set }}</td>
     <td>{{ page.maxio}}</td>
     <td>{{ page.rom_size | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;"}}</td>
     <td>{{ page.ram_size }}</td>
@@ -38,4 +38,3 @@
     </tbody>
     </table>
 </div>
-    

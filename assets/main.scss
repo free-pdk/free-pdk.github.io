@@ -114,3 +114,15 @@ th {
     }
   }
 }
+
+.instruction-set {
+  p {
+    margin: 0;
+  }
+  table {
+    font-size: 12px;
+  }
+  th, td {
+    padding: 2px 4px;
+  }
+}
