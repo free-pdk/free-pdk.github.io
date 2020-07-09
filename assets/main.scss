@@ -13,11 +13,11 @@ $content-width: 1040px;
   font-size: 0.85em;
 }
 
-.pinout-diagram {
-  margin: 2em 0;
+#pinout-diagram {
+  margin: 0 $spacing-unit;
 
-  iframe {
-    width: 100%;
+  @include media-query($on-laptop) {
+    margin: 0 $spacing-unit / 2;
   }
 }
 td {
@@ -112,5 +112,17 @@ th {
         vertical-align: middle;
       }
     }
+  }
+}
+
+.instruction-set {
+  p {
+    margin: 0;
+  }
+  table {
+    font-size: 12px;
+  }
+  th, td {
+    padding: 2px 4px;
   }
 }
