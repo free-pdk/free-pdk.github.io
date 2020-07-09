@@ -27,17 +27,13 @@ layout: default
 {% if page.has_pinout_diagram %}
 </div> <!-- Close wrapper div of parent layout -->
 
-<div class="pinout-diagram">
-  <iframe id="pinout-diagram" frameborder="0" allowtransparency="true"
-    src="https://christianflach.de/ic-pinout-diagram-generator?ic={{ page.title | url_encode }}&embed=1">
-  </iframe>
-</div>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.11/iframeResizer.min.js"
-  integrity="sha512-HY1lApSG7xxx8mYzs/lxRs+c5AaDThRaa3pvQB6puiswvf2lWqMJVf+8qSGiL4ZXfHQoPIqbd1TlpqfycPo3cQ=="
-  crossorigin="anonymous"></script>
+<div id="pinout-diagram"></div>
+<script src="https://unpkg.com/@cmfcmf/pinout-diagrams/dist/sdk.min.js"></script>
 <script>
-  iFrameResize({ sizeHeight: true, sizeWidth: false, scrolling: 'omit' }, '#pinout-diagram');
+  PinoutDiagrams.render(document.getElementById('pinout-diagram'), {
+    ics: ["{{ page.title }}"],
+    maxWidth: '980px'
+  });
 </script>
 <div class="wrapper"> <!-- Reopen wrapper div of parent layout -->
 
