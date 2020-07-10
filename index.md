@@ -53,16 +53,16 @@ The latest binaries of SDCC can be obtained on the [SDCC website](http://sdcc.so
 
 ## µC-specific Information and Pinouts
 
-Note: Other µCs than the µCs listed here are supported.
-It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
+Note: Other µCs than the µCs listed here may be supported.
+If you want to learn more about the naming scheme, [read more here](/chips/#naming-scheme).
 
-### Flash (MTP) Variants ###
+### MTP (Flash) Variants
 
-{% include device-table.html memorytype= "mtp" %}
+{% include device-table.html memorytype="mtp" %}
 
-### OTP Variants ###
+### OTP Variants
 
-{% include device-table.html memorytype= "otp" %}
+{% include device-table.html memorytype="otp" %}
 
 ## Evaluation Boards
 
