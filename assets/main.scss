@@ -138,7 +138,9 @@ a.card {
   padding-bottom: 0;
 
   height: 500px;
+  word-break: break-word;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
   & > div {
     display: flex;
