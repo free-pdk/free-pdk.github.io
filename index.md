@@ -102,3 +102,9 @@ These projects are auto-populated once per day by
 [searching GitHub for repositories with the `padauk` tag]({{ site.projects_using_padauk_query_url }}).
 
 {% include community_projects.html %}
+
+## Latest Activity
+
+The latest activity in the `free-pdk` GitHub organization is fetched at least once per day and displayed below.
+
+{% include latest_activity.html %}

@@ -3,16 +3,16 @@
 <div>
   <a class="card" href="{{ project.html_url }}">
     <h4>
-      <span class="owner">{{ project.owner.login }}</span>
+      <span class="owner">{{ project.owner.login | escape }}</span>
       <br />
-      <strong>{{ project.name }}</strong>
+      <strong>{{ project.name | escape }}</strong>
     </h4>
     <p>
-      {{ project.description }}
+      {{ project.description | escape }}
     </p>
     <div class="spacer"></div>
     <div class="meta">
-      updated {{ project.updated_at | timeago }}
+      updated {{ project.pushed_at | timeago }}
       {% if project.stargazers_count > 0 %}
         · {{ project.stargazers_count }} :star:
       {% endif %}

@@ -27,19 +27,33 @@ module GitHubPadaukTopics
       h
     end
 
-    def generate(site)
-      repos = cache.getset("repos") do
-        client = Octokit::Client.new()
-        Jekyll.logger.info "Fetching GitHub repositories with topic 'padauk'"
+    def log_rate_limit(client)
+      rate_limit = client.rate_limit()
+      Jekyll.logger.info "GitHub API rate limit info: #{rate_limit.remaining}/#{rate_limit.limit} remaining, resets in #{rate_limit.resets_in} seconds."
+    end
 
-        # https://docs.github.com/en/rest/referenceoc/search#search-repositories
-        result = client.search_repositories(QUERY, {per_page: 100})
-        repos = result.items.map(&:to_hash)
-        repos
+    def generate(site)
+      repos, org_events = cache.getset("repos") do
+        client = Octokit::Client.new()
+
+        # https://docs.github.com/en/rest/reference/search#search-repositories
+        Jekyll.logger.info "Fetching GitHub repositories with topic 'padauk'"
+        result = client.search_repositories(QUERY, { per_page: 100, sort: 'updated' })
+        log_rate_limit(client)
+        repos = stringify_keys(result.items.map(&:to_hash))
+
+        # https://docs.github.com/en/rest/reference/activity#list-public-organization-events
+        Jekyll.logger.info "Fetching latest events of the free-pdk organization"
+        result = client.organization_public_events('free-pdk', {per_page: 100})
+        log_rate_limit(client)
+        org_events = stringify_keys(result.map(&:to_hash))
+
+        [repos, org_events]
       end
 
-      site.config['projects_using_padauk'] = stringify_keys(repos)
+      site.config['projects_using_padauk'] = repos
       site.config['projects_using_padauk_query_url'] = "https://github.com/search?q=" + ERB::Util.url_encode(QUERY)
+      site.config['latest_free_pdk_events'] = org_events
     end
   end
 end
