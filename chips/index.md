@@ -40,7 +40,8 @@ As always, no rule is without exception, and we discovered or found references t
 - `PGR431`
   No further information is known.
 - `XDM{1,2,3,4}n0N`
-  These devices apparently consist of the die of a Padauk device from the main numbering scheme and additonal components in the same package. Support for them in Mini-C is recent. <div markdown="0">
+  These devices apparently consist of the die of a Padauk device from the main numbering scheme and additonal components in the same package.
+  Support for them in Mini-C is recent.
 
   - `1`: Various
   - `2`: Various

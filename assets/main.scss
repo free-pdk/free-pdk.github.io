@@ -162,3 +162,10 @@ a.card {
     margin: 0;
   }
 }
+
+.callout {
+  padding: $spacing-unit / 2;
+  margin-bottom: $spacing-unit;
+  border-radius: $radius;
+  border: 3px solid #FFC04C;
+}

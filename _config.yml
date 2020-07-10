@@ -25,7 +25,7 @@ plugins:
   - jekyll-timeago
 
 header_pages:
-  - padauk-sdcc-tutorial/index.md
+  - tutorial.md
 
 # https://github.com/benbalter/jekyll-titles-from-headings#configuration
 titles_from_headings:
