@@ -45,7 +45,11 @@ Padauk µCs use different kinds of instruction sets: 13, 14, 15, or 16 bit
 Support for the 14 and 15 bit Padauk instruction sets has been added to
 [SDCC](http://sdcc.sourceforge.net/), a C compiler for small devices.
 Support for the 13 bit Padauk instruction set is being worked on.
-SDCC's documentation can be found [here](http://sdcc.sourceforge.net/doc/sdccman.pdf).
+
+Helpful SDCC resources:
+- [Documentation](http://sdcc.sourceforge.net/doc/sdccman.pdf)
+- [Open bugs in the Padauk integration](https://sourceforge.net/p/sdcc/bugs/search/?q=_category%3APDK+AND+status%3Aopen)
+- [Feature Requests related to the Padauk integration](https://sourceforge.net/p/sdcc/feature-requests/search/?q=pdk+AND+status%3Aopen)
 
 ### Installing SDCC
 
