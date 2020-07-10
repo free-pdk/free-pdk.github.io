@@ -47,7 +47,7 @@ Support for the 14 and 15 bit Padauk instruction sets has been added to
 Support for the 13 bit Padauk instruction set is being worked on.
 SDCC's documentation can be found [here](http://sdcc.sourceforge.net/doc/sdccman.pdf).
 
-## Installing SDCC
+### Installing SDCC
 
 The latest binaries of SDCC can be obtained on the [SDCC website](http://sdcc.sourceforge.net/). Please note that the version that comes with your operating system's package manager is likely outdated and may not have support or only limited support for the Padauk µCs.
 
