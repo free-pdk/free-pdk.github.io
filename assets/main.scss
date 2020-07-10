@@ -1,17 +1,16 @@
 ---
 ---
 
-
+// minima variables
 $content-width: 1040px;
 
 @import "minima";
 
-.badge {
-  border-radius: 0.25em;
-  padding: 0.125em;
-  background: #f6d66c;
-  font-size: 0.85em;
-}
+// custom variables
+$radius: 0.5em;
+$card-margin: 1em;
+$card-padding: 1em;
+$border: 1px solid #ececec;
 
 #pinout-diagram {
   margin: 0 $spacing-unit;
@@ -20,10 +19,8 @@ $content-width: 1040px;
     margin: 0 $spacing-unit / 2;
   }
 }
-td {
-  text-align: center;
-}
-th {
+
+td, th {
   text-align: center;
 }
 
@@ -44,16 +41,44 @@ th {
   }
 }
 
-.community-projects {
-  $card-margin: 1em;
-  $card-padding: 1em;
+.card {
+  display: flex;
+  flex-direction: column;
 
+  border: $border;
+  border-radius: $radius;
+  padding: $card-padding;
+
+  // Generated at https://neumorphism.io/#ffffff
+  box-shadow:  10px 10px 20px #e6e6e6,
+              -10px -10px 20px #ffffff;
+
+  hr {
+    border: $border;
+  }
+}
+
+a.card {
+  text-decoration: none;
+  color: inherit;
+
+  transition: box-shadow 0.1s;
+
+  &:hover {
+    box-shadow:  10px 10px 20px #cccccc,
+                -10px -10px 20px #ffffff;
+  }
+}
+
+.community-projects {
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: stretch;
-  margin: -$card-margin;
+  margin-left: -$card-margin;
+  margin-right: -$card-margin;
+  margin-bottom: 2em;
 
   & > div {
     display: flex;
@@ -72,27 +97,8 @@ th {
   }
 
   .card {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    border: 1px solid #ececec;
-    border-radius: 0.5em;
-    padding: $card-padding;
     margin: $card-margin;
-
-    text-decoration: none;
-    color: inherit;
-
-    // Generated at https://neumorphism.io/#ffffff
-    box-shadow:  10px 10px 20px #e6e6e6,
-                -10px -10px 20px #ffffff;
-
-    transition: box-shadow 0.1s;
-    &:hover {
-      box-shadow:  10px 10px 20px #cccccc,
-                  -10px -10px 20px #ffffff;
-    }
+    flex-grow: 1;
 
     .spacer {
       flex-grow: 1;
@@ -124,5 +130,35 @@ th {
   }
   th, td {
     padding: 2px 4px;
+  }
+}
+
+.github-activity {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  height: 500px;
+  overflow-y: auto;
+
+  & > div {
+    display: flex;
+    align-items: flex-start;
+    padding: $card-padding 0;
+
+    & > div, & > p {
+      margin-left: 0.5em;
+      margin-bottom: 0;
+    }
+
+    & > img {
+      height: 3em;
+      width: 3em;
+      border-radius: 50%;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
   }
 }
