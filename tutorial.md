@@ -15,6 +15,58 @@ The "Reset" column in the datasheets is misleading (and only emulated by the ori
 You have to initialize all registers yourself.
 > Source: <https://www.eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/msg3129442/#msg3129442>
 
+## Clock Sources and Setup
+
+<div class="callout">
+  TODO: This section is still missing and should explain the following terms:
+
+  _sdcc_external_startup, IHRC, ILRC, external crystal, SYSCLK, maximum possible clk frequency, factory calibrated values, easy pdk calibration, ...
+</div>
+
+## Digital I/O
+
+Digital I/O is organized in ports of (at most) 8 pins. The ports are named `A`, `B`, and `C`.
+I/O pins are controlled by the following registers (replace `x` by `A`, `B`, or `C`):
+
+- `PxC` **Control Register**: Controls whether the pin is used as an input (`0`) or output (`1`).
+- `Px` **Data Register**: Sets the output low (`0`) or (`high`). Has no effect on inputs.
+- `PxPH` **Pull-up ("pull-high") Register**:
+  Enables a pull-up resistor. The resistor is also active when the pin is used as an output and driven high (!)
+- `PxPL` **Pull-down ("pull-low") Register**:
+  Enables a pull-down resistor (only very few ports and pins have pull-down resistors).
+  It is unknown whether the resistor is also active when the pin is used as an output and driven high (!)
+- `PxDIER` **Digital Input Enable Register**: For pins to work as digital inputs, this register needs to be set to `1`.
+  Otherwise the input signal is cut off from the digital circuitry (including the external interrupt hardware + wake up functionality).
+  This is recommended when using the pin as an analog input to the ADC or comparator, and required when using the pin as input of an external crystal.
+
+The following table provides an overview of how the registers work together to control an I/O pin (this example uses PB.0).
+
+| PBC.0 | PB.0 | PBPH.0 | PBPL.0 | PBDIER.0 | Result                                                               |
+| ----- | ---- | ------ | ------ | -------- | -------------------------------------------------------------------- |
+| 0     | x    | x      | x      | 0        | Digital I/O disabled (can only use pin for analog input and crystal) |
+| 0     | x    | 0      | 0      | 1        | Input without pull resistors                                         |
+| 0     | x    | 1      | 0      | 1        | Input with pull-up resistor                                          |
+| 0     | x    | 0      | 1      | 1        | Input with pull-down resistor                                        |
+| 0     | x    | 1      | 1      | 1        | *not explicitly mentioned in datasheet*                              |
+| 1     | 0    | x      | x      | x        | Output low wihout pull resistors                                     |
+| 1     | 1    | 0      | 0      | x        | Output high wihout pull resistors                                    |
+| 1     | 1    | 1      | 0      | x        | Output high with pull-up resistor                                    |
+| 1     | 1    | 1      | 1      | x        | *not explicitly mentioned in datasheet*                              |
+| 1     | 1    | 0      | 1      | x        | *not explicitly mentioned in datasheet*                              |
+
+### Maximum Current
+
+The maximum current an I/O pin can drive and sink varies by pin and µC.
+Take a look at the [interactive pinout diagram of an individual µC](/chips/PFS173) and enable "Maximum Sink/Drive Current" to learn more.
+
+<div class="callout">
+  TODO: Many µCs can increase the maximum current on two of their pins.
+
+  -> How do I enable that?
+  -> Is there any downside to enabling that?
+</div>
+
+
 ## Interrupts
 
 Padauk µCs provide up to 8 interrupt sources.
