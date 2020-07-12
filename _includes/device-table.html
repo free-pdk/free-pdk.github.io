@@ -33,6 +33,11 @@
     <td>{{ page.ADC | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
     <td>{{ page.Special}}</td>
     </tr>
+    {%- if page.notes -%}
+    <tr>
+    <td colspan="11" class="callout">{{ page.notes | markdownify }}</td>
+    </tr>
+    {%- endif -%}
     {% endif -%}
     {%- endfor %}
     </tbody>

@@ -18,6 +18,10 @@ layout: narrow
       <li><strong>Official Product Page</strong>: <a href="{{ page.product_page }}">{{ page.product_page }}</a></li>
     </ul>
 
+    {% if page.notes %}
+      <div class="callout">{{ page.notes | markdownify }}</div>
+    {% endif %}
+
     {{ content }}
   </div>
 </article>
