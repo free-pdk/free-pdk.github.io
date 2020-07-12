@@ -11,7 +11,7 @@ layout: narrow
   <div class="post-content">
     <ul>
       <li><strong>Instruction Set</strong>: {{ page.instruction_set | link_instruction_set }}</li>
-      <li><strong>ROM Size</strong>: {{ page.rom_size | markdownify }}</li>
+      <li><strong>ROM Size</strong>: {{ page.rom_size | markdownify | strip_html }}</li>
       <li><strong>RAM Size</strong>: {{ page.ram_size }} bytes</li>
       <li><strong>Programming Mode</strong>: {{ page.programming | upcase }}</li>
       <li><strong>Supported by Easy PDK Programmer</strong>: {% if page.easypdk_supported %}yes{% else %}no{% endif %}</li>
