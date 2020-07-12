@@ -1,0 +1,36 @@
+<div markdown="0" class="card github-activity">
+  {% assign filtered_events = site.latest_free_pdk_events | where_exp:"event", "event.actor.display_login != 'netlify' and event.actor.display_login != 'github-actions'" %}
+  {% assign filtered_events = filtered_events | where_exp:"event", "event.type == 'PushEvent' or event.type == 'IssueCommentEvent'" %}
+  {% for event in filtered_events %}
+    <div>
+      <img src="{{ event.actor.avatar_url }}" alt="avatar image" />
+      {% if event.type == "PushEvent" %}
+        <div>
+          @{{ event.actor.display_login | escape }} pushed to <a href="{{ event.repo.url }}">{{ event.repo.name | escape }}</a>
+          <ul>
+            {% for commit in event.payload.commits %}
+              <li>
+                <a href="https://github.com/{{ event.repo.name }}/commit/{{ commit.sha }}">{{ commit.sha | truncate: 7, "" | escape }}</a>
+                {{ commit.message | escape | strip | newline_to_br }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% elsif event.type == "IssueCommentEvent" %}
+        <p>
+          @{{ event.actor.display_login | escape }} commented on {% if event.payload.issue.pull_request %}pull request{% else %}issue{% endif %}
+          <a href="{{ event.payload.issue.html_url }}">{{ event.repo.name | escape }}#{{ event.payload.issue.number | escape }}</a>
+          <br />
+          <strong>
+            {{ event.payload.issue.title | escape }}
+          </strong>
+          <br />
+          {{ event.payload.comment.body | escape | strip | newline_to_br }}
+        </p>
+      {% endif %}
+    </div>
+    {% if forloop.last == false %}
+      <hr />
+    {% endif %}
+  {% endfor %}
+</div>

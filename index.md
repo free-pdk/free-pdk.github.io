@@ -45,24 +45,28 @@ Padauk µCs use different kinds of instruction sets: 13, 14, 15, or 16 bit
 Support for the 14 and 15 bit Padauk instruction sets has been added to
 [SDCC](http://sdcc.sourceforge.net/), a C compiler for small devices.
 Support for the 13 bit Padauk instruction set is being worked on.
-SDCC's documentation can be found [here](http://sdcc.sourceforge.net/doc/sdccman.pdf).
 
-## Installing SDCC
+Helpful SDCC resources:
+- [Documentation](http://sdcc.sourceforge.net/doc/sdccman.pdf)
+- [Open bugs in the Padauk integration](https://sourceforge.net/p/sdcc/bugs/search/?q=_category%3APDK+AND+status%3Aopen)
+- [Feature Requests related to the Padauk integration](https://sourceforge.net/p/sdcc/feature-requests/search/?q=pdk+AND+status%3Aopen)
+
+### Installing SDCC
 
 The latest binaries of SDCC can be obtained on the [SDCC website](http://sdcc.sourceforge.net/). Please note that the version that comes with your operating system's package manager is likely outdated and may not have support or only limited support for the Padauk µCs.
 
 ## µC-specific Information and Pinouts
 
-Note: Other µCs than the µCs listed here are supported.
-It is an ongoing effort to create pinout diagrams for all supported Padauk µCs.
+Note: Other µCs than the µCs listed here may be supported.
+If you want to learn more about the naming scheme, [read more here](/chips/#naming-scheme).
 
-### Flash (MTP) Variants ###
+### MTP (Flash) Variants
 
-{% include device-table.html memorytype= "mtp" %}
+{% include device-table.html memorytype="mtp" %}
 
-### OTP Variants ###
+### OTP Variants
 
-{% include device-table.html memorytype= "otp" %}
+{% include device-table.html memorytype="otp" %}
 
 ## Evaluation Boards
 
@@ -102,3 +106,9 @@ These projects are auto-populated once per day by
 [searching GitHub for repositories with the `padauk` tag]({{ site.projects_using_padauk_query_url }}).
 
 {% include community_projects.html %}
+
+## Latest Activity
+
+The latest activity in the `free-pdk` GitHub organization is fetched at least once per day and displayed below.
+
+{% include latest_activity.html %}
