@@ -31,7 +31,7 @@
                     <td>{{ page.oss_status }}</td>
                     <td>{{ page.instruction_set | link_instruction_set }}</td>
                     <td>{{ page.maxio}}</td>
-                    <td>{{ page.rom_size | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;"}}</td>
+                    <td>{{ page.rom_size | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" | markdownify }}</td>
                     <td>{{ page.ram_size }}</td>
                     <td>{{ page.timers | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;"  }}</td>
                     <td>{{ page.PWM | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
@@ -39,11 +39,6 @@
                     <td>{{ page.ADC | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
                     <td>{{ page.Special}}</td>
                 </tr>
-                {%- if page.notes -%}
-                <tr>
-                    <td colspan="11" class="callout">{{ page.notes | markdownify }}</td>
-                </tr>
-                {%- endif -%}
             {%- endfor %}
         {% endfor %}
     </tbody>
