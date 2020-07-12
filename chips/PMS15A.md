@@ -19,6 +19,7 @@ notes: |
   Inside the IC is the exact same silicon (and the same ROM size).
   The ROM size restriction is only enforced when using the official IDE.
   -- *[Source](https://github.com/free-pdk/free-pdk.github.io/issues/21)*
+related_to: PMS150C
 ---
 
 # PMS15A
