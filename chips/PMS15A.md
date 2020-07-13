@@ -1,7 +1,7 @@
 ---
 layout: chip
 instruction_set: 13
-rom_size: 0.5 KW [(1 KW *)](/chips/PMS15A)
+rom_size: 0.5 KW, [(1 KW *)](/chips/PMS15A)
 ram_size: 64
 product_page: http://www.padauk.com.tw/en/product/show.aspx?num=105&kind=41
 easypdk_supported: true
