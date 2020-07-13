@@ -36,3 +36,7 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 # Used to access GitHub API for fetching projects with the "padauk" topic.
 gem "octokit", "~> 4.0"
+
+gem "nokogiri"
+gem "addressable"
+gem "parallel"

@@ -21,13 +21,21 @@
             Group them by their "related_to" attribute if it exists (use their title otherwise).
             This is so that related chips are directly after one another.
         {% endcomment %}
-        {% assign groups = site.pages 
+        {% assign groups = site.pages
             | where_exp:"page","page.layout == 'chip' and page.programming == include.memorytype"
             | group_by_exp:"chip","chip.related_to | default: chip.title" %}
         {% for group in groups %}
             {% for page in group.items -%}
                 <tr>
-                    <td markdown="span">**[{{ page.title }}]({{ page.url }})**<br><small>[@Padauk]({{ page.product_page }})</small></td>
+                    <td markdown="span">
+                        **[{{ page.title }}]({{ page.url }})**
+                        <br />
+                        <small>
+                            [Datasheet]({{ site.datasheet_urls[page.title] }})
+                            <br />
+                            [@Padauk]({{ page.product_page }})
+                        </small>
+                    </td>
                     <td>{{ page.oss_status }}</td>
                     <td>{{ page.instruction_set | link_instruction_set }}</td>
                     <td>{{ page.maxio}}</td>
