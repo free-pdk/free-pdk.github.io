@@ -39,7 +39,7 @@
                     <td>{{ page.Comp}}</td>
                     <td>{{ page.ADC | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
                     <td>{{ page.Special}}</td>
-                    <td>
+                    <td markdown="span">
                         [Product Page]({{ page.product_page }})
                         <br />
                         [Datasheet]({{ site.datasheet_urls[page.title] }})
