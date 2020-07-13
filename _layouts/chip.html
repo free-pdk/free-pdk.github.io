@@ -15,8 +15,8 @@ layout: narrow
       <li><strong>RAM Size</strong>: {{ page.ram_size }} bytes</li>
       <li><strong>Programming Mode</strong>: {{ page.programming | upcase }}</li>
       <li><strong>Supported by Easy PDK Programmer</strong>: {% if page.easypdk_supported %}yes{% else %}no{% endif %}</li>
-      <li><strong>Datasheet</strong>: <a href="{{ site.datasheet_urls[page.title] }}">{{ site.datasheet_urls[page.title] }}</a></li>
       <li><strong>Product Page</strong>: <a href="{{ page.product_page }}">{{ page.product_page }}</a></li>
+      <li><strong>Datasheet</strong>: <a href="{{ site.datasheet_urls[page.title] }}">{{ site.datasheet_urls[page.title] }}</a></li>
     </ul>
 
     {% if page.notes %}
