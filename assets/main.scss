@@ -20,6 +20,10 @@ $border: 1px solid #ececec;
   }
 }
 
+table p {
+  margin: 0;
+}
+
 td, th {
   text-align: center;
 }
@@ -122,9 +126,6 @@ a.card {
 }
 
 .instruction-set {
-  p {
-    margin: 0;
-  }
   table {
     font-size: 12px;
   }
@@ -165,9 +166,17 @@ a.card {
   }
 }
 
-.callout {
+$callout-color: #FFC04C;
+
+div.callout {
   padding: $spacing-unit / 2;
   margin-bottom: $spacing-unit;
   border-radius: $radius;
-  border: 3px solid #FFC04C;
+  border: 3px solid $callout-color;
+}
+
+td.callout {
+  border-left: 15px solid $callout-color;
+  font-size: smaller;
+  text-align: left;
 }
