@@ -20,8 +20,8 @@ related_to: PMS150C
 # PMS15A
 
 <div class="callout" markdown="1">
-The PMS15A may just a marketing name for the [PMS150C](/chips/PMS150C).
-The PMS15A we got appeared to be identical to the PMS150C and had the same ROM size.
+The PMS15A may just be a marketing name for the [PMS150C](/chips/PMS150C).
+So far, all PMS15A tested appear to be identical to the PMS150C and have the same ROM size.
 The ROM size restriction is only enforced when using the official IDE.
 **Of course we can't guarantee that Padauk doesn't change this in the future.**
 -- 
