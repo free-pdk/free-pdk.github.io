@@ -4,19 +4,18 @@ layout: page
 
 # Free PDK Documentation
 
-*Free PDK* is an effort to create an open source alternative to the proprietary
-[Padauk](http://www.padauk.com.tw/index_en.aspx) µC programmer,
-as well as adding support to [SDCC](http://sdcc.sourceforge.net/) for Padauk µCs.
+*Free PDK* is an effort to create an open source toolchain for 8-Bit Microcontrollers by the Taiwanese company
+[Padauk](http://www.padauk.com.tw/index_en.aspx) as an alternative to the proprietary and closed tools provided by the company itself.
+
+This includes the EasyPDKProg hardware, an µC programmer, adding support to the [SDCC](http://sdcc.sourceforge.net/) C-Compliler for Padauk µC, as well
+as comprehensive documentation of the instruction set architecture including code examples.
+
 The main focus is on supporting µCs of two Padauk series:
 - [M series OTP](http://www.padauk.com.tw/en/product/index.aspx?kind=41) (OTP = *one time programmable*)
 - [F series MTP](http://www.padauk.com.tw/en/product/index.aspx?kind=42) (MTP = *multiple time programmable*)
 
-Padauk µCs are extremely cheap (as cheap as $0.03 per µC), which is why
-Dave from the EEVblog made the [first video](https://youtu.be/VYhAGnsnO7w)
-and [a bunch of follow-up videos](https://www.youtube.com/watch?v=r45r4rV5JOI&list=PLvOlSehNtuHsiF93KOLoF1KAHArmIW9lC) on them.
-There is an extensive and active
-[thread on the EEVblog forum](http://eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/)
-for this project.
+Padauk µCs are extremely cheap (as low as $0.03/pc in volumes of 100), which is why they generated a lot of interest after being featured by
+Dave from the EEVblog ([first video](https://youtu.be/VYhAGnsnO7w) and [a bunch of follow-up videos](https://www.youtube.com/watch?v=r45r4rV5JOI&list=PLvOlSehNtuHsiF93KOLoF1KAHArmIW9lC).) Despite the low price, it was found that the Padauk µCs sport an interesting architecture that can be a seen as a significant and meaningful extension of the Microchip PIC architecture. There is an extensive and active [discussion on the EEVblog forum](http://eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/) for this project.
 
 This page provides an overview of the different sub-projects created in the [free-pdk](https://github.com/free-pdk)
 GitHub organization. It also provides custom pinout diagrams for some of the Padauk µCs.
