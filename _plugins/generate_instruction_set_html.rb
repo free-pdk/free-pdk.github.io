@@ -47,13 +47,14 @@ module InstructionSetParser
       bits = [13, 14, 15, 16]
 
       instruction_sets = cache.getset("instruction-sets") do
-        result = Parallel.map(bits, in_threads: 10) do |bit|
+        result = {}
+        for bit in bits
           Jekyll.logger.info "Converting instruction set #{bit} from mediawiki format to HTML"
           mediawiki = download_file_from_docs_repo("PADAUK_FPPA_#{bit}_bit_instruction_set.wikitext")
           html = mediawiki_to_html(mediawiki)
-          [bit.to_s, html]
+          result[bit.to_s] = html
         end
-        result.to_h
+        result
       end
 
       site.config['instruction_sets'] = instruction_sets

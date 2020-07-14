@@ -1,7 +1,7 @@
 ---
 layout: chip
 instruction_set: 13
-rom_size: 0.5 KW, [(1 KW *)](/chips/PMS15A)
+rom_size: 0.5 KW [(1 KW *)](/chips/PMS15A)
 ram_size: 64
 product_page: http://www.padauk.com.tw/en/product/show.aspx?num=105&kind=41
 easypdk_supported: true
@@ -13,15 +13,15 @@ PWM: 1x 8-Bit
 Comp: 1
 ADC: "-"
 Special: "-"
-oss_status: "Supported"
+oss_status: "Yes"
 related_to: PMS150C
 ---
 
 # PMS15A
 
 <div class="callout" markdown="1">
-The PMS15A may just be a marketing name for the [PMS150C](/chips/PMS150C).
-So far, all PMS15A tested appear to be identical to the PMS150C and have the same ROM size.
+The PMS15A may just a marketing name for the [PMS150C](/chips/PMS150C).
+The PMS15A we got appeared to be identical to the PMS150C and had the same ROM size.
 The ROM size restriction is only enforced when using the official IDE.
 **Of course we can't guarantee that Padauk doesn't change this in the future.**
 -- 

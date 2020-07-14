@@ -13,7 +13,7 @@ PWM: 2x 8-Bit
 Comp: 1
 ADC: 8-Bit
 Special: "-"
-oss_status: "Supported"
+oss_status: "Yes"
 ---
 
 # PMS171B

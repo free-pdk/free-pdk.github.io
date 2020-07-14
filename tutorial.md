@@ -8,8 +8,6 @@ layout: page
   This tutorial is still incomplete. Please contribute by clicking on the `Edit this page on GitHub` link at the bottom of this page.
 </div>
 
-{% include toc.md %}
-
 ## Registers
 
 All registers are in undefined state at startup.

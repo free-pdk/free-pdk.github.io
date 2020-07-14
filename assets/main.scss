@@ -20,17 +20,13 @@ $border: 1px solid #ececec;
   }
 }
 
-table {
-  p {
-    margin: 0;
-  }
-
-  td, th {
-    text-align: center;
-    padding: 10px 10px;
-  }
+table p {
+  margin: 0;
 }
 
+td, th {
+  text-align: center;
+}
 
 .edit-page {
   text-align: right;

@@ -13,7 +13,7 @@ PWM: 1x 8-Bit
 Comp: 1
 ADC: "-"
 Special: "-"
-oss_status: "Supported"
+oss_status: "Yes"
 ---
 
 # PMS150C
