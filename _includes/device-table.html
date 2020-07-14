@@ -2,8 +2,8 @@
     <table>
     <thead>
         <tr class="header">
-            <th>Padauk MCU</th>
-            <th>OSS Support</th>
+            <th>MCU</th>
+            <th>OSS Status</th>
             <th>Arch.</th>
             <th>max IO</th>
             <th>ROM</th>
@@ -13,6 +13,7 @@
             <th>CMP</th>
             <th>ADC</th>
             <th>Special</th>
+            <th>Padauk Links</th>
         </tr>
     </thead>
     <tbody>
@@ -21,13 +22,13 @@
             Group them by their "related_to" attribute if it exists (use their title otherwise).
             This is so that related chips are directly after one another.
         {% endcomment %}
-        {% assign groups = site.pages 
+        {% assign groups = site.pages
             | where_exp:"page","page.layout == 'chip' and page.programming == include.memorytype"
             | group_by_exp:"chip","chip.related_to | default: chip.title" %}
         {% for group in groups %}
             {% for page in group.items -%}
                 <tr>
-                    <td markdown="span">**[{{ page.title }}]({{ page.url }})**<br><small>[@Padauk]({{ page.product_page }})</small></td>
+                    <td markdown="span">**[{{ page.title }}]({{ page.url }})**</td>
                     <td>{{ page.oss_status }}</td>
                     <td>{{ page.instruction_set | link_instruction_set }}</td>
                     <td>{{ page.maxio}}</td>
@@ -38,6 +39,13 @@
                     <td>{{ page.Comp}}</td>
                     <td>{{ page.ADC | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
                     <td>{{ page.Special}}</td>
+                    <td markdown="span">
+                        <small>
+                        [Product&nbsp;Page]({{ page.product_page }})
+                        <br />
+                        [Datasheet]({{ site.datasheet_urls[page.title] }})
+                        </small>
+                    </td>
                 </tr>
             {%- endfor %}
         {% endfor %}
