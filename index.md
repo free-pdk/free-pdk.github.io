@@ -6,7 +6,7 @@ layout: page
 
 *Free PDK* is an open sourced and independently created tool-chain for the [Padauk](http://www.padauk.com.tw/index_en.aspx) 8-Bit Microcontrollers, created as an alternative to the proprietary and closed tools provided by the Taiwanese company itself.
 
-This includes the EasyPDKProg µC programmer hardware, adding support for the Padauk µCs to the [SDCC](http://sdcc.sourceforge.net/) C-Compiler, as well as comprehensive documentation of the instruction set architecture, including code examples.
+This includes the EasyPDKProg µC programmer hardware, adding support for the Padauk µCs to the [SDCC](http://sdcc.sourceforge.net/) C-Compiler, as well as comprehensive documentation of the instruction set architecture, and code examples.
 
 The main focus is on supporting µCs of two Padauk series:
 - [M series OTP](http://www.padauk.com.tw/en/product/index.aspx?kind=41) (OTP = *one time programmable*)
