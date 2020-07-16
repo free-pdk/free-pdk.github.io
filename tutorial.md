@@ -37,7 +37,7 @@ To figure out whether a code option is set as a fuse or in an undocumented regis
 
 Some of the code options are configured by setting bits in a magic word towards the end of the ROM.
 These can be set using the `PDK_SET_FUSE(...)` macro defined in `pdk/fuse.h`.
-For a list of code options that are defined as fuses, take a look into `pdk/device/<your µC>.h` 
+For a list of code options that are defined as fuses, take a look into `pdk/device/<your µC>.h`
 (example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L51-L56))
 and look for defines that start with `FUSE_`.
 The factory-default fuse settings differ depending on the µC model, which is why it is best to always set all fuses.
@@ -64,22 +64,22 @@ void main(void)
 
 Other code options are configured in undocumented registers:
 
-- `ROP`: Many µCs have a `ROP` register that configures 
+- `ROP`: Many µCs have a `ROP` register that configures
   [PWM, timer, and external interrupt related code options](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/rop.h#L41-L74).
-  To find out if your µC uses the `ROP` register, check if the 
+  To find out if your µC uses the `ROP` register, check if the
   [`periph/rop.h`](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/rop.h)
   file is included at the bottom of `pdk/device/<your µC>.h`
   (example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L181)).
-- `MISC2`: Some µCs have a `MISC2` register that supports 
+- `MISC2`: Some µCs have a `MISC2` register that supports
   [selecting the comparator edge(s) that trigger an interrupt](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/misc2.h#L42-L44).
-  To find out if your µC uses the `MISC2` register, check if the 
+  To find out if your µC uses the `MISC2` register, check if the
   [`periph/misc2.h`](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/misc2.h)
   file is included at the bottom of `pdk/device/<your µC>.h`
   (example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L179)).
 - `MISCLVR`: Some µCs configure the LVR and sometimes bandgap related code options in a `MISCLVR` register.
-  To find out if your µC uses the `MISCLVR` register, check if the 
+  To find out if your µC uses the `MISCLVR` register, check if the
   [`periph/misclvr.h`](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/misclvr.h)
-  or 
+  or
   [`periph/misclvr_basic.h`](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/misclvr_basic.h)
   file is included at the bottom of `pdk/device/<your µC>.h`
   (`periph/misclvr.h` example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L180))
@@ -87,6 +87,113 @@ Other code options are configured in undocumented registers:
 
 <div class="callout" markdown="1">
 It is unclear whether you are allowed to change these code options while the µC is running, or whether you are supposed to only set them once and leave them as they are.
+</div>
+
+### Overview
+
+<div class="table-responsive" style="font-size: 14px">
+  <table>
+    <thead>
+      <tr>
+        <th colspan="1" rowspan="3">µC</th>
+        <th colspan="4" rowspan="2">Fuse</th>
+        <th colspan="12">Undocumented Register</th>
+      </tr>
+      <tr>
+        <th colspan="7">ROP</th>
+        <th colspan="1">MISC2</th>
+        <th colspan="3">MISCLVR</th>
+      </tr>
+      <tr>
+        <th>Security</th>
+        <th>Drive Pins</th>
+        <th>Startup Speed</th>
+        <th>3-bit LVR</th>
+
+        <th>INT0 Source</th>
+        <th>INT1 Source</th>
+        <th>TMX Bits</th>
+        <th>TMX CLK</th>
+        <th>PWM Type</th>
+        <th>PWM CLK</th>
+        <th>TM2 OUT</th>
+
+        <th>COMP INT Edge</th>
+
+        <th>3-bit LVR</th>
+        <th>4-bit LVR</th>
+        <th>Bandgap CLK</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>PFS173</strong></td>
+
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td></td>
+
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td></td>
+
+        <td>x</td>
+
+        <td></td>
+        <td>x</td>
+        <td>x</td>
+      </tr>
+      <tr>
+        <td><strong>PMS150C</strong></td>
+
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td></td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><strong>PFS154</strong></td>
+
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td></td>
+
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>x</td>
+
+        <td>x</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
