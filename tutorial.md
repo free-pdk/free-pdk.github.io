@@ -4,7 +4,7 @@ layout: page
 
 # Tutorial
 
-<div class="callout">
+<div class="callout" markdown="1">
   This tutorial is still incomplete. Please contribute by clicking on the `Edit this page on GitHub` link at the bottom of this page.
 </div>
 
@@ -19,10 +19,10 @@ You have to initialize all registers yourself.
 
 ## Clock Sources and Setup
 
-<div class="callout">
-  TODO: This section is still missing and should explain the following terms:
+<div class="callout" markdown="1">
+TODO: This section is still missing and should explain the following terms:
 
-  _sdcc_external_startup, IHRC, ILRC, external crystal, SYSCLK, maximum possible clk frequency, factory calibrated values, easy pdk calibration, ...
+_sdcc_external_startup, IHRC, ILRC, external crystal, SYSCLK, maximum possible clk frequency, factory calibrated values, easy pdk calibration, ...
 </div>
 
 ## Digital I/O
@@ -61,11 +61,11 @@ The following table provides an overview of how the registers work together to c
 The maximum current an I/O pin can drive and sink varies by pin and µC.
 Take a look at the [interactive pinout diagram of an individual µC](/chips/PFS173) and enable "Maximum Sink/Drive Current" to learn more.
 
-<div class="callout">
+<div class="callout" markdown="1">
   TODO: Many µCs can increase the maximum current on two of their pins.
 
-  -> How do I enable that?
-  -> Is there any downside to enabling that?
+  - How do I enable that?
+  - Is there any downside to enabling that?
 </div>
 
 
@@ -242,6 +242,6 @@ A list of available emulators is available [here](http://www.padauk.com.tw/en/te
 The list of µCs each emulator supports can be found [here](http://www.padauk.com.tw/en/technical/index.aspx?kind=26).
 The Padauk ICE supports most features of the µCs, and features not supported by ICE are usually called out in the datasheets.
 
-<div class="callout" markdown="span">
+<div class="callout" markdown="1">
   The Padauk ICE **cannot** be used to emulate programs created by the Free PDK toolchain.
 </div>

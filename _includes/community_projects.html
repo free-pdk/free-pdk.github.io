@@ -12,6 +12,13 @@
     </p>
     <div class="spacer"></div>
     <div class="meta">
+      {% assign topics = project.topics | where_exp:"topic","topic != 'padauk' and topic != 'pdk'" %}
+      {% if topics %}
+        {% for topic in topics %}
+          <code>{{ topic }}</code>
+        {% endfor %}
+        <br />
+      {% endif %}
       updated {{ project.pushed_at | timeago }}
       {% if project.stargazers_count > 0 %}
         · {{ project.stargazers_count }} :star:

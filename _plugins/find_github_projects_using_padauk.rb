@@ -38,7 +38,11 @@ module GitHubPadaukTopics
 
         # https://docs.github.com/en/rest/reference/search#search-repositories
         Jekyll.logger.info "Fetching GitHub repositories with topic 'padauk'"
-        result = client.search_repositories(QUERY, { per_page: 100, sort: 'updated' })
+        result = client.search_repositories(QUERY, { 
+            per_page: 100, sort: 'updated', 
+            # Set preview header to also get a list of topics for each repository
+            accept: ::Octokit::Preview::PREVIEW_TYPES[:topics] 
+        })
         log_rate_limit(client)
         repos = stringify_keys(result.items.map(&:to_hash))
 
