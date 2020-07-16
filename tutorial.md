@@ -25,6 +25,81 @@ You have to initialize all registers yourself.
   _sdcc_external_startup, IHRC, ILRC, external crystal, SYSCLK, maximum possible clk frequency, factory calibrated values, easy pdk calibration, ...
 </div>
 
+## Code Options
+
+Padauk µCs have several options that are called "code option" in the datasheet.
+There is usually an overview of all code options a µC supports in a chapter towards the end of the datasheet.
+The datasheet does not provide any detailed information on how to set the code options, because Padauk expects users to use their IDE which takes care of that for you.
+
+To figure out whether a code option is set as a fuse or in an undocumented register, you need to look into the PDK include files as described in the next two sections, or into the original `.INC` files that come with the Padauk IDE.
+
+### Fuses
+
+Some of the code options are configured by setting bits in a magic word towards the end of the ROM.
+These can be set using the `PDK_SET_FUSE(...)` macro defined in `pdk/fuse.h`.
+For a list of code options that are defined as fuses, take a look into `pdk/device/<your µC>.h` 
+(example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L51-L56))
+and look for defines that start with `FUSE_`.
+The factory-default fuse settings differ depending on the µC model, which is why it is best to always set all fuses.
+
+```c
+// Example of setting fuses on a PFS173
+// The available fuses vary depending on the µC model!
+#define PFS173
+
+#include <pdk/device.h>
+
+unsigned char _sdcc_external_startup(void)
+{
+    PDK_SET_FUSE(FUSE_SECURITY_ON | FUSE_PB4_PB5_NORMAL | FUSE_BOOTUP_SLOW);
+}
+
+void main(void)
+{
+    // ...
+}
+```
+
+### Undocumented Registers
+
+Other code options are configured in undocumented registers:
+
+- `ROP`: Many µCs have a `ROP` register that configures [PWM, timer, and external interrupt related code options](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/rop.h#L41-L74).
+  To find out if your µC uses the `ROP` register, check if the `periph/rop.h` file is included at the bottom of `pdk/device/<your µC>.h`
+  (example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L181)).
+- `MISC2`: Some µCs have a `MISC2` register that supports 
+  [selecting the comparator edge(s) that trigger an interrupt](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/misc2.h#L42-L44).
+  To find out if your µC uses the `MISC2` register, check if the `periph/misc2.h` file is included at the bottom of `pdk/device/<your µC>.h`
+  (example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L179)).
+- `MISCLVR`: Some µCs configure the LVR and sometimes bandgap related code options in a `MISCLVR` register.
+  To find out if your µC uses the `MISCLVR` register, check if the `periph/misclvr.h` or `periph/misclvr_basic.h` file is included at the bottom of `pdk/device/<your µC>.h`
+  (`periph/misclvr.h` example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L180))
+  (`periph/misclvr_basic.h` example: [pfs154.h](https://github.com/free-pdk/pdk-includes/blob/6417af6b35341b6436a48dbb2730f5ffe1f41e6f/device/pfs154.h#L148)).
+
+<div class="callout">
+    It is unclear whether you are allowed to change these code options while the µC is running, or whether you are supposed to only set them once and leave them as they are.
+</div>
+
+
+```c
+// Example of using the ROP register on a PFS173
+// The available settings and undocumented registers vary depending on the µC model!
+#define PFS173
+
+#include <pdk/device.h>
+
+unsigned char _sdcc_external_startup(void)
+{
+    // ...
+}
+
+void main(void)
+{
+    // Use PA4 for INT1 instead of PB0
+    ROP = ROP_INT_SRC_PA4;
+}
+```
+
 ## Digital I/O
 
 Digital I/O is organized in ports of (at most) 8 pins. The ports are named `A`, `B`, and `C`.
