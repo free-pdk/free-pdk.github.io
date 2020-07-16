@@ -174,3 +174,74 @@ unsigned char _sdcc_external_startup(void)
   // ...
 }
 ```
+
+## Simulation and Emulation
+
+Several options exist to simulate/emulate a Padauk µC.
+However, the official in-circuit emulator from Padauk currently is the only option that supports peripherals and interrupts.
+*Emulators* emulate a µC in hardware. They are usually realized using FPGAs and run in realtime.
+*Simulators* simulate a µC in software and are usually slower than the real µC.
+
+### µCsim
+
+µCsim is part of SDCC and supports simulation of Padauk µCs, including breakpoints.
+The binary is called `spdk` and currently supports the following instruction sets and µCs (`spdk -H`):
+
+| Instruction Set                   | Simulated µC |
+| --------------------------------- | ------------ |
+| {{ '13' | link_instruction_set }} | PMC153       |
+| {{ '14' | link_instruction_set }} | PMS132B      |
+| {{ '15' | link_instruction_set }} | PMS134       |
+
+Interrupts are not currently supported.
+
+#### µCsim Usage Example
+
+This example invocation shows some of the commands supported by the simulator.
+
+```bash
+spdk main.ihx -X 8000000 -tPMS134
+
+dump ram 0 9999   # dump RAM contents from byte 0 to 9999
+dump regs8 0 9999 # dump register contents from register 0 to 9999
+dump rom 0 9999   # dump ROM contents from word 0 to 9999
+
+step 2            # step program execution 2 times
+
+state             # print state of µC
+
+break rom r 0x26  # set breakpoint when address 0x26 of ROM is read
+
+run               # run program forever or until breakpoint is hit
+```
+
+<div class="callout" markdown="1">
+**Watchout:** ROM addresses used by the emulator are word-based, whereas ROM addresses printed in the `main.rst` file are byte-based. To break at the following instruction defined in the `main.rst` file:
+```asm
+000040 F4 51                  122 	sub	a, #0xf4
+```
+you have to divide the byte-based address (0x000040) by 2 when setting the breakpoint for the simulator:
+```bash
+break rom r 0x20
+```
+</div>
+
+### Free PDK Simulator
+
+A work in progress simulator for the {{ '14' | link_instruction_set }} instruction set is available at [free-pdk/fppa-pdk-tools](https://github.com/free-pdk/fppa-pdk-tools).
+It currently does not support interrupts or peripherals.
+
+### Free PDK Emulator
+
+A work in progress VHDL-based emulator for the {{ '14' | link_instruction_set }} instruction set and PFS152 µC is available at [free-pdk/fppa-pdk-emulator-vhdl](https://github.com/free-pdk/fppa-pdk-emulator-vhdl).
+
+### Padauk ICE (in-circuit emulator)
+
+Padauk offers in-circuit emulators that can be controlled from the Padauk IDE.
+A list of available emulators is available [here](http://www.padauk.com.tw/en/technical/index.aspx?kind=17).
+The list of µCs each emulator supports can be found [here](http://www.padauk.com.tw/en/technical/index.aspx?kind=26).
+The Padauk ICE supports most features of the µCs, and features not supported by ICE are usually called out in the datasheets.
+
+<div class="callout" markdown="span">
+  The Padauk ICE **cannot** be used to emulate programs created by the Free PDK toolchain.
+</div>
