@@ -76,8 +76,8 @@ Other code options are configured in undocumented registers:
   (`periph/misclvr.h` example: [pfs173.h](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs173.h#L180))
   (`periph/misclvr_basic.h` example: [pfs154.h](https://github.com/free-pdk/pdk-includes/blob/6417af6b35341b6436a48dbb2730f5ffe1f41e6f/device/pfs154.h#L148)).
 
-<div class="callout">
-    It is unclear whether you are allowed to change these code options while the µC is running, or whether you are supposed to only set them once and leave them as they are.
+<div class="callout" markdown="1">
+It is unclear whether you are allowed to change these code options while the µC is running, or whether you are supposed to only set them once and leave them as they are.
 </div>
 
 
