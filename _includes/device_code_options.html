@@ -1,6 +1,6 @@
 <div class="table-responsive">
-  <table>
-    <thead style="font-size: 14px">
+  <table class="device-code-options">
+    <thead>
       <tr>
         <th colspan="1" rowspan="3">µC</th>
         <th colspan="4" rowspan="2">Fuse</th>
@@ -13,7 +13,7 @@
       </tr>
       <tr>
         <th>Security</th>
-        <th>Drive Pins</th>
+        <th>Pin Drive</th>
         <th>Startup Speed</th>
         <th>3-bit LVR</th>
 
@@ -115,3 +115,36 @@
   {% endif %}
 {% endfor %}
 {% endfor %}
+
+{% comment %}
+  JS for better tooltips whose text is copyable/selectable.
+  https://atomiks.github.io/tippyjs/v6/getting-started/
+{% endcomment %}
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/tippy.js@6/themes/light-border.css"
+/>
+<script>
+  // Step 1:
+  // Rename all title attributes to data-tippy-content if the cell contains an 'x'
+  // and remove the title attribute.
+  // This is done so that browsers without JavaScript still have see a title on hover,
+  // but browsers with JavaScript do not display two titles (the tippy title and the native title).
+  document.querySelectorAll('.device-code-options td[title]').forEach(element => {
+    const title = element.getAttribute('title');
+    if (element.textContent.trim() === "x") {
+      element.setAttribute('data-tippy-content', title);
+    }
+    element.removeAttribute('title');
+  });
+  // Step 2:
+  // Enable fancy titles
+  tippy(".device-code-options td[data-tippy-content]", {
+    interactive: true,
+    delay: [100, 0],
+    theme: 'light-border',
+    placement: 'bottom',
+  });
+</script>

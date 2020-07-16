@@ -35,7 +35,8 @@ Some code options are set as fuses, whereas others are set in undocumented regis
 To figure out whether a code option is set as a fuse or in an undocumented register, you can consult the following table.
 For µCs not listed in the table, you need to look into the PDK include files as described in the next two sections, or into the original `.INC` files that come with the Padauk IDE.
 
-Hovering over a table cell will provide you with the name of define representing the code option.
+Hovering over a table cell will provide you with the name of the defines representing the code option.
+
 {% include device_code_options.html %}
 
 ### Fuses

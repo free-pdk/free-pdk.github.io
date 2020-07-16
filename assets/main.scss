@@ -185,6 +185,12 @@ td.callout {
   text-align: left;
 }
 
+.device-code-options {
+  thead {
+    font-size: 14px;
+  }
+}
+
 // Used when using kramdown footnotes
 .footnotes {
   padding-top: $spacing-unit / 2;
