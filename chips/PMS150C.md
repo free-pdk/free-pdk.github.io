@@ -14,6 +14,12 @@ Comp: 1
 ADC: "-"
 Special: "-"
 oss_status: "Supported"
+code_options:
+  fuse:
+    security:
+    pin_drive: [FUSE_IO_DRV_LOW, FUSE_IO_DRV_NORMAL]
+    bootup:
+    lvr:
 ---
 
 # PMS150C

@@ -1,0 +1,117 @@
+<div class="table-responsive">
+  <table>
+    <thead style="font-size: 14px">
+      <tr>
+        <th colspan="1" rowspan="3">µC</th>
+        <th colspan="4" rowspan="2">Fuse</th>
+        <th colspan="12">Undocumented Register</th>
+      </tr>
+      <tr>
+        <th colspan="7">ROP</th>
+        <th colspan="1">MISC2</th>
+        <th colspan="3">MISCLVR</th>
+      </tr>
+      <tr>
+        <th>Security</th>
+        <th>Drive Pins</th>
+        <th>Startup Speed</th>
+        <th>3-bit LVR</th>
+
+        <th>INT0 Source</th>
+        <th>INT1 Source</th>
+        <th>TMX Bits</th>
+        <th>TMX CLK</th>
+        <th>PWM Type</th>
+        <th>PWM CLK</th>
+        <th>TM2 OUT</th>
+
+        <th>COMP INT Edge</th>
+
+        <th>3-bit LVR</th>
+        <th>4-bit LVR</th>
+        <th>Bandgap CLK</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% assign groups = site.pages
+          | where_exp:"page","page.layout == 'chip'"
+          | group_by_exp:"chip","chip.related_to | default: chip.title" %}
+      {% for group in groups %}
+        {% for chip in group.items -%}
+          <tr>
+            <td markdown="span">
+              **[{{ chip.title }}]({{ chip.url }}){% if chip.code_options.notes %}[^code-option-note-{{ chip.title }}]{% endif %}**
+            </td>
+            {% if chip.code_options %}
+              {% assign o = chip.code_options %}
+
+              {% comment %} Fuses {% endcomment %}
+              <td title="{{ o.fuse.security | join:', ' | default: 'FUSE_SECURITY_ON, FUSE_SECURITY_OFF' }}">
+                {% if o.fuse contains 'security' %}x{% endif %}
+              </td>
+              <td title="{{ o.fuse.pin_drive | join:', ' }}">
+                {% if o.fuse contains 'pin_drive' %}x{% endif %}
+              </td>
+              <td title="{{ o.fuse.bootup | join:', ' | default: 'FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST' }}">
+                {% if o.fuse contains 'bootup' %}x{% endif %}
+              </td>
+              <td title="{{ o.fuse.lvr | join:', ' | default: 'FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V' }}">
+                {% if o.fuse contains 'lvr' %}x{% endif %}
+              </td>
+
+              {% comment %} ROP {% endcomment %}
+              <td title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                {% if o.rom contains 'int0' %}x{% endif %}
+              </td>
+              <td title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                {% if o.rom contains 'int1' %}x{% endif %}
+              </td>
+              <td title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                {% if o.rom contains 'tmx_bits' %}x{% endif %}
+              </td>
+              <td title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                {% if o.rom contains 'tmx_freq' %}x{% endif %}
+              </td>
+              <td title="ROP_PURE_PWM, ROP_GPC_PWM">
+                {% if o.rom contains 'pwm_sel' %}x{% endif %}
+              </td>
+              <td title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                {% if o.rom contains 'pwm_freq' %}x{% endif %}
+              </td>
+              <td title="ROP_TM2_PB2, ROP_TM2_PB0">
+                {% if o.rom contains 'tm2_out' %}x{% endif %}
+              </td>
+
+              {% comment %} MISC2 {% endcomment %}
+              <td title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                {% if o.misc2 contains 'comp_edge' %}x{% endif %}
+              </td>
+
+              {% comment %} MISCLVR {% endcomment %}
+              <td title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                {% if o.misclvr contains 'lvr_3bit' %}x{% endif %}
+              </td>
+              <td title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                {% if o.misclvr contains 'lvr_4bit' %}x{% endif %}
+              </td>
+              <td title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                {% if o.misclvr contains 'bandgap' %}x{% endif %}
+              </td>
+            {% else %}
+              <td colspan="15"><em>No code option data available yet.</em></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% for group in groups %}
+{% for chip in group.items -%}
+  {% if chip.code_options.notes %}
+[^code-option-note-{{ chip.title }}]:
+    {{ chip.code_options.notes }}
+  {% endif %}
+{% endfor %}
+{% endfor %}

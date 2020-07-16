@@ -184,3 +184,10 @@ td.callout {
   font-size: smaller;
   text-align: left;
 }
+
+// Used when using kramdown footnotes
+.footnotes {
+  padding-top: $spacing-unit / 2;
+  border-top: $border;
+  font-size: 13px;
+}
