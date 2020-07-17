@@ -215,3 +215,10 @@ td.callout {
     }
   }
 }
+
+// Used for Kramdown footnotes
+.footnotes {
+  padding-top: $spacing-unit / 2;
+  border-top: $border;
+  font-size: 13px;
+}
