@@ -8,8 +8,10 @@ Generate a table of contents.
 More on that here: https://kramdown.gettalong.org/converter/html.html#toc
 {% endcomment %}
 
+<div class="toc" markdown="1">
 #### Table of Contents
 {:.no_toc}
 
-- TOC Placeholder
+1. TOC Placeholder
 {:toc}
+</div>

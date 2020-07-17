@@ -2,6 +2,7 @@
 ---
 
 // minima variables
+$base-line-height: 1.6;
 $content-width: 1040px;
 
 @import "minima";
@@ -17,6 +18,22 @@ $border: 1px solid #ececec;
 
   @include media-query($on-laptop) {
     margin: 0 $spacing-unit / 2;
+  }
+}
+
+// Inline code snippets
+code {
+  font-size: 0.875em;
+  line-height: 1.4;
+  padding: 1px 3px;
+}
+
+// Multiline code snippets
+pre {
+  line-height: 1.2;
+  & > code {
+    line-height: inherit;
+    font-size: 14px;
   }
 }
 
@@ -56,6 +73,7 @@ table {
   border: $border;
   border-radius: $radius;
   padding: $card-padding;
+  padding-bottom: 0;
 
   // Generated at https://neumorphism.io/#ffffff
   box-shadow:  10px 10px 20px #e6e6e6,
@@ -106,6 +124,7 @@ a.card {
 
   .card {
     margin: $card-margin;
+    padding-bottom: $card-padding;
     flex-grow: 1;
 
     .spacer {
@@ -173,9 +192,8 @@ a.card {
 $callout-color: #FFC04C;
 
 div.callout {
-  padding: $spacing-unit / 2;
+  @extend .card;
   margin-bottom: $spacing-unit;
-  border-radius: $radius;
   border: 3px solid $callout-color;
 }
 
@@ -194,4 +212,24 @@ td.callout {
     background-color: $grey-color-light;
     cursor: pointer;
   }
+}
+
+.toc {
+  @extend .card;
+  display: inline-flex;
+  margin-bottom: $spacing-unit;
+  ol {
+    list-style-type: decimal;
+
+    ol {
+      list-style-type: disc;
+    }
+  }
+}
+
+// Used for Kramdown footnotes
+.footnotes {
+  padding-top: $spacing-unit / 2;
+  border-top: $border;
+  font-size: 13px;
 }

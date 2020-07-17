@@ -37,3 +37,7 @@ titles_from_headings:
 jekyll_timeago:
   depth: 2
   threshold: 0.5
+
+# https://github.com/jekyll/jekyll-redirect-from#configuration
+redirect_from:
+  json: false
