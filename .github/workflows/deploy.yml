@@ -33,6 +33,8 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           bundle exec jekyll build --trace
+        with:
+          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v3

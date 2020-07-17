@@ -33,18 +33,39 @@ module GitHubPadaukTopics
     end
 
     def generate(site)
-      repos, org_events = cache.getset("repos") do
+      projects, org_events = cache.getset("repos") do
+        access_token = ENV['GITHUB_TOKEN']
         client = Octokit::Client.new()
+        client.access_token=access_token
 
         # https://docs.github.com/en/rest/reference/search#search-repositories
         Jekyll.logger.info "Fetching GitHub repositories with topic 'padauk'"
-        result = client.search_repositories(QUERY, { 
-            per_page: 100, sort: 'updated', 
+        result = client.search_repositories(QUERY, {
+            per_page: 100, sort: 'updated',
             # Set preview header to also get a list of topics for each repository
-            accept: ::Octokit::Preview::PREVIEW_TYPES[:topics] 
+            accept: ::Octokit::Preview::PREVIEW_TYPES[:topics]
         })
         log_rate_limit(client)
         repos = stringify_keys(result.items.map(&:to_hash))
+
+        projects = Parallel.map(repos, in_threads: 10) do |repo|
+          type = "free-pdk"
+          if access_token then
+            # Only fetch repository files if we have an access token, because we run into rate limits otherwise.
+            if not repo["topics"].include?("free-pdk") then
+              Jekyll.logger.info "Fetching files of #{repo["full_name"]}"
+              result = client.tree(repo["full_name"], repo["default_branch"], :recursive => true)
+              log_rate_limit(client)
+              has_pre = result.tree.detect {|entry| entry.type == "blob" and entry.path.end_with?(".PRE") }
+              if has_pre then
+                type = "proprietary"
+              end
+            end
+          else
+            Jekyll.logger.warn "Skipping detection of proprietary toolchain because no GITHUB_TOKEN was found."
+          end
+          { "type" => type, "data" => repo }
+        end
 
         # https://docs.github.com/en/rest/reference/activity#list-public-organization-events
         Jekyll.logger.info "Fetching latest events of the free-pdk organization"
@@ -52,10 +73,10 @@ module GitHubPadaukTopics
         log_rate_limit(client)
         org_events = stringify_keys(result.map(&:to_hash))
 
-        [repos, org_events]
+        [projects, org_events]
       end
 
-      site.config['projects_using_padauk'] = repos
+      site.config['projects_using_padauk'] = projects
       site.config['projects_using_padauk_query_url'] = "https://github.com/search?q=" + ERB::Util.url_encode(QUERY)
       site.config['latest_free_pdk_events'] = org_events
     end
