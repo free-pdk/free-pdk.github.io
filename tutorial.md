@@ -35,15 +35,14 @@ Some code options are set as fuses, whereas others are set in undocumented regis
 To figure out whether a code option is set as a fuse or in an undocumented register, you can consult the following table.
 For µCs not listed in the table, you need to look into the PDK include files as described in the next two sections, or into the original `.INC` files that come with the Padauk IDE.
 
-Hovering over a table cell will provide you with the name of the defines representing the code option.
-
 {% include device_code_options.html %}
 
 ### Fuses
 
 Some of the code options are configured by setting bits in a magic word towards the end of the ROM.
-These can be set using the `PDK_SET_FUSE(...)` macro defined in `pdk/fuse.h`.
-The factory-default fuse settings differ depending on the µC model, which is why it is best to always set all fuses.
+These can be set using the `PDK_SET_FUSE(...)` macro.
+The factory-default fuse settings differ depending on the µC model, which is why it is best to always set all supported fuses.
+Be aware that your program must only contain a single call to `PDK_SET_FUSE`.
 
 ```c
 // Example of setting fuses on a PFS173

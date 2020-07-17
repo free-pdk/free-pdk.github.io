@@ -1,3 +1,5 @@
+Click on an individual table cell to get the code that controls the corresponding code option.
+
 <div class="table-responsive">
   <table class="device-code-options">
     <thead>
@@ -46,55 +48,55 @@
               {% assign o = chip.code_options %}
 
               {% comment %} Fuses {% endcomment %}
-              <td title="{{ o.fuse.security | join:', ' | default: 'FUSE_SECURITY_ON, FUSE_SECURITY_OFF' }}">
+              <td data-type="fuse" title="{{ o.fuse.security | join:', ' | default: 'FUSE_SECURITY_ON, FUSE_SECURITY_OFF' }}">
                 {% if o.fuse contains 'security' %}x{% endif %}
               </td>
-              <td title="{{ o.fuse.pin_drive | join:', ' }}">
+              <td data-type="fuse" title="{{ o.fuse.pin_drive | join:', ' }}">
                 {% if o.fuse contains 'pin_drive' %}x{% endif %}
               </td>
-              <td title="{{ o.fuse.bootup | join:', ' | default: 'FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST' }}">
+              <td data-type="fuse" title="{{ o.fuse.bootup | join:', ' | default: 'FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST' }}">
                 {% if o.fuse contains 'bootup' %}x{% endif %}
               </td>
-              <td title="{{ o.fuse.lvr | join:', ' | default: 'FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V' }}">
+              <td data-type="fuse" title="{{ o.fuse.lvr | join:', ' | default: 'FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V' }}">
                 {% if o.fuse contains 'lvr' %}x{% endif %}
               </td>
 
               {% comment %} ROP {% endcomment %}
-              <td title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
                 {% if o.rom contains 'int0' %}x{% endif %}
               </td>
-              <td title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
                 {% if o.rom contains 'int1' %}x{% endif %}
               </td>
-              <td title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
                 {% if o.rom contains 'tmx_bits' %}x{% endif %}
               </td>
-              <td title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
                 {% if o.rom contains 'tmx_freq' %}x{% endif %}
               </td>
-              <td title="ROP_PURE_PWM, ROP_GPC_PWM">
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
                 {% if o.rom contains 'pwm_sel' %}x{% endif %}
               </td>
-              <td title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
                 {% if o.rom contains 'pwm_freq' %}x{% endif %}
               </td>
-              <td title="ROP_TM2_PB2, ROP_TM2_PB0">
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
                 {% if o.rom contains 'tm2_out' %}x{% endif %}
               </td>
 
               {% comment %} MISC2 {% endcomment %}
-              <td title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
                 {% if o.misc2 contains 'comp_edge' %}x{% endif %}
               </td>
 
               {% comment %} MISCLVR {% endcomment %}
-              <td title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
                 {% if o.misclvr contains 'lvr_3bit' %}x{% endif %}
               </td>
-              <td title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
                 {% if o.misclvr contains 'lvr_4bit' %}x{% endif %}
               </td>
-              <td title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
                 {% if o.misclvr contains 'bandgap' %}x{% endif %}
               </td>
             {% else %}
@@ -128,23 +130,35 @@
 />
 <script>
   // Step 1:
-  // Rename all title attributes to data-tippy-content if the cell contains an 'x'
-  // and remove the title attribute.
-  // This is done so that browsers without JavaScript still have see a title on hover,
+  // If the cell contains 'x',
+  // - set data-tippy-content based on title and type (fuse, ROP, MISC, MISCLVR)
+  // - remove the title attribute
+  // - add the 'hoverable' class for better styling
+  //
+  // This is done so that browsers without JavaScript still see a title on hover,
   // but browsers with JavaScript do not display two titles (the tippy title and the native title).
   document.querySelectorAll('.device-code-options td[title]').forEach(element => {
     const title = element.getAttribute('title');
     if (element.textContent.trim() === "x") {
-      element.setAttribute('data-tippy-content', title);
+      element.setAttribute('data-tippy-content', title
+        .split(", ")
+        .map(define => element.dataset.type === 'fuse'
+          ? `PDK_SET_FUSE(${define});`
+          : `${element.dataset.type} = ${define};`)
+        .join("<br>")
+      );
+      element.className += ' hoverable';
     }
     element.removeAttribute('title');
   });
   // Step 2:
-  // Enable fancy titles
+  // Enable fancy titles on click.
   tippy(".device-code-options td[data-tippy-content]", {
-    interactive: true,
-    delay: [100, 0],
+    interactive: true,     // text is copyable
     theme: 'light-border',
     placement: 'bottom',
+    allowHTML: true,       // we use <br> to display one option per line
+    trigger: 'click',      // only trigger the tooltip on click
+    hideOnClick: true,     // and dismiss the tooltip when clicking elsewhere
   });
 </script>
