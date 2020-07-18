@@ -87,12 +87,18 @@ table {
 
   .callout {
     background-color: lighten($callout-color, 25%);
+
+    &.success {
+      background-color: lighten(#adff00, 25%);
+    }
+
     margin-left: -$card-padding;
     margin-right: -$card-padding;
     padding-left: $spacing-unit / 2;
     padding-right: $spacing-unit / 2;
     padding-top: $card-padding / 2;
     padding-bottom: $card-padding / 2;
+
     display: flex;
     align-items: center;
 

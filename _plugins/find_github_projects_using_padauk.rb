@@ -1,6 +1,18 @@
 require 'octokit'
 require 'jekyll'
 
+# Stable sort functions by user tokland
+# https://stackoverflow.com/a/15442966/2560557
+module Enumerable
+  def stable_sort
+    sort_by.with_index { |x, idx| [x, idx] }
+  end
+
+  def stable_sort_by
+    sort_by.with_index { |x, idx| [yield(x), idx] }
+  end
+end
+
 module GitHubPadaukTopics
   class Generator < Jekyll::Generator
     safe true
@@ -49,16 +61,28 @@ module GitHubPadaukTopics
         repos = stringify_keys(result.items.map(&:to_hash))
 
         projects = Parallel.map(repos, in_threads: 10) do |repo|
-          type = "free-pdk"
+          type = "unknown"
           if access_token then
             # Only fetch repository files if we have an access token, because we run into rate limits otherwise.
-            if not repo["topics"].include?("free-pdk") then
-              Jekyll.logger.info "Fetching files of #{repo["full_name"]}"
+            if repo["topics"].include?("free-pdk") then
+              type = "free-pdk"
+            else
+              Jekyll.logger.info "Listing files of #{repo["full_name"]}"
               result = client.tree(repo["full_name"], repo["default_branch"], :recursive => true)
               log_rate_limit(client)
+
               has_pre = result.tree.detect {|entry| entry.type == "blob" and entry.path.end_with?(".PRE") }
               if has_pre then
                 type = "proprietary"
+              else
+                Jekyll.logger.info "Fetching README of #{repo["full_name"]}"
+                result = client.readme(repo["full_name"], :ref => repo["default_branch"], :accept => 'application/vnd.github.VERSION.raw')
+                log_rate_limit(client)
+
+                has_free_pdk = result.include?('free-pdk')
+                if has_free_pdk
+                  type = "free-pdk"
+                end
               end
             end
           else
@@ -66,6 +90,8 @@ module GitHubPadaukTopics
           end
           { "type" => type, "data" => repo }
         end
+
+        projects = projects.stable_sort_by { |project| project["type"] == "free-pdk" ? 0 : project["type"] == "unknown" ? 1 : 2 }
 
         # https://docs.github.com/en/rest/reference/activity#list-public-organization-events
         Jekyll.logger.info "Fetching latest events of the free-pdk organization"
