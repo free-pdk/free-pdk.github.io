@@ -205,7 +205,9 @@ td.callout {
 
 .device-code-options {
   thead {
-    font-size: 13px;
+    .smaller {
+      font-size: 13px;
+    }
   }
 
   td.hoverable:hover {
