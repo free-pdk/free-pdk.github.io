@@ -25,6 +25,76 @@ TODO: This section is still missing and should explain the following terms:
 _sdcc_external_startup, IHRC, ILRC, external crystal, SYSCLK, maximum possible clk frequency, factory calibrated values, easy pdk calibration, ...
 </div>
 
+## Code Options
+
+Padauk µCs have several options that are called "code option" in the datasheet.
+There is usually an overview of all code options a µC supports in a chapter towards the end of the datasheet.
+The datasheet does not provide any detailed information on how to set the code options, because Padauk expects users to use their IDE which takes care of that for you.
+Some code options are set as fuses, whereas others are set in undocumented registers.
+
+To figure out whether a code option is set as a fuse or in an undocumented register, you can consult the following table.
+For µCs not listed in the table, you need to look into the PDK include files as described in the next two sections, or into the original `.INC` files that come with the Padauk IDE.
+
+{% include device_code_options.html %}
+
+### Fuses
+
+Some of the code options are configured by setting bits in a magic word towards the end of the ROM.
+These can be set using the `PDK_SET_FUSE(...)` macro.
+The factory-default fuse settings differ depending on the µC model, which is why it is best to always set all supported fuses.
+Be aware that your program must only contain a single call to `PDK_SET_FUSE`.
+
+```c
+// Example of setting fuses on a PFS173
+// The available fuses vary depending on the µC model!
+#define PFS173
+
+#include <pdk/device.h>
+
+unsigned char _sdcc_external_startup(void)
+{
+    PDK_SET_FUSE(FUSE_SECURITY_ON | FUSE_PB4_PB5_NORMAL | FUSE_BOOTUP_SLOW);
+}
+
+void main(void)
+{
+    // ...
+}
+```
+
+### Undocumented Registers
+
+Other code options are configured in undocumented registers:
+
+- `ROP`: Many µCs have a `ROP` register that configures
+  [PWM, timer, and external interrupt related code options](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/rop.h#L41-L74).
+- `MISC2`: Some µCs have a `MISC2` register that supports
+  [selecting the comparator edge(s) that trigger an interrupt](https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/misc2.h#L42-L44).
+- `MISCLVR`: Some µCs configure the LVR and sometimes bandgap related code options in a `MISCLVR` register.
+
+<div class="callout" markdown="1">
+It is unclear whether you are allowed to change these code options while the µC is running, or whether you are supposed to only set them once and leave them as they are.
+</div>
+
+```c
+// Example of using the ROP register on a PFS173
+// The available settings and undocumented registers vary depending on the µC model!
+#define PFS173
+
+#include <pdk/device.h>
+
+unsigned char _sdcc_external_startup(void)
+{
+    // ...
+}
+
+void main(void)
+{
+    // Use PA4 for INT1 instead of PB0
+    ROP = ROP_INT_SRC_PA4;
+}
+```
+
 ## Digital I/O
 
 Digital I/O is organized in ports of (at most) 8 pins. The ports are named `A`, `B`, and `C`.

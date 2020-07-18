@@ -14,6 +14,25 @@ Comp: 1
 ADC: 8-Bit
 Special: "-"
 oss_status: "Supported"
+code_options:
+  fuse:
+    security:
+    pin_drive: [FUSE_PB4_PB5_NORMAL, FUSE_PB4_PB5_STRONG]
+    bootup:
+  rom:
+    int0:
+    int1:
+    tmx_bits:
+    tmx_freq:
+    tm2_out:
+    pwm_sel:
+  misc2:
+    comp_edge:
+  misclvr:
+    lvr_4bit:
+    bandgap:
+  notes: |
+    Some additional options seem to exist which are not documented in the datasheet: <https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pms171b.h#L145-L148>
 ---
 
 # PMS171B

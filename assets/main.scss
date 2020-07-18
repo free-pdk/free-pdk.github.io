@@ -203,6 +203,19 @@ td.callout {
   text-align: left;
 }
 
+.device-code-options {
+  thead {
+    .smaller {
+      font-size: 13px;
+    }
+  }
+
+  td.hoverable:hover {
+    background-color: $grey-color-light;
+    cursor: pointer;
+  }
+}
+
 .toc {
   @extend .card;
   display: inline-flex;
