@@ -260,6 +260,13 @@ The following table provides an overview of how the registers work together to c
 | 1     | 0    | 0      | 0      | x        | Output GND             |
 | 1     | 1    | 0      | 0      | x        | Output VDD             |
 
+## Low Voltage Reset (LVR)
+
+LVR automatically resets and stops the µC while the supply voltage is below the configured LVR threshold.
+LVR is enabled by default and can be disabled in the `MISC` register. The threshold is configured as a code option; see the [Code Options](#code-options) section for more information.
+
+You should configure the LVR threshold to at least meet the minium voltage supported by your system clock setting. Consult the `f_SYS` row in the "Device Characteristics" table of the datasheet for more information.
+
 ## Simulation and Emulation
 
 Several options exist to simulate/emulate a Padauk µC.
