@@ -260,6 +260,18 @@ The following table provides an overview of how the registers work together to c
 | 1     | 0    | 0      | 0      | x        | Output GND             |
 | 1     | 1    | 0      | 0      | x        | Output VDD             |
 
+## Watchdog Timer
+
+The watchdog timer continuously counts up and automatically resets the µC when it reaches its maximum value.
+It can be enabled in the `CLKMD` register (make sure to enable both the watchdog and `ILRC`).
+The timeout value is set in the `MISC` register and can be either `8k`, `16k`, `64k`, or `256k` `ILRC` ticks.
+
+To avoid µC resets during normal operation, you should regularly call `__wdreset();` to reset the watchdog timer.
+The `ILRC` frequency and therefore watchdog timeout period can "drift a lot due to variation of manufacturing, supply voltage and temperature"[^PFS173-datasheet].
+You should also call `__wdreset();` right after reset and wakeup, because "the watchdog period will also be shorter than expected after reset or wakeup events"[^PFS173-datasheet].
+
+[^PFS173-datasheet]: From the PFS173 datasheet
+
 ## Low Voltage Reset (LVR)
 
 LVR automatically resets and stops the µC while the supply voltage is below the configured LVR threshold.
