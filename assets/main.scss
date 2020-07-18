@@ -8,10 +8,12 @@ $content-width: 1040px;
 @import "minima";
 
 // custom variables
-$radius: 0.5em;
-$card-margin: 1em;
-$card-padding: 1em;
+$radius: 8px;
+$card-margin: 16px;
+$card-padding: 16px;
 $border: 1px solid #ececec;
+
+$callout-color: #FFC04C;
 
 #pinout-diagram {
   margin: 0 $spacing-unit;
@@ -96,6 +98,23 @@ a.card {
   }
 }
 
+.badge {
+  font-size: $small-font-size;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+
+  &.green {
+    color: #155724;
+    background-color: lighten(#d4edda, 5%);
+  }
+
+  &.orange {
+    color: #856404;
+    background-color: #fff3cd;
+  }
+}
+
 .community-projects {
   display: flex;
   flex: 0 1 auto;
@@ -130,6 +149,13 @@ a.card {
     .spacer {
       flex-grow: 1;
     }
+
+    .badges {
+      margin-top: -$spacing-unit / 2;
+      margin-bottom: $spacing-unit / 2;
+
+    }
+
 
     .owner {
       font-size: $small-font-size;
@@ -188,8 +214,6 @@ a.card {
     margin: 0;
   }
 }
-
-$callout-color: #FFC04C;
 
 div.callout {
   @extend .card;

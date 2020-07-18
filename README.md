@@ -10,6 +10,11 @@ Jekyll is a static site generator that takes markdown files and transforms them 
 To run Jekyll locally, install `ruby` `>=2.5.0` and the `bundler` gem (`gem install bundler`).
 Then install dependencies by running `bundle install` and build the site by calling `bundle exec jekyll serve --livereload`.
 
+We use the GitHub API to fetch a list of projects using Padauk µCs and the latest activity in the `free-pdk` organization.
+The API has a rate limit of 60 requests per hour for unauthenticated requests, which may not be sufficient for the amount of API requests we make when building the website.
+Please set a `GITHUB_TOKEN` environment variable with a personal access token [you can create here (no scopes necessary)](https://github.com/settings/tokens).
+If you don't set a `GITHUB_TOKEN` environment variable, we automatically make less requests to the API, but some features like detecting projects using Padauk's proprietary toolchain will be skipped.
+
 ## Deployment
 
 Every commit on the `production` branch is built and deployed by a [GitHub Action](https://github.com/free-pdk/free-pdk.github.io/actions) and the result is force-pushed to the `master` branch, which is deployed to https://free-pdk.github.io by GitHub Pages.

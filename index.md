@@ -100,7 +100,11 @@ More information, including information on the programming sequence, can be foun
 ## Projects from the Community
 
 These projects are auto-populated once per day by
-[searching GitHub for repositories with the `padauk` tag]({{ site.projects_using_padauk_query_url }}).
+[searching GitHub for repositories with the `padauk` topic]({{ site.projects_using_padauk_query_url }}).
+Projects that additionally have the `free-pdk` topic are highlighted as
+<span class="badge green">Uses Free PDK toolchain</span>.
+Projects that contain `.PRE` files are marked as
+<span class="badge orange">Uses proprietary toolchain</span>.
 
 {% include community_projects.html %}
 

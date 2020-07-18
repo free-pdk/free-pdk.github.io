@@ -1,27 +1,37 @@
 <div markdown="0" class="community-projects">
 {% for project in site.projects_using_padauk %}
+{% assign repo = project.data %}
 <div>
-  <a class="card" href="{{ project.html_url }}">
+  <a class="card" href="{{ repo.html_url }}">
     <h4>
-      <span class="owner">{{ project.owner.login | escape }}</span>
+      <span class="owner">{{ repo.owner.login | escape }}</span>
       <br />
-      <strong>{{ project.name | escape }}</strong>
+      <strong>{{ repo.name | escape }}</strong>
     </h4>
+    {% if project.type == 'free-pdk' %}
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    {% elsif project.type == 'proprietary' %}
+      <div class="badges">
+        <span class="badge orange">Uses proprietary toolchain</span>
+      </div>
+    {% endif %}
     <p>
-      {{ project.description | escape }}
+      {{ repo.description | escape }}
     </p>
     <div class="spacer"></div>
     <div class="meta">
-      {% assign topics = project.topics | where_exp:"topic","topic != 'padauk' and topic != 'pdk'" %}
-      {% if topics %}
+      {% assign topics = repo.topics | where_exp:"topic","topic != 'padauk' and topic != 'pdk' and topic != 'free-pdk'" %}
+      {% if topics != empty %}
         {% for topic in topics %}
           <code>{{ topic }}</code>
         {% endfor %}
         <br />
       {% endif %}
-      updated {{ project.pushed_at | timeago }}
-      {% if project.stargazers_count > 0 %}
-        · {{ project.stargazers_count }} :star:
+      updated {{ repo.pushed_at | timeago }}
+      {% if repo.stargazers_count > 0 %}
+        · {{ repo.stargazers_count }} :star:
       {% endif %}
     </div>
   </a>
