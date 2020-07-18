@@ -292,7 +292,7 @@ run               # run program forever or until breakpoint is hit
 ```
 you have to divide the byte-based address (0x000040) by 2 when setting the breakpoint for the simulator:
 ```bash
-break rom r 0x20
+break 0x20
 ```
 </div>
 

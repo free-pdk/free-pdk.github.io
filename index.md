@@ -44,7 +44,7 @@ Support for the 14 and 15 bit Padauk instruction sets has been added to
 Support for the 13 bit Padauk instruction set is being worked on.
 
 Helpful SDCC resources:
-- [Documentation](http://sdcc.sourceforge.net/doc/sdccman.pdf)
+- [SDCC Documentation](http://sdcc.sourceforge.net/doc/sdccman.pdf)
 - [Open bugs in the Padauk integration](https://sourceforge.net/p/sdcc/bugs/search/?q=_category%3APDK+AND+status%3Aopen)
 - [Feature Requests related to the Padauk integration](https://sourceforge.net/p/sdcc/feature-requests/search/?q=pdk+AND+status%3Aopen)
 
