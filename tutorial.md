@@ -280,7 +280,7 @@ step 2            # step program execution 2 times
 
 state             # print state of µC
 
-break rom r 0x26  # set breakpoint when address 0x26 of ROM is read
+break 0x26        # set breakpoint before the instruction at 0x26 is executed
 
 run               # run program forever or until breakpoint is hit
 ```
@@ -300,6 +300,12 @@ break rom r 0x20
 
 A work in progress simulator for the {{ '14' | link_instruction_set }} instruction set is available at [free-pdk/fppa-pdk-tools](https://github.com/free-pdk/fppa-pdk-tools).
 It currently does not support interrupts or peripherals.
+
+### pacmancoder/vpadauk
+
+@pacmancoder [has created a simulator](https://github.com/pacmancoder/vpadauk)
+for {{ '13' | link_instruction_set }} that supports the [PMS150C](/chips/PMS150C).
+The simulator is written in Rust and has support for interrupts, the timer, and digital IO.
 
 ### Free PDK Emulator
 
