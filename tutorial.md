@@ -245,6 +245,21 @@ unsigned char _sdcc_external_startup(void)
 }
 ```
 
+## VDD/2 LCD Bias Voltage Generator
+
+Some µCs have the ability to output `VDD/2` on some of their pins.
+This functionality is enabled in the `MISC` register.
+After enabling the LCD bias voltage generator, the corresponding pins can no longer be used as input pins, because configuring them as input enables the `VDD/2` output.
+You should disable pull-up, pull-down resistors and also disable the `PxDIER` bit for the corresponding pins when using the LCD bias voltage generator.
+
+The following table provides an overview of how the registers work together to control the LCD bias voltage generator (this example uses PB.0).
+
+| PBC.0 | PB.0 | PBPH.0 | PBPL.0 | PBDIER.0 | Result                 |
+| ----- | ---- | ------ | ------ | -------- | ---------------------- |
+| 0     | x    | 0      | 0      | 0        | **Output** VDD/2       |
+| 1     | 0    | 0      | 0      | x        | Output GND             |
+| 1     | 1    | 0      | 0      | x        | Output VDD             |
+
 ## Simulation and Emulation
 
 Several options exist to simulate/emulate a Padauk µC.
