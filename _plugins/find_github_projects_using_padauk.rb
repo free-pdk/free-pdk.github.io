@@ -62,9 +62,9 @@ module GitHubPadaukTopics
 
         projects = Parallel.map(repos, in_threads: 10) do |repo|
           type = "unknown"
+          # Only fetch repository files if we have an access token, because we run into rate limits otherwise.
           if access_token then
-            # Only fetch repository files if we have an access token, because we run into rate limits otherwise.
-            if repo["topics"].include?("free-pdk") then
+            if repo["topics"].include?('free-pdk') or repo["topics"].include?('sdcc') or repo["description"].match(/free.?pdk/i) or repo["description"].match(/sdcc/i) then
               type = "free-pdk"
             else
               Jekyll.logger.info "Listing files of #{repo["full_name"]}"
@@ -79,8 +79,7 @@ module GitHubPadaukTopics
                 result = client.readme(repo["full_name"], :ref => repo["default_branch"], :accept => 'application/vnd.github.VERSION.raw')
                 log_rate_limit(client)
 
-                has_free_pdk = result.include?('free-pdk')
-                if has_free_pdk
+                if result.match(/free.?pdk/i) or result.match(/sdcc/i)
                   type = "free-pdk"
                 end
               end

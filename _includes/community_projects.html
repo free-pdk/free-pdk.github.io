@@ -8,24 +8,22 @@
       <br />
       <strong>{{ repo.name | escape }}</strong>
     </h4>
+    {% if project.type == 'free-pdk' %}
+      <div class="badges">
+        <span class="green">Uses open source toolchain</span>
+      </div>
+    {% elsif project.type == 'proprietary' %}
+      <div class="badges">
+        <span class="orange">Uses proprietary toolchain</span>
+      </div>
+    {% endif %}
     <p>
       {{ repo.description | escape }}
     </p>
     <div class="spacer"></div>
-    {% if project.type == 'proprietary' %}
-      <p class="callout">
-        :warning:
-        <span>Uses the proprietary toolchain</span>
-      </p>
-    {% elsif project.type == 'free-pdk' %}
-      <p class="callout success">
-        :tada:
-        <span>Uses the Free PDK toolchain</span>
-      </p>
-    {% endif %}
     <div class="meta">
       {% assign topics = repo.topics | where_exp:"topic","topic != 'padauk' and topic != 'pdk' and topic != 'free-pdk'" %}
-      {% if topics %}
+      {% if topics != empty %}
         {% for topic in topics %}
           <code>{{ topic }}</code>
         {% endfor %}
