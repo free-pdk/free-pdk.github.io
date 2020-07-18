@@ -98,6 +98,23 @@ a.card {
   }
 }
 
+.badge {
+  font-size: $small-font-size;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+
+  &.green {
+    color: #155724;
+    background-color: lighten(#d4edda, 5%);
+  }
+
+  &.orange {
+    color: #856404;
+    background-color: #fff3cd;
+  }
+}
+
 .community-projects {
   display: flex;
   flex: 0 1 auto;
@@ -137,22 +154,8 @@ a.card {
       margin-top: -$spacing-unit / 2;
       margin-bottom: $spacing-unit / 2;
 
-      span {
-        font-size: $small-font-size;
-        padding: 4px 8px;
-        border-radius: 6px;
-
-        &.green {
-          color: #155724;
-          background-color: lighten(#d4edda, 5%);
-        }
-
-        &.orange {
-          color: #856404;
-          background-color: #fff3cd;
-        }
-      }
     }
+
 
     .owner {
       font-size: $small-font-size;

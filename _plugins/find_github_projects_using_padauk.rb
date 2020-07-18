@@ -64,25 +64,15 @@ module GitHubPadaukTopics
           type = "unknown"
           # Only fetch repository files if we have an access token, because we run into rate limits otherwise.
           if access_token then
-            if repo["topics"].include?('free-pdk') or repo["topics"].include?('sdcc') or repo["description"].match(/free.?pdk/i) or repo["description"].match(/sdcc/i) then
+            Jekyll.logger.info "Listing files of #{repo["full_name"]}"
+            result = client.tree(repo["full_name"], repo["default_branch"], :recursive => true)
+            log_rate_limit(client)
+
+            has_pre = result.tree.detect {|entry| entry.type == "blob" and entry.path.end_with?(".PRE") }
+            if has_pre then
+              type = "proprietary"
+            elsif repo["topics"].include?('free-pdk') then
               type = "free-pdk"
-            else
-              Jekyll.logger.info "Listing files of #{repo["full_name"]}"
-              result = client.tree(repo["full_name"], repo["default_branch"], :recursive => true)
-              log_rate_limit(client)
-
-              has_pre = result.tree.detect {|entry| entry.type == "blob" and entry.path.end_with?(".PRE") }
-              if has_pre then
-                type = "proprietary"
-              else
-                Jekyll.logger.info "Fetching README of #{repo["full_name"]}"
-                result = client.readme(repo["full_name"], :ref => repo["default_branch"], :accept => 'application/vnd.github.VERSION.raw')
-                log_rate_limit(client)
-
-                if result.match(/free.?pdk/i) or result.match(/sdcc/i)
-                  type = "free-pdk"
-                end
-              end
             end
           else
             Jekyll.logger.warn "Skipping detection of proprietary toolchain because no GITHUB_TOKEN was found."
