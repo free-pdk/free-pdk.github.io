@@ -85,9 +85,9 @@ More information, including information on the programming sequence, can be foun
 
 ## Other Tools
 
-- **Circuit Symbols for gEDA gschem**:
-  A collection of circuit symbols for many of the Padauk µCs.
-  [free-pdk/pdk-gschem-symbols](https://github.com/free-pdk/pdk-gschem-symbols).
+- **Schematic Symbols**: A collection of schematic symbols for many of the Padauk µCs.
+  - **gEDA gschem**: [free-pdk/pdk-gschem-symbols](https://github.com/free-pdk/pdk-gschem-symbols)
+  - **KiCad**: [free-pdk/pdk-kicad-symbols](https://github.com/free-pdk/pdk-kicad-symbols)
 - **Padauk µC Emulator written in VHDL**:
   This project aims to provide a fully functional, timing accurate VHDL model for simulating PADAUK FPPA microcontrollers.
   [free-pdk/fppa-pdk-emulator-vhdl](https://github.com/free-pdk/fppa-pdk-emulator-vhdl)
