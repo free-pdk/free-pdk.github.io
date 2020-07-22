@@ -50,7 +50,7 @@ Helpful SDCC resources:
 
 ### Installing SDCC
 
-The latest binaries of SDCC can be obtained on the [SDCC website](http://sdcc.sourceforge.net/). Please note that the version that comes with your operating system's package manager is likely outdated and may not have support or only limited support for the Padauk µCs.
+The latest binaries and sources of SDCC can be obtained on the [SDCC website](http://sdcc.sourceforge.net/). If SDCC is available via your operating system's package manager, please ensure that it is at least SDCC 4.0.0; older versions may not have support or only limited support for the Padauk µC.
 
 ## µC-specific Information and Pinouts
 
