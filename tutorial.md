@@ -113,6 +113,8 @@ I/O pins are controlled by the following registers (replace `x` by `A`, `B`, or 
 
 The following table provides an overview of how the registers work together to control an I/O pin (this example uses PB.0).
 
+<div class="table-responsive" markdown="1">
+
 | PBC.0 | PB.0 | PBPH.0 | PBPL.0 | PBDIER.0 | Result                                                               |
 | ----- | ---- | ------ | ------ | -------- | -------------------------------------------------------------------- |
 | 0     | x    | x      | x      | 0        | Digital I/O disabled (can only use pin for analog input and crystal) |
@@ -125,6 +127,8 @@ The following table provides an overview of how the registers work together to c
 | 1     | 1    | 1      | 0      | x        | Output high with pull-up resistor                                    |
 | 1     | 1    | 1      | 1      | x        | *not explicitly mentioned in datasheet*                              |
 | 1     | 1    | 0      | 1      | x        | *not explicitly mentioned in datasheet*                              |
+
+</div>
 
 ### Maximum Current
 
@@ -254,11 +258,15 @@ You should disable pull-up, pull-down resistors and also disable the `PxDIER` bi
 
 The following table provides an overview of how the registers work together to control the LCD bias voltage generator (this example uses PB.0).
 
+<div class="table-responsive" markdown="1">
+
 | PBC.0 | PB.0 | PBPH.0 | PBPL.0 | PBDIER.0 | Result                 |
 | ----- | ---- | ------ | ------ | -------- | ---------------------- |
 | 0     | x    | 0      | 0      | 0        | **Output** VDD/2       |
 | 1     | 0    | 0      | 0      | x        | Output GND             |
 | 1     | 1    | 0      | 0      | x        | Output VDD             |
+
+</div>
 
 ## Watchdog Timer
 
@@ -291,11 +299,15 @@ However, the official in-circuit emulator from Padauk currently is the only opti
 µCsim is part of SDCC and supports simulation of Padauk µCs, including breakpoints.
 The binary is called `spdk` and currently supports the following instruction sets and µCs (`spdk -H`):
 
+<div class="table-responsive" markdown="1">
+
 | Instruction Set                   | Simulated µC |
 | --------------------------------- | ------------ |
 | {{ '13' | link_instruction_set }} | PMC153       |
 | {{ '14' | link_instruction_set }} | PMS132B      |
 | {{ '15' | link_instruction_set }} | PMS134       |
+
+</div>
 
 Interrupts are not currently supported.
 
