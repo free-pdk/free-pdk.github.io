@@ -31,6 +31,35 @@ Padauk's µCs are usually named according to this scheme:
 
 - `(c)`: Optional part number suffix, alphabetic; possibly a revision code.
 
+### XDM{F}{SSS} chips
+
+`XDM{F}{SSS}` chips are a combination of regular Padauk µCs with additional hardware inside a single package.
+An overview of available chips can be found [here](http://www.zhienchina.com/product/MCU.html).
+The naming scheme is `XDM`:
+- `F`: 1 = MOS, 2 = Power, 3 = Communication, 4 = Memory/Flash, 5 = drive (? Chinese name is 驱动)
+- `SSS`: Number to differentiate parts
+Below is a list of available chips and the included additional hardware:
+
+<div class="table-responsive" markdown="1">
+
+| Name | Included Padauk µC | Additional Hardware |
+| ---- | ------------------ | ------------------- |
+| XDM1101	| {{ "PMS150C" | link_chip }} | 2302 (2A NMOS) |
+| XDM1102	|	{{ "PMS150C" | link_chip }} | 2300 (3A NMOS) |
+| XDM2101	| {{ "PMS132B" | link_chip }} | 78L05 (5V Regulator) |
+| XDM2102 | {{ "PMS150C" | link_chip }} | 2300 (3A NMOS) + 4056 (Lithium Battery Charger) |
+| XDM2801	| {{ "PMS164" | link_chip }}  | 78L05 (5V Regulator) |
+| XDM4101	| {{ "PFS172" | link_chip }}  | 24C02 (2K EEPROM) |
+| XDM4102	| {{ "PMS132B" | link_chip }} | 24C02 (2K EEPROM) |
+| XDM4103	|	{{ "PMS152" | link_chip }}  | 24C02 (2K EEPROM) |
+| XDM4104	| {{ "PFS154" | link_chip }}  | 24C02 (2K EEPROM) |
+| XDM4105 | {{ "PFS173" | link_chip }}  | 24C02 (2K EEPROM) |
+| XDM4106	| {{ "PMS171" | link_chip }}  | 24C02 (2K EEPROM) |
+| XDM4107	| {{ "PMS134" | link_chip }}  | 24C02 (2K EEPROM) |
+
+</div>
+
+
 ### Oddities
 
 As always, no rule is without exception, and we discovered or found references to a few odd µCs:
@@ -39,16 +68,6 @@ As always, no rule is without exception, and we discovered or found references t
   No further information is known.
 - `PGR431`
   No further information is known.
-- `XDM{1,2,3,4}n0N`
-  These devices apparently consist of the die of a Padauk device from the main numbering scheme and additonal components in the same package.
-  Support for them in Mini-C is recent.
-
-  - `1`: Various
-  - `2`: Various
-  - `3`: unknown
-  - `4`: One 24C02 serial 2 Kb EEPROM.
-
-  - `N`: Number (just assigned serially)
 
 - `XN1{2,3}{1,2}0(c)`
   No further information is known.
