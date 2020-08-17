@@ -1,5 +1,3 @@
-Click on an individual table cell to get the code that controls the corresponding code option.
-
 <div class="table-responsive">
   <table class="device-code-options">
     <thead>
@@ -39,7 +37,15 @@ Click on an individual table cell to get the code that controls the correspondin
           | where_exp:"page","page.layout == 'chip'"
           | group_by_exp:"chip","chip.related_to | default: chip.title" %}
       {% for group in groups %}
-        {% for chip in group.items -%}
+        {%- if include.chip -%}
+          {%- comment -%}
+            If the chip parameter is set, only display this chip.
+          {%- endcomment -%}
+          {% assign chips = group.items | where_exp:"page","page.title == include.chip" %}
+        {%- else -%}
+          {% assign chips = group.items %}
+        {%- endif -%}
+        {% for chip in chips -%}
           <tr>
             <td markdown="span">
               **[{{ chip.title }}]({{ chip.url }}){% if chip.code_options.notes %}[^code-option-note-{{ chip.title }}]{% endif %}**
@@ -108,6 +114,8 @@ Click on an individual table cell to get the code that controls the correspondin
     </tbody>
   </table>
 </div>
+
+Click on an individual table cell to get the code that controls the corresponding code option.
 
 {% for group in groups %}
 {% for chip in group.items -%}

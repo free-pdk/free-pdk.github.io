@@ -24,6 +24,11 @@ layout: narrow
     {% endif %}
 
     {{ content }}
+
+    <h2>Code Options</h2>
+    <p>Learn more about code options <a href="http://127.0.0.1:4000/tutorial#code-options">in the tutorial</a>.</p>
+    {% capture code_options %}{% include device_code_options.html chip=page.title %}{% endcapture %}
+    {{ code_options | markdownify }}
   </div>
 </article>
 
