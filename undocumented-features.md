@@ -31,14 +31,14 @@ Selecting this bit combination will set the clock divider to one and will theref
 
 To prevent crashing of the MCU it is therefore necessary to ensure that the supply voltage has reached a sufficiently high level before activating the 16 MHz clock setting. This can be achieved by activating the low-voltage-reset feature (LVR), [see tutorial page](tutorial). Discussion [here](https://www.eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/msg3262072/?PHPSESSID=k35321s2v4vtjpphogkgu8ts14#msg3262072) and following posts.
 
-Example code:
-
+Example code for PFS154 and PFS173:
 
 ~~~
 unsigned char _sdcc_external_startup(void)
 {
 	MISCLVR = MISCLVR_4V;
 	CLKMD = CLKMD_IHRC_DIV | CLKMD_ENABLE_IHRC;  // 16/1=16 Mhz main clock
+	// 
 	return 0; // perform normal initialization
 }
 ~~~
@@ -49,7 +49,21 @@ Alternatively you can use the `EASY_PDK_INIT_SYSCLOCK_16MHZ()` define provided w
 
 Found in PFS154 and PFS173. Discussion [here](https://www.eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/msg3231126/). *More detailed description coming*.
 
-## 12 Bit ADC
+## 11 Bit ADC in the PFS173
 
-Found in PFS173
+Register 0x23, which is part of the ADC peripheral I/O block in the PFS173, is notably absent from the documentation of the I/O space.
 
+{: .center}
+![PFS173 ADC result register](/assets/img/adc_pfs173.png)
+
+Probing this register shows that bits 7-5 are readable and seem to represent three additional least significant bits of the ADC result. It is not clear why these bits were left undocumented. Possibly they were deemed too noisy, or malfunction under certain settings. More investigation is needed here.
+
+The undocumented register `ADCRL` can be accessed like this:
+~~~
+	__sfr __at(0x23)         _adcrl;
+	#define ADCRL            _adcrl
+
+	uint8_t adcout  =ADCR;			// Read most significant bits
+	uint8_t adcoutl =ADCRL>>5; 		// Read three hidden bits
+	uint16_t adc=(adcout<<3)|adcoutl;  	// adc contains 11 bit result	
+~~~
