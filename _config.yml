@@ -27,6 +27,7 @@ plugins:
 
 header_pages:
   - tutorial.md
+  - undocumented-features.md
 
 # https://github.com/benbalter/jekyll-titles-from-headings#configuration
 titles_from_headings:

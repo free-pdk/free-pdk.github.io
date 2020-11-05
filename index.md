@@ -20,7 +20,7 @@ GitHub organization. It also provides custom pinout diagrams for some of the Pad
 
 ## Easy PDK Programmer
 
-![Image of the Programmer](https://github.com/free-pdk/easy-pdk-programmer-hardware/blob/master/easypdkprogrammer.jpg?raw=true)
+![Image of the Programmer](/assets/img/easypdkprogrammer.jpg)
 
 Padauk µCs are programmed via a proprietary high-voltage protocol.
 The protocol was reverse engineered and a fully open source programmer that already supports almost two dozen Padauk µCs has been created.
