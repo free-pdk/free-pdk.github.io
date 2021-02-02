@@ -17,7 +17,7 @@ If you don't set a `GITHUB_TOKEN` environment variable, we automatically make le
 
 ## Deployment
 
-Every commit on the `production` branch is built and deployed by a [GitHub Action](https://github.com/free-pdk/free-pdk.github.io/actions) and the result is force-pushed to the `master` branch, which is deployed to https://free-pdk.github.io by GitHub Pages.
+Every commit on the `production` branch is built and deployed by a [GitHub Action](https://github.com/free-pdk/free-pdk.github.io/actions) and the result is force-pushed to the `gh-pages` branch, which is deployed to https://free-pdk.github.io by GitHub Pages.
 
 The `production` branch is also automatically deployed by [netlify](https://www.netlify.com/) to https://free-pdk-preview.netlify.app/.
 Logs can be viewed by clicking on this badge: [![Netlify Status](https://api.netlify.com/api/v1/badges/d2729f79-e836-460b-a65f-7199eb8f3b97/deploy-status)](https://app.netlify.com/sites/free-pdk-preview/deploys)
