@@ -35,6 +35,7 @@
     <tbody>
       {% assign groups = site.pages
           | where_exp:"page","page.layout == 'chip'"
+          | sort: "title"
           | group_by_exp:"chip","chip.related_to | default: chip.title" %}
       {% for group in groups %}
         {%- if include.chip -%}
@@ -63,7 +64,7 @@
               <td data-type="fuse" title="{{ o.fuse.bootup | join:', ' | default: 'FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST' }}">
                 {% if o.fuse contains 'bootup' %}x{% endif %}
               </td>
-              <td data-type="fuse" title="{{ o.fuse.lvr | join:', ' | default: 'FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V' }}">
+              <td data-type="fuse" title="{{ o.fuse.lvr | join:', ' | default: 'FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_2V2, FUSE_LVR_2V, FUSE_LVR_1V8' }}">
                 {% if o.fuse contains 'lvr' %}x{% endif %}
               </td>
 
