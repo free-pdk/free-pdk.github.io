@@ -21,6 +21,7 @@ code_options:
     pin_drive: [FUSE_IO_DRV_STRONG, FUSE_IO_DRV_NORMAL]
     bootup:
     lvr:
+    open_drain:
 ---
 
 # PMS15B

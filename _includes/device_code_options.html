@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <th colspan="1" rowspan="3">µC</th>
-        <th colspan="4" rowspan="2">Fuse</th>
+        <th colspan="5" rowspan="2">Fuse</th>
         <th colspan="12">Undocumented Register</th>
       </tr>
       <tr>
@@ -14,6 +14,7 @@
       <tr class="smaller">
         <th>Security</th>
         <th>Pin Drive</th>
+        <th>Open Drain</th>
         <th>Startup Speed</th>
         <th>3-bit LVR</th>
 
@@ -60,6 +61,9 @@
               </td>
               <td data-type="fuse" title="{{ o.fuse.pin_drive | join:', ' }}">
                 {% if o.fuse contains 'pin_drive' %}x{% endif %}
+              </td>
+              <td data-type="fuse" title="{{ o.open_drain | join:', ' | default: 'FUSE_PA5OD_DISABLE FUSE_PA5OD_ENABLE' }}">
+                {% if o.fuse contains 'open_drain' %}x{% endif %}
               </td>
               <td data-type="fuse" title="{{ o.fuse.bootup | join:', ' | default: 'FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST' }}">
                 {% if o.fuse contains 'bootup' %}x{% endif %}
