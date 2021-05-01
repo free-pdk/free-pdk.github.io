@@ -238,6 +238,10 @@ td.callout {
     background-color: $grey-color-light;
     cursor: pointer;
   }
+
+  th {
+    padding: 10px 5px;
+  }
 }
 
 .toc {

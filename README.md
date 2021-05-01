@@ -8,7 +8,7 @@ This site uses [Jekyll](https://jekyllrb.com/).
 Jekyll is a static site generator that takes markdown files and transforms them to HTML.
 
 To run Jekyll locally, install `ruby` `>=2.5.0` and the `bundler` gem (`gem install bundler`).
-Then install dependencies by running `bundle install` and build the site by calling `bundle exec jekyll serve --livereload`. (You may have to use `bundle exec jekyll serve --livereload --no-watch` if you are running WSL.)
+Then install dependencies by running `bundle install` and build the site by calling `bundle exec jekyll serve --livereload`. (You may have to use `bundle exec jekyll serve --livereload --no-watch` if you are using WSL).
 
 We use the GitHub API to fetch a list of projects using Padauk µCs and the latest activity in the `free-pdk` organization.
 The API has a rate limit of 60 requests per hour for unauthenticated requests, which may not be sufficient for the amount of API requests we make when building the website.

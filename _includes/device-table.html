@@ -26,6 +26,13 @@
             | where_exp:"page","page.layout == 'chip' and page.programming == include.memorytype"
             | group_by_exp:"chip","chip.related_to | default: chip.title" %}
         {% for group in groups %}
+            {% assign lastGroup = groups[forloop.index - 1] %}
+            {% if lastGroup.size < 2 %}
+                <tr>
+                    <td colspan="12">
+                    </td>
+                </tr>
+            {% endif %}
             {% for page in group.items -%}
                 <tr>
                     <td markdown="span">**[{{ page.title }}]({{ page.url }})**</td>
@@ -34,7 +41,7 @@
                     <td>{{ page.maxio}}</td>
                     <td>{{ page.rom_size | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" | markdownify }}</td>
                     <td>{{ page.ram_size }}</td>
-                    <td>{{ page.timers | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;"  }}</td>
+                    <td>{{ page.timers | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
                     <td>{{ page.PWM | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
                     <td>{{ page.Comp}}</td>
                     <td>{{ page.ADC | replace: " ", "&nbsp;" | replace: ",", "<br>" | replace: "-", "&#8209;" }}</td>
@@ -48,6 +55,12 @@
                     </td>
                 </tr>
             {%- endfor %}
+            {% unless forloop.last or group.items.size < 2 %}
+                <tr>
+                    <td colspan="12">
+                    </td>
+                </tr>
+            {% endunless %}
         {% endfor %}
     </tbody>
     </table>
