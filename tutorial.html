@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Tutorial | Free PDK</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Tutorial" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:site_name" content="Free PDK" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Tutorial" />
+<script type="application/ld+json">
+{"description":"Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.","url":"/tutorial","@type":"WebPage","headline":"Tutorial","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Free PDK" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">Free PDK</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/tutorial">Tutorial</a><a class="page-link" href="/undocumented-features">Undocumented Features</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+  <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Tutorial</h1>
+  </header>
+
+  <div class="post-content">
+    <div class="callout">
+  <p>This tutorial is still incomplete. Please contribute by clicking on the <code class="language-plaintext highlighter-rouge">Edit this page on GitHub</code> link at the bottom of this page.</p>
+</div>
+
+<div class="toc">
+  <h4 class="no_toc" id="table-of-contents">Table of Contents</h4>
+
+<ol id="markdown-toc">
+  <li><a href="#registers" id="markdown-toc-registers">Registers</a></li>
+  <li><a href="#clock-sources-and-setup" id="markdown-toc-clock-sources-and-setup">Clock Sources and Setup</a></li>
+  <li>
+<a href="#code-options" id="markdown-toc-code-options">Code Options</a>    <ol>
+      <li><a href="#fuses" id="markdown-toc-fuses">Fuses</a></li>
+      <li><a href="#undocumented-registers" id="markdown-toc-undocumented-registers">Undocumented Registers</a></li>
+    </ol>
+  </li>
+  <li>
+<a href="#digital-io" id="markdown-toc-digital-io">Digital I/O</a>    <ol>
+      <li><a href="#maximum-current" id="markdown-toc-maximum-current">Maximum Current</a></li>
+    </ol>
+  </li>
+  <li><a href="#interrupts" id="markdown-toc-interrupts">Interrupts</a></li>
+  <li><a href="#vdd2-lcd-bias-voltage-generator" id="markdown-toc-vdd2-lcd-bias-voltage-generator">VDD/2 LCD Bias Voltage Generator</a></li>
+  <li><a href="#watchdog-timer" id="markdown-toc-watchdog-timer">Watchdog Timer</a></li>
+  <li><a href="#low-voltage-reset-lvr" id="markdown-toc-low-voltage-reset-lvr">Low Voltage Reset (LVR)</a></li>
+  <li>
+<a href="#simulation-and-emulation" id="markdown-toc-simulation-and-emulation">Simulation and Emulation</a>    <ol>
+      <li><a href="#%C2%B5csim" id="markdown-toc-µcsim">µCsim</a></li>
+      <li><a href="#free-pdk-simulator" id="markdown-toc-free-pdk-simulator">Free PDK Simulator</a></li>
+      <li><a href="#pacmancodervpadauk" id="markdown-toc-pacmancodervpadauk">pacmancoder/vpadauk</a></li>
+      <li><a href="#free-pdk-emulator" id="markdown-toc-free-pdk-emulator">Free PDK Emulator</a></li>
+      <li><a href="#padauk-ice-in-circuit-emulator" id="markdown-toc-padauk-ice-in-circuit-emulator">Padauk ICE (in-circuit emulator)</a></li>
+    </ol>
+  </li>
+</ol>
+
+</div>
+
+<h2 id="registers">
+<a href="#registers"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Registers</h2>
+
+<p>All registers are in undefined state at startup.
+The “Reset” column in the datasheets is misleading (and only emulated by the original IDE which generates code to set all registers to 0).
+You have to initialize all registers yourself.</p>
+<blockquote>
+  <p>Source: <a href="https://www.eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/msg3129442/#msg3129442">https://www.eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/msg3129442/#msg3129442</a></p>
+</blockquote>
+
+<h2 id="clock-sources-and-setup">
+<a href="#clock-sources-and-setup"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Clock Sources and Setup</h2>
+
+<div class="callout">
+  <p>TODO: This section is still missing and should explain the following terms:</p>
+
+  <p>_sdcc_external_startup, IHRC, ILRC, external crystal, SYSCLK, maximum possible clk frequency, factory calibrated values, easy pdk calibration, …</p>
+</div>
+
+<h2 id="code-options">
+<a href="#code-options"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Code Options</h2>
+
+<p>Padauk µCs have several options that are called “code option” in the datasheet.
+There is usually an overview of all code options a µC supports in a chapter towards the end of the datasheet.
+The datasheet does not provide any detailed information on how to set the code options, because Padauk expects users to use their IDE which takes care of that for you.
+Some code options are set as fuses, whereas others are set in undocumented registers.</p>
+
+<p>To figure out whether a code option is set as a fuse or in an undocumented register, you can consult the following table.
+For µCs not listed in the table, you need to look into the PDK include files as described in the next two sections, or into the original <code class="language-plaintext highlighter-rouge">.INC</code> files that come with the Padauk IDE.</p>
+
+<div class="table-responsive">
+  <table class="device-code-options">
+    <thead>
+      <tr>
+        <th colspan="1" rowspan="3">µC</th>
+        <th colspan="4" rowspan="2">Fuse</th>
+        <th colspan="12">Undocumented Register</th>
+      </tr>
+      <tr>
+        <th colspan="7">ROP</th>
+        <th colspan="1">MISC2</th>
+        <th colspan="3">MISCLVR</th>
+      </tr>
+      <tr class="smaller">
+        <th>Security</th>
+        <th>Pin Drive</th>
+        <th>Startup Speed</th>
+        <th>3-bit LVR</th>
+
+        <th>INT0 Source</th>
+        <th>INT1 Source</th>
+        <th>TMX Bits</th>
+        <th>TMX CLK</th>
+        <th>PWM Type</th>
+        <th>PWM CLK</th>
+        <th>TM2 OUT</th>
+
+        <th>COMP INT Edge</th>
+
+        <th>3-bit LVR</th>
+        <th>4-bit LVR</th>
+        <th>Bandgap CLK</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+            <td>
+              <strong><a href="/chips/PFS154">PFS154</a></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_IO_DRV_LOW, FUSE_IO_DRV_NORMAL">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                x
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                x
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                
+              </td>
+            
+          </tr>
+        
+      <tr>
+            <td>
+              <strong><a href="/chips/PFS172">PFS172</a><sup id="fnref:code-option-note-PFS172" role="doc-noteref"><a href="#fn:code-option-note-PFS172" class="footnote" rel="footnote">1</a></sup></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_PB4_PB7_NORMAL, FUSE_PB4_PB7_STRONG">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                x
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                x
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                x
+              </td>
+            
+          </tr>
+        
+      <tr>
+            <td>
+              <strong><a href="/chips/PFS173">PFS173</a></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_PB4_PB5_NORMAL, FUSE_PB4_PB5_STRONG">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                x
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                x
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                x
+              </td>
+            
+          </tr>
+        
+      <tr>
+            <td>
+              <strong><a href="/chips/PMS150C">PMS150C</a></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_IO_DRV_LOW, FUSE_IO_DRV_NORMAL">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                x
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                
+              </td>
+            
+          </tr>
+        <tr>
+            <td>
+              <strong><a href="/chips/PMS15A">PMS15A</a></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_IO_DRV_LOW, FUSE_IO_DRV_NORMAL">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                x
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                
+              </td>
+            
+          </tr>
+        
+      <tr>
+            <td>
+              <strong><a href="/chips/PMS152">PMS152</a></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="">
+                
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                x
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                x
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                x
+              </td>
+            
+          </tr>
+        
+      <tr>
+            <td>
+              <strong><a href="/chips/PMS154C">PMS154C</a><sup id="fnref:code-option-note-PMS154C" role="doc-noteref"><a href="#fn:code-option-note-PMS154C" class="footnote" rel="footnote">2</a></sup></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_IO_DRV_LOW, FUSE_IO_DRV_NORMAL">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                x
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                x
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                
+              </td>
+            
+          </tr>
+        
+      <tr>
+            <td>
+              <strong><a href="/chips/PMS171B">PMS171B</a><sup id="fnref:code-option-note-PMS171B" role="doc-noteref"><a href="#fn:code-option-note-PMS171B" class="footnote" rel="footnote">3</a></sup></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_PB4_PB5_NORMAL, FUSE_PB4_PB5_STRONG">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                x
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                x
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                x
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                x
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                x
+              </td>
+            
+          </tr>
+        
+      
+    </tbody>
+  </table>
+</div>
+
+<p>Click on an individual table cell to get the code that controls the corresponding code option.</p>
+
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+
+<script src="https://unpkg.com/tippy.js@6"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/themes/light-border.css">
+
+<script>
+  // Step 1:
+  // If the cell contains 'x',
+  // - set data-tippy-content based on title and type (fuse, ROP, MISC, MISCLVR)
+  // - remove the title attribute
+  // - add the 'hoverable' class for better styling
+  //
+  // This is done so that browsers without JavaScript still see a title on hover,
+  // but browsers with JavaScript do not display two titles (the tippy title and the native title).
+  document.querySelectorAll('.device-code-options td[title]').forEach(element => {
+    const title = element.getAttribute('title');
+    if (element.textContent.trim() === "x") {
+      element.setAttribute('data-tippy-content', title
+        .split(", ")
+        .map(define => element.dataset.type === 'fuse'
+          ? `PDK_SET_FUSE(${define});`
+          : `${element.dataset.type} = ${define};`)
+        .join("<br>")
+      );
+      element.className += ' hoverable';
+    }
+    element.removeAttribute('title');
+  });
+  // Step 2:
+  // Enable fancy titles on click.
+  tippy(".device-code-options td[data-tippy-content]", {
+    interactive: true,     // text is copyable
+    theme: 'light-border',
+    placement: 'bottom',
+    allowHTML: true,       // we use <br> to display one option per line
+    trigger: 'click',      // only trigger the tooltip on click
+    hideOnClick: true,     // and dismiss the tooltip when clicking elsewhere
+  });
+</script>
+
+<h3 id="fuses">
+<a href="#fuses"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Fuses</h3>
+
+<p>Some of the code options are configured by setting bits in a magic word towards the end of the ROM.
+These can be set using the <code class="language-plaintext highlighter-rouge">PDK_SET_FUSE(...)</code> macro.
+The factory-default fuse settings differ depending on the µC model, which is why it is best to always set all supported fuses.
+Be aware that your program must only contain a single call to <code class="language-plaintext highlighter-rouge">PDK_SET_FUSE</code>.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Example of setting fuses on a PFS173</span>
+<span class="c1">// The available fuses vary depending on the µC model!</span>
+<span class="cp">#define PFS173
+</span>
+<span class="cp">#include &lt;pdk/device.h&gt;
+</span>
+<span class="kt">unsigned</span> <span class="kt">char</span> <span class="nf">_sdcc_external_startup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">PDK_SET_FUSE</span><span class="p">(</span><span class="n">FUSE_SECURITY_ON</span> <span class="o">|</span> <span class="n">FUSE_PB4_PB5_NORMAL</span> <span class="o">|</span> <span class="n">FUSE_BOOTUP_SLOW</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="undocumented-registers">
+<a href="#undocumented-registers"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Undocumented Registers</h3>
+
+<p>Other code options are configured in undocumented registers:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">ROP</code>: Many µCs have a <code class="language-plaintext highlighter-rouge">ROP</code> register that configures
+<a href="https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/rop.h#L41-L74">PWM, timer, and external interrupt related code options</a>.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">MISC2</code>: Some µCs have a <code class="language-plaintext highlighter-rouge">MISC2</code> register that supports
+<a href="https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/periph/misc2.h#L42-L44">selecting the comparator edge(s) that trigger an interrupt</a>.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">MISCLVR</code>: Some µCs configure the LVR and sometimes bandgap related code options in a <code class="language-plaintext highlighter-rouge">MISCLVR</code> register.</li>
+</ul>
+
+<div class="callout">
+  <p>It is unclear whether you are allowed to change these code options while the µC is running, or whether you are supposed to only set them once and leave them as they are.</p>
+</div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Example of using the ROP register on a PFS173</span>
+<span class="c1">// The available settings and undocumented registers vary depending on the µC model!</span>
+<span class="cp">#define PFS173
+</span>
+<span class="cp">#include &lt;pdk/device.h&gt;
+</span>
+<span class="kt">unsigned</span> <span class="kt">char</span> <span class="nf">_sdcc_external_startup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Use PA4 for INT1 instead of PB0</span>
+    <span class="n">ROP</span> <span class="o">=</span> <span class="n">ROP_INT_SRC_PA4</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="digital-io">
+<a href="#digital-io"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Digital I/O</h2>
+
+<p>Digital I/O is organized in ports of (at most) 8 pins. The ports are named <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code>, and <code class="language-plaintext highlighter-rouge">C</code>.
+I/O pins are controlled by the following registers (replace <code class="language-plaintext highlighter-rouge">x</code> by <code class="language-plaintext highlighter-rouge">A</code>, <code class="language-plaintext highlighter-rouge">B</code>, or <code class="language-plaintext highlighter-rouge">C</code>):</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">PxC</code> <strong>Control Register</strong>: Controls whether the pin is used as an input (<code class="language-plaintext highlighter-rouge">0</code>) or output (<code class="language-plaintext highlighter-rouge">1</code>).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Px</code> <strong>Data Register</strong>: Sets the output low (<code class="language-plaintext highlighter-rouge">0</code>) or (<code class="language-plaintext highlighter-rouge">high</code>). Has no effect on inputs.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">PxPH</code> <strong>Pull-up (“pull-high”) Register</strong>:
+Enables a pull-up resistor. The resistor is also active when the pin is used as an output and driven high (!)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">PxPL</code> <strong>Pull-down (“pull-low”) Register</strong>:
+Enables a pull-down resistor (only very few ports and pins have pull-down resistors).
+It is unknown whether the resistor is also active when the pin is used as an output and driven high (!)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">PxDIER</code> <strong>Digital Input Enable Register</strong>: For pins to work as digital inputs, this register needs to be set to <code class="language-plaintext highlighter-rouge">1</code>.
+Otherwise the input signal is cut off from the digital circuitry (including the external interrupt hardware + wake up functionality).
+This is recommended when using the pin as an analog input to the ADC or comparator, and required when using the pin as input of an external crystal.</li>
+</ul>
+
+<p>The following table provides an overview of how the registers work together to control an I/O pin (this example uses PB.0).</p>
+
+<div class="table-responsive">
+
+  <table>
+    <thead>
+      <tr>
+        <th>PBC.0</th>
+        <th>PB.0</th>
+        <th>PBPH.0</th>
+        <th>PBPL.0</th>
+        <th>PBDIER.0</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>0</td>
+        <td>Digital I/O disabled (can only use pin for analog input and crystal)</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>x</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Input without pull resistors</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>x</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>Input with pull-up resistor</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>x</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>Input with pull-down resistor</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>x</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td><em>not explicitly mentioned in datasheet</em></td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>Output low wihout pull resistors</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>x</td>
+        <td>Output high wihout pull resistors</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>x</td>
+        <td>Output high with pull-up resistor</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>x</td>
+        <td><em>not explicitly mentioned in datasheet</em></td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>x</td>
+        <td><em>not explicitly mentioned in datasheet</em></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<h3 id="maximum-current">
+<a href="#maximum-current"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Maximum Current</h3>
+
+<p>The maximum current an I/O pin can drive and sink varies by pin and µC.
+Take a look at the <a href="/chips/PFS173">interactive pinout diagram of an individual µC</a> and enable “Maximum Sink/Drive Current” to learn more.</p>
+
+<div class="callout">
+  <p>TODO: Many µCs can increase the maximum current on two of their pins.</p>
+
+  <ul>
+    <li>How do I enable that?</li>
+    <li>Is there any downside to enabling that?</li>
+  </ul>
+</div>
+
+<h2 id="interrupts">
+<a href="#interrupts"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Interrupts</h2>
+
+<p>Padauk µCs provide up to 8 interrupt sources.
+Interrupts are configured with the following registers:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">INTEGS</code>: Interrupt Edge Select Register</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">INTRQ</code>:  Interrupt Request Register</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">INTEN</code>:  Interrupt Enable Register</li>
+</ul>
+
+<p>Whenever an interrupt occurs, the corresponding bit in the <code class="language-plaintext highlighter-rouge">INTRQ</code> register is set to <code class="language-plaintext highlighter-rouge">1</code> by hardware.
+The µC never sets the bit back to <code class="language-plaintext highlighter-rouge">0</code>. This has to be done by your program.</p>
+
+<p>If you want to trigger an interrupt service routine (ISR) when an interrupt occurs,
+then you have to individually enable it for each interrupt source by setting the corresponding bit to <code class="language-plaintext highlighter-rouge">1</code> in the <code class="language-plaintext highlighter-rouge">INTEN</code> register.
+In addition, you need to enable interrupts globally by calling <code class="language-plaintext highlighter-rouge">__engint()</code>.</p>
+
+<p>All interrupts share a single ISR, which is denoted by adding the <code class="language-plaintext highlighter-rouge">__interrupt(0)</code> attribute to the function definition.
+Inside the ISR, you have to check which interrupt(s) triggered it by checking the corresponding bits in the <code class="language-plaintext highlighter-rouge">INTRQ</code> register.
+It is possible for multiple interrupts to occur at the same time</p>
+
+<p>If you handle multiple interrupts in your ISR <strong>and</strong> you disable an interrupt conditionally by setting its corresponding bit in <code class="language-plaintext highlighter-rouge">INTEN</code> to <code class="language-plaintext highlighter-rouge">0</code> at some point in your program, you also have to check the <code class="language-plaintext highlighter-rouge">INTEN</code> register when the ISR is called. This is because the bit in <code class="language-plaintext highlighter-rouge">INTRQ</code> is still set even if the interrupt is disabled in <code class="language-plaintext highlighter-rouge">INTEN</code>.
+The alternative is to disable <strong>all</strong> interrupts whenever you want to disable a single interrupt by calling <code class="language-plaintext highlighter-rouge">__disgint()</code>.</p>
+
+<p>The following example shows how to use the two external interrupts on a PFS173:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdint.h&gt;
+#include &lt;pdk/device.h&gt;
+</span>
+<span class="k">volatile</span> <span class="kt">uint16_t</span> <span class="n">counter</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">interrupt</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">__interrupt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span>
+    <span class="n">INTEN</span> <span class="o">&amp;</span> <span class="n">INTEN_PA0</span>  <span class="c1">// Is the interrupt enabled?</span>
+    <span class="o">&amp;&amp;</span>
+    <span class="n">INTRQ</span> <span class="o">&amp;</span> <span class="n">INTRQ_PA0</span>  <span class="c1">// Did the interrupt occur?</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Reset interrupt request bit</span>
+    <span class="n">INTRQ</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">INTRQ_PA0</span><span class="p">;</span>
+
+    <span class="c1">// Handle interrupt</span>
+    <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span>
+    <span class="n">INTEN</span> <span class="o">&amp;</span> <span class="n">INTEN_PB0</span>  <span class="c1">// Is the interrupt enabled?</span>
+    <span class="o">&amp;&amp;</span>
+    <span class="n">INTRQ</span> <span class="o">&amp;</span> <span class="n">INTRQ_PB0</span>  <span class="c1">// Did the interrupt occur?</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Reset interrupt request bit</span>
+    <span class="n">INTRQ</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">INTRQ_PB0</span><span class="p">;</span>
+
+    <span class="c1">// Handle interrupt</span>
+    <span class="c1">// ...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">INTEN</span> <span class="o">=</span> <span class="n">INTEN_PA0</span> <span class="o">|</span> <span class="n">INTEN_PB0</span><span class="p">;</span>
+  <span class="n">INTEGS</span> <span class="o">=</span> <span class="n">INTEGS_PA0_BOTH</span> <span class="o">|</span> <span class="n">INTEGS_PB0_BOTH</span><span class="p">;</span>
+
+  <span class="c1">// Further initialization code</span>
+
+  <span class="c1">// Enable interrupts.</span>
+  <span class="n">INTRQ</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">__engint</span><span class="p">();</span>
+
+  <span class="k">for</span><span class="p">(;;)</span> <span class="p">{</span>
+    <span class="c1">// Make sure to temporarily disable the interrupt when</span>
+    <span class="c1">// reading the variable from the main program, since access</span>
+    <span class="c1">// to 16 bit variables is not atomic.</span>
+    <span class="kt">uint16_t</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="n">INTEN</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">INTEN_PA0</span><span class="p">;</span>
+    <span class="c1">// The ISR is now no longer called when an interrupt at PA0 occurrs.</span>
+    <span class="c1">// However, the INTRQ_PA0 bit in INTRQ will still be set if an interrupt at PA0 occurrs.</span>
+
+    <span class="c1">// -&gt; Let's say at this moment the signal at PA0 changes</span>
+    <span class="c1">// -&gt; INTRQ &amp; INTRQ_PA0 is set to 1 by hardware</span>
+    <span class="c1">// -&gt; The ISR is _not_ called, because INTEN &amp; INTEN_PA0 is not set.</span>
+
+    <span class="n">i</span> <span class="o">=</span> <span class="n">counter</span><span class="p">;</span>
+
+    <span class="c1">// -&gt; Let's say at this moment the signal at PB0 changes</span>
+    <span class="c1">// -&gt; INTRQ &amp; INTRQ_PB0 is set to 1 by hardware</span>
+    <span class="c1">// -&gt; The ISR is called, because INTEN &amp; INTEN_PB0 is set AND interrupts are globally enabled.</span>
+    <span class="c1">//</span>
+    <span class="c1">// Important: The INTRQ_PA0 bit is still set to 1!</span>
+    <span class="c1">// If we don't check INTEN &amp; INTEN_PA0 in the ISR, the code for PA0 would be triggered even</span>
+    <span class="c1">// though we disabled the interrupt.</span>
+
+    <span class="c1">// Re-enable the PA0 interrupt now that we have read the counter variable.</span>
+    <span class="n">INTEN</span> <span class="o">|=</span> <span class="n">INTEN_PA0</span><span class="p">;</span>
+
+    <span class="c1">// ...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">unsigned</span> <span class="kt">char</span> <span class="nf">_sdcc_external_startup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="vdd2-lcd-bias-voltage-generator">
+<a href="#vdd2-lcd-bias-voltage-generator"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> VDD/2 LCD Bias Voltage Generator</h2>
+
+<p>Some µCs have the ability to output <code class="language-plaintext highlighter-rouge">VDD/2</code> on some of their pins.
+This functionality is enabled in the <code class="language-plaintext highlighter-rouge">MISC</code> register.
+After enabling the LCD bias voltage generator, the corresponding pins can no longer be used as input pins, because configuring them as input enables the <code class="language-plaintext highlighter-rouge">VDD/2</code> output.
+You should disable pull-up, pull-down resistors and also disable the <code class="language-plaintext highlighter-rouge">PxDIER</code> bit for the corresponding pins when using the LCD bias voltage generator.</p>
+
+<p>The following table provides an overview of how the registers work together to control the LCD bias voltage generator (this example uses PB.0).</p>
+
+<div class="table-responsive">
+
+  <table>
+    <thead>
+      <tr>
+        <th>PBC.0</th>
+        <th>PB.0</th>
+        <th>PBPH.0</th>
+        <th>PBPL.0</th>
+        <th>PBDIER.0</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0</td>
+        <td>x</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>
+<strong>Output</strong> VDD/2</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>x</td>
+        <td>Output GND</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>x</td>
+        <td>Output VDD</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<h2 id="watchdog-timer">
+<a href="#watchdog-timer"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Watchdog Timer</h2>
+
+<p>The watchdog timer continuously counts up and automatically resets the µC when it reaches its maximum value.
+It can be enabled in the <code class="language-plaintext highlighter-rouge">CLKMD</code> register (make sure to enable both the watchdog and <code class="language-plaintext highlighter-rouge">ILRC</code>).
+The timeout value is set in the <code class="language-plaintext highlighter-rouge">MISC</code> register and can be either <code class="language-plaintext highlighter-rouge">8k</code>, <code class="language-plaintext highlighter-rouge">16k</code>, <code class="language-plaintext highlighter-rouge">64k</code>, or <code class="language-plaintext highlighter-rouge">256k</code> <code class="language-plaintext highlighter-rouge">ILRC</code> ticks.</p>
+
+<p>To avoid µC resets during normal operation, you should regularly call <code class="language-plaintext highlighter-rouge">__wdreset();</code> to reset the watchdog timer.
+The <code class="language-plaintext highlighter-rouge">ILRC</code> frequency and therefore watchdog timeout period can “drift a lot due to variation of manufacturing, supply voltage and temperature”<sup id="fnref:PFS173-datasheet" role="doc-noteref"><a href="#fn:PFS173-datasheet" class="footnote" rel="footnote">4</a></sup>.
+You should also call <code class="language-plaintext highlighter-rouge">__wdreset();</code> right after reset and wakeup, because “the watchdog period will also be shorter than expected after reset or wakeup events”<sup id="fnref:PFS173-datasheet:1" role="doc-noteref"><a href="#fn:PFS173-datasheet" class="footnote" rel="footnote">4</a></sup>.</p>
+
+<h2 id="low-voltage-reset-lvr">
+<a href="#low-voltage-reset-lvr"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Low Voltage Reset (LVR)</h2>
+
+<p>LVR automatically resets and stops the µC while the supply voltage is below the configured LVR threshold.
+LVR is enabled by default and can be disabled in the <code class="language-plaintext highlighter-rouge">MISC</code> register. The threshold is configured as a code option; see the <a href="#code-options">Code Options</a> section for more information.</p>
+
+<p>You should configure the LVR threshold to at least meet the minium voltage supported by your system clock setting. Consult the <code class="language-plaintext highlighter-rouge">f_SYS</code> row in the “Device Characteristics” table of the datasheet for more information.</p>
+
+<h2 id="simulation-and-emulation">
+<a href="#simulation-and-emulation"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Simulation and Emulation</h2>
+
+<p>Several options exist to simulate/emulate a Padauk µC.
+However, the official in-circuit emulator from Padauk currently is the only option that supports peripherals and interrupts.
+<em>Emulators</em> emulate a µC in hardware. They are usually realized using FPGAs and run in realtime.
+<em>Simulators</em> simulate a µC in software and are usually slower than the real µC.</p>
+
+<h3 id="µcsim">
+<a href="#%C2%B5csim"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> µCsim</h3>
+
+<p>µCsim is part of SDCC and supports simulation of Padauk µCs, including breakpoints.
+The binary is called <code class="language-plaintext highlighter-rouge">spdk</code> and currently supports the following instruction sets and µCs (<code class="language-plaintext highlighter-rouge">spdk -H</code>):</p>
+
+<div class="table-responsive">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Instruction Set</th>
+        <th>Simulated µC</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="/instruction-sets/PDK13">PDK13</a></td>
+        <td>PMC153</td>
+      </tr>
+      <tr>
+        <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+        <td>PMS132B</td>
+      </tr>
+      <tr>
+        <td><a href="/instruction-sets/PDK15">PDK15</a></td>
+        <td>PMS134</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<p>Interrupts are not currently supported.</p>
+
+<h4 id="µcsim-usage-example">µCsim Usage Example</h4>
+
+<p>This example invocation shows some of the commands supported by the simulator.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>spdk main.ihx <span class="nt">-X</span> 8000000 <span class="nt">-tPMS134</span>
+
+dump ram 0 9999   <span class="c"># dump RAM contents from byte 0 to 9999</span>
+dump regs8 0 9999 <span class="c"># dump register contents from register 0 to 9999</span>
+dump rom 0 9999   <span class="c"># dump ROM contents from word 0 to 9999</span>
+
+step 2            <span class="c"># step program execution 2 times</span>
+
+state             <span class="c"># print state of µC</span>
+
+<span class="nb">break </span>0x26        <span class="c"># set breakpoint before the instruction at 0x26 is executed</span>
+
+run               <span class="c"># run program forever or until breakpoint is hit</span>
+</code></pre></div></div>
+
+<div class="callout">
+  <p><strong>Watchout:</strong> ROM addresses used by the emulator are word-based, whereas ROM addresses printed in the <code class="language-plaintext highlighter-rouge">main.rst</code> file are byte-based. To break at the following instruction defined in the <code class="language-plaintext highlighter-rouge">main.rst</code> file:</p>
+  <pre><code class="language-asm">000040 F4 51                  122 	sub	a, #0xf4
+</code></pre>
+  <p>you have to divide the byte-based address (0x000040) by 2 when setting the breakpoint for the simulator:</p>
+  <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nb">break </span>0x20
+</code></pre></div>  </div>
+</div>
+
+<h3 id="free-pdk-simulator">
+<a href="#free-pdk-simulator"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Free PDK Simulator</h3>
+
+<p>A work in progress simulator for the <a href="/instruction-sets/PDK14">PDK14</a> instruction set is available at <a href="https://github.com/free-pdk/fppa-pdk-tools">free-pdk/fppa-pdk-tools</a>.
+It currently does not support interrupts or peripherals.</p>
+
+<h3 id="pacmancodervpadauk">
+<a href="#pacmancodervpadauk"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> pacmancoder/vpadauk</h3>
+
+<p><a href="https://github.com/pacmancoder" class="user-mention">@pacmancoder</a> <a href="https://github.com/pacmancoder/vpadauk">has created a simulator</a>
+for <a href="/instruction-sets/PDK13">PDK13</a> that supports the <a href="/chips/PMS150C">PMS150C</a>.
+The simulator is written in Rust and has support for interrupts, the timer, and digital IO.</p>
+
+<h3 id="free-pdk-emulator">
+<a href="#free-pdk-emulator"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Free PDK Emulator</h3>
+
+<p>A work in progress VHDL-based emulator for the <a href="/instruction-sets/PDK14">PDK14</a> instruction set and PFS152 µC is available at <a href="https://github.com/free-pdk/fppa-pdk-emulator-vhdl">free-pdk/fppa-pdk-emulator-vhdl</a>.</p>
+
+<h3 id="padauk-ice-in-circuit-emulator">
+<a href="#padauk-ice-in-circuit-emulator"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Padauk ICE (in-circuit emulator)</h3>
+
+<p>Padauk offers in-circuit emulators that can be controlled from the Padauk IDE.
+A list of available emulators is available <a href="http://www.padauk.com.tw/en/technical/index.aspx?kind=17">here</a>.
+The list of µCs each emulator supports can be found <a href="http://www.padauk.com.tw/en/technical/index.aspx?kind=26">here</a>.
+The Padauk ICE supports most features of the µCs, and features not supported by ICE are usually called out in the datasheets.</p>
+
+<div class="callout">
+  <p>The Padauk ICE <strong>cannot</strong> be used to emulate programs created by the Free PDK toolchain.</p>
+</div>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:code-option-note-PFS172" role="doc-endnote">
+
+      <p>Some additional options seem to exist which are not documented in the datasheet: <a href="https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs172.h#L153-L165">https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pfs172.h#L153-L165</a> <a href="#fnref:code-option-note-PFS172" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:code-option-note-PMS154C" role="doc-endnote">
+
+      <p>This µC has additional undocumented code options configured in <code class="language-plaintext highlighter-rouge">MISC2</code>: <a href="https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pms154c.h#L156-L158">https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pms154c.h#L156-L158</a> <a href="#fnref:code-option-note-PMS154C" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:code-option-note-PMS171B" role="doc-endnote">
+
+      <p>Some additional options seem to exist which are not documented in the datasheet: <a href="https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pms171b.h#L145-L148">https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pms171b.h#L145-L148</a> <a href="#fnref:code-option-note-PMS171B" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:PFS173-datasheet" role="doc-endnote">
+      <p>From the PFS173 datasheet <a href="#fnref:PFS173-datasheet" class="reversefootnote" role="doc-backlink">↩</a> <a href="#fnref:PFS173-datasheet:1" class="reversefootnote" role="doc-backlink">↩<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+</article>
+
+<div class="edit-page">
+  <a href="https://github.com/free-pdk/free-pdk.github.io/edit/production/tutorial.md">
+    Edit this page on GitHub
+  </a>
+  <br>
+  <small>
+    Checkout <a href="/doc-style">/doc-style</a> for more information on some of the special Markdown formatting features we use.
+  </small>
+</div>
+
+</div>
+
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Free PDK</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Free PDK</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/free-pdk"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">free-pdk</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Free PDK is an effort to create an open source alternative to the proprietary
+Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
