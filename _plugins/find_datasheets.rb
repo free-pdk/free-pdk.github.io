@@ -19,11 +19,6 @@ module FindPadaukDatasheets
 
         datasheet_urls = Parallel.map(chip_pages, in_threads: 10) do |chip_page|
           url = chip_page['product_page']  
-          # Error handling for missing product page
-          if url.nil?
-            Jekyll.logger.warn "Product page not found for chip: " + chip_page.data['title']
-            next [chip_page.data['title'], nil]
-          end
           
           Jekyll.logger.info "Parsing product page for datasheet url: " + url
           doc = Nokogiri::HTML(::OpenURI.open_uri(url))
@@ -36,7 +31,7 @@ module FindPadaukDatasheets
             datasheet_url = (Addressable::URI.parse(url) + pdf_link['href']).to_s
             Jekyll.logger.info "Found datasheet url: " + datasheet_url
           else
-            Jekyll.logger.warn "Did not find datasheet url!"
+            Jekyll.logger.warn "Did not find datasheet url in product page: " + url
           end
 
           [chip_page.data['title'], datasheet_url]
