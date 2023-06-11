@@ -18,7 +18,13 @@ module FindPadaukDatasheets
         chip_pages = site.pages.filter { |page| page.data['layout'] == "chip" and page.data['product_page'] }
 
         datasheet_urls = Parallel.map(chip_pages, in_threads: 10) do |chip_page|
-          url = chip_page['product_page']
+          url = chip_page['product_page']  
+          # Error handling for missing product page
+          if url.nil?
+            Jekyll.logger.warn "Product page not found for chip: " + chip_page.data['title']
+            next [chip_page.data['title'], nil]
+          end
+          
           Jekyll.logger.info "Parsing product page for datasheet url: " + url
           doc = Nokogiri::HTML(::OpenURI.open_uri(url))
 
