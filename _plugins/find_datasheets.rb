@@ -17,7 +17,7 @@ module FindPadaukDatasheets
       datasheet_urls = cache.getset("datasheets") do
         chip_pages = site.pages.filter { |page| page.data['layout'] == "chip" and page.data['product_page'] }
 
-        datasheet_urls = Parallel.map(chip_pages, in_threads: 10) do |chip_page|
+        datasheet_urls = Parallel.map(chip_pages, in_threads: 2) do |chip_page|
           url = chip_page['product_page']  
           
           Jekyll.logger.info "Parsing product page for datasheet url: " + url
