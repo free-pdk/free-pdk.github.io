@@ -21,6 +21,7 @@ module FindPadaukDatasheets
           url = chip_page['product_page']  
           
           Jekyll.logger.info "Parsing product page for datasheet url: " + url
+          ::OpenURI::HTTP.read_timeout = 300
           doc = Nokogiri::HTML(::OpenURI.open_uri(url))
 
           pdf_links = doc.css('a[href$=".pdf"]')
