@@ -32,5 +32,6 @@ The ROM size restriction is only enforced when using the official IDE.
 **Of course we can't guarantee that Padauk doesn't change this in the future.**
 --
 *[Source 1](https://github.com/free-pdk/free-pdk.github.io/issues/21)*,
-*[Source 2](https://www.eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/msg2703550/?topicseen#msg2703550)*
+*[Source 2](https://www.eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/msg2703550/?topicseen#msg2703550)*,
+*see also [PMS15B](/chips/PMS15B)*
 </div>
