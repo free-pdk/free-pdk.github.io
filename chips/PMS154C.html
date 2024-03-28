@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>PMS154C | Free PDK</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="PMS154C" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:site_name" content="Free PDK" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="PMS154C" />
+<script type="application/ld+json">
+{"description":"Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.","url":"/chips/PMS154C","@type":"WebPage","headline":"PMS154C","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Free PDK" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Free PDK</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/tutorial">Tutorial</a><a class="page-link" href="/undocumented-features">Undocumented Features</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+  <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">PMS154C</h1>
+  </header>
+
+  <div class="post-content">
+    <ul>
+      <li><strong>Instruction Set</strong>: <a href="/instruction-sets/PDK14">PDK14</a></li>
+      <li><strong>ROM Size</strong>: 2 KW
+</li>
+      <li><strong>RAM Size</strong>: 128 bytes</li>
+      <li><strong>Programming Mode</strong>: OTP</li>
+      <li><strong>Supported by Easy PDK Programmer</strong>: yes</li>
+      <li><strong>Product Page</strong>: <a href="http://www.padauk.com.tw/en/product/show.aspx?num=14&kind=41">http://www.padauk.com.tw/en/product/show.aspx?num=14&kind=41</a></li>
+      <li><strong>Datasheet</strong>: <a href="https://www.padauk.com.cn/upload/doc/PMS154C datasheet_EN_V106_20230629.pdf">https://www.padauk.com.cn/upload/doc/PMS154C datasheet_EN_V106_20230629.pdf</a></li>
+    </ul>
+
+    
+
+    
+
+
+    <h2>Code Options</h2>
+    <p>Learn more about code options <a href="/tutorial#code-options">in the tutorial</a>.</p>
+    
+    <div class="table-responsive">
+  <table class="device-code-options">
+    <thead>
+      <tr>
+        <th colspan="1" rowspan="3">µC</th>
+        <th colspan="4" rowspan="2">Fuse</th>
+        <th colspan="12">Undocumented Register</th>
+      </tr>
+      <tr>
+        <th colspan="7">ROP</th>
+        <th colspan="1">MISC2</th>
+        <th colspan="3">MISCLVR</th>
+      </tr>
+      <tr class="smaller">
+        <th>Security</th>
+        <th>Pin Drive</th>
+        <th>Startup Speed</th>
+        <th>3-bit LVR</th>
+
+        <th>INT0 Source</th>
+        <th>INT1 Source</th>
+        <th>TMX Bits</th>
+        <th>TMX CLK</th>
+        <th>PWM Type</th>
+        <th>PWM CLK</th>
+        <th>TM2 OUT</th>
+
+        <th>COMP INT Edge</th>
+
+        <th>3-bit LVR</th>
+        <th>4-bit LVR</th>
+        <th>Bandgap CLK</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      
+      
+      
+      
+      
+      <tr>
+            <td>
+              <strong><a href="/chips/PMS154C">PMS154C</a><sup id="fnref:code-option-note-PMS154C" role="doc-noteref"><a href="#fn:code-option-note-PMS154C" class="footnote" rel="footnote">1</a></sup></strong>
+            </td>
+            
+              
+
+              
+              <td data-type="fuse" title="FUSE_SECURITY_ON, FUSE_SECURITY_OFF">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_IO_DRV_LOW, FUSE_IO_DRV_NORMAL">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_BOOTUP_SLOW, FUSE_BOOTUP_FAST">
+                x
+              </td>
+              <td data-type="fuse" title="FUSE_LVR_4V, FUSE_LVR_3V5, FUSE_LVR_3V, FUSE_LVR_2V75, FUSE_LVR_2V5, FUSE_LVR_1V8, FUSE_LVR_2V2, FUSE_LVR_2V">
+                x
+              </td>
+
+              
+              <td data-type="ROP" title="ROP_INT_SRC_PA0, ROP_INT_SRC_PB5">
+                
+              </td>
+              <td data-type="ROP" title="ROP_INT_SRC_PB0, ROP_INT_SRC_PA4">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_6BIT, ROP_TMX_7BIT">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TMX_16MHZ, ROP_TMX_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PURE_PWM, ROP_GPC_PWM">
+                
+              </td>
+              <td data-type="ROP" title="ROP_PWM_16MHZ, ROP_PWM_32MHZ">
+                
+              </td>
+              <td data-type="ROP" title="ROP_TM2_PB2, ROP_TM2_PB0">
+                
+              </td>
+
+              
+              <td data-type="MISC2" title="MISC2_COMP_EDGE_INT_BOTH, MISC2_COMP_EDGE_INT_RISE, MISC2_COMP_EDGE_INT_FALL">
+                x
+              </td>
+
+              
+              <td data-type="MISCLVR" title="MISCLVR_4V, MISCLVR_3V5, MISCLVR_3V, MISCLVR_2V75, MISCLVR_2V5, MISCLVR_1V8, MISCLVR_2V2, MISCLVR_2V">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_1V8, MISCLVR_1V9, MISCLVR_2V, MISCLVR_2V1, MISCLVR_2V2, MISCLVR_2V3, MISCLVR_2V4, MISCLVR_2V5, MISCLVR_2V7, MISCLVR_3V, MISCLVR_3V15, MISCLVR_3V3, MISCLVR_3V5, MISCLVR_3V75, MISCLVR_4V, MISCLVR_4V5">
+                
+              </td>
+              <td data-type="MISCLVR" title="MISCLVR_BANDGAP_ON, MISCLVR_BANDGAP_DIV4, MISCLVR_BANDGAP_DIV32, MISCLVR_BANDGAP_AUTO">
+                
+              </td>
+            
+          </tr>
+        
+      
+      
+    </tbody>
+  </table>
+</div>
+
+<p>Click on an individual table cell to get the code that controls the corresponding code option.</p>
+
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+
+<script src="https://unpkg.com/tippy.js@6"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/themes/light-border.css" />
+
+<script>
+  // Step 1:
+  // If the cell contains 'x',
+  // - set data-tippy-content based on title and type (fuse, ROP, MISC, MISCLVR)
+  // - remove the title attribute
+  // - add the 'hoverable' class for better styling
+  //
+  // This is done so that browsers without JavaScript still see a title on hover,
+  // but browsers with JavaScript do not display two titles (the tippy title and the native title).
+  document.querySelectorAll('.device-code-options td[title]').forEach(element => {
+    const title = element.getAttribute('title');
+    if (element.textContent.trim() === "x") {
+      element.setAttribute('data-tippy-content', title
+        .split(", ")
+        .map(define => element.dataset.type === 'fuse'
+          ? `PDK_SET_FUSE(${define});`
+          : `${element.dataset.type} = ${define};`)
+        .join("<br>")
+      );
+      element.className += ' hoverable';
+    }
+    element.removeAttribute('title');
+  });
+  // Step 2:
+  // Enable fancy titles on click.
+  tippy(".device-code-options td[data-tippy-content]", {
+    interactive: true,     // text is copyable
+    theme: 'light-border',
+    placement: 'bottom',
+    allowHTML: true,       // we use <br> to display one option per line
+    trigger: 'click',      // only trigger the tooltip on click
+    hideOnClick: true,     // and dismiss the tooltip when clicking elsewhere
+  });
+</script>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:code-option-note-PMS154C" role="doc-endnote">
+
+      <p>This µC has additional undocumented code options configured in <code class="language-plaintext highlighter-rouge">MISC2</code>: <a href="https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pms154c.h#L156-L158">https://github.com/free-pdk/pdk-includes/blob/f44fc2e7678b1ab72ed8bac6b9d408118f330ad8/device/pms154c.h#L156-L158</a> <a href="#fnref:code-option-note-PMS154C" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+</article>
+
+<div class="edit-page">
+  <a href="https://github.com/free-pdk/free-pdk.github.io/edit/production/chips/PMS154C.md">
+    Edit this page on GitHub
+  </a>
+  <br />
+  <small>
+    Checkout <a href="/doc-style">/doc-style</a> for more information on some of the special Markdown formatting features we use.
+  </small>
+</div>
+
+
+</div> <!-- Close wrapper div of parent layout -->
+
+<div id="pinout-diagram"></div>
+<script src="https://unpkg.com/@cmfcmf/pinout-diagrams/dist/sdk.min.js"></script>
+<script>
+  PinoutDiagrams.render(document.getElementById('pinout-diagram'), {
+    ics: ["PMS154C"],
+    maxWidth: '980px'
+  });
+</script>
+<div class="wrapper"> <!-- Reopen wrapper div of parent layout -->
+
+
+
+
+</div>
+
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Free PDK</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Free PDK</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/free-pdk"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">free-pdk</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Free PDK is an effort to create an open source alternative to the proprietary
+Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

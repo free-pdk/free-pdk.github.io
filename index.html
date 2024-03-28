@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Free PDK Documentation | Free PDK</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Free PDK Documentation" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:site_name" content="Free PDK" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Free PDK Documentation" />
+<script type="application/ld+json">
+{"description":"Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.","url":"/","@type":"WebSite","name":"Free PDK","headline":"Free PDK Documentation","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Free PDK" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">Free PDK</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/tutorial">Tutorial</a><a class="page-link" href="/undocumented-features">Undocumented Features</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+  <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Free PDK Documentation</h1>
+  </header>
+
+  <div class="post-content">
+    <p><em>Free PDK</em> is an open sourced and independently created tool-chain for the <a href="http://www.padauk.com.tw/index_en.aspx">Padauk</a> 8-Bit Microcontrollers, created as an alternative to the proprietary and closed tools provided by the Taiwanese company itself.</p>
+
+<p>This includes the EasyPDKProg µC programmer hardware, adding support for the Padauk µCs to the <a href="http://sdcc.sourceforge.net/">SDCC</a> C-Compiler, as well as comprehensive documentation of the instruction set architecture, and code examples.</p>
+
+<p>The main focus is on supporting µCs of two Padauk series:</p>
+<ul>
+  <li>
+<a href="http://www.padauk.com.tw/en/product/index.aspx?kind=41">M series OTP</a> (OTP = <em>one time programmable</em>)</li>
+  <li>
+<a href="http://www.padauk.com.tw/en/product/index.aspx?kind=42">F series MTP</a> (MTP = <em>multiple time programmable</em>)</li>
+</ul>
+
+<p>Padauk µCs are extremely inexpensive, priced as low as $0.03/pc in volumes of 100, which is why they generated a lot of interest after being featured by
+Dave from the EEVblog (<a href="https://youtu.be/VYhAGnsnO7w">first video</a> and <a href="https://www.youtube.com/watch?v=r45r4rV5JOI&amp;list=PLvOlSehNtuHsiF93KOLoF1KAHArmIW9lC">a bunch of follow-up videos</a>). Despite the low price, it was found that the Padauk µCs sport an interesting architecture that can be a seen as a significant and meaningful extension of the Microchip PIC architecture. There is an extensive and active <a href="http://eevblog.com/forum/blog/eevblog-1144-padauk-programmer-reverse-engineering/">discussion on the EEVblog forum</a> for this project and further discussion <a href="https://www.mikrocontroller.net/topic/461002">here</a> on µC.net (German).</p>
+
+<p>This page provides an overview of the different sub-projects created in the <a href="https://github.com/free-pdk">free-pdk</a>
+GitHub organization. It also provides custom pinout diagrams for some of the Padauk µCs.</p>
+
+<h2 id="easy-pdk-programmer">
+<a href="#easy-pdk-programmer"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Easy PDK Programmer</h2>
+
+<p><img src="/assets/img/easypdkprogrammer.jpg" alt="Image of the Programmer"></p>
+
+<p>Padauk µCs are programmed via a proprietary high-voltage protocol.
+The protocol was reverse engineered and a fully open source programmer that already supports almost two dozen Padauk µCs has been created.
+All sources for the programmer are available at:</p>
+
+<ul>
+  <li><a href="https://github.com/free-pdk/easy-pdk-programmer-hardware">Easy PDK Programmer Hardware</a></li>
+  <li><a href="https://github.com/free-pdk/easy-pdk-programmer-software">Easy PDK Programmer Software</a></li>
+</ul>
+
+<h2 id="sdcc-based-open-source-tool-chain">
+<a href="#sdcc-based-open-source-tool-chain"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> SDCC-based Open Source Tool-Chain</h2>
+
+<p>Padauk’s own tool-chain is based on a custom programming language called “Mini-C” with a syntax based on the C-language. This language is only supported by their own tool-chain, including IDE (“Padauk Developer Studio”) and programmer (“Writer”). The tool-chain also uses a custom binary format with encryption/obfuscation. Should you be interested in code samples in that custom language, take a look at <a href="https://github.com/free-pdk/fppa-code-examples">free-pdk/fppa-code-examples</a>.</p>
+
+<p>The open source tool-chain is based on the Small Device C-Compiler (SDCC) and therefore does support Standard C and common binary output formats (intel hex and bin), including those used by the Easy PDK Programmer.</p>
+
+<p>Please note that right now there is no interchangeability between both tool-chains. Binaries generated by SDCC cannot be written by the official Padauk programmer, but only by the Easy PDK Programmer.</p>
+
+<p>Padauk µCs use different kinds of instruction sets: 13, 14, 15, or 16 bit
+(more information on these instruction sets can be found below).
+Support for the 14 and 15 bit Padauk instruction sets has been added to
+<a href="http://sdcc.sourceforge.net/">SDCC</a>, a C compiler for small devices.
+Support for the 13 bit Padauk instruction set is being worked on.</p>
+
+<p>Helpful SDCC resources:</p>
+<ul>
+  <li><a href="http://sdcc.sourceforge.net/doc/sdccman.pdf">SDCC Documentation</a></li>
+  <li><a href="https://sourceforge.net/p/sdcc/bugs/search/?q=_category%3APDK+AND+status%3Aopen">Open bugs in the Padauk integration</a></li>
+  <li><a href="https://sourceforge.net/p/sdcc/feature-requests/search/?q=pdk+AND+status%3Aopen">Feature Requests related to the Padauk integration</a></li>
+</ul>
+
+<h3 id="installing-sdcc">
+<a href="#installing-sdcc"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Installing SDCC</h3>
+
+<p>The latest binaries and sources of SDCC can be obtained on the <a href="http://sdcc.sourceforge.net/">SDCC website</a>. If SDCC is available via your operating system’s package manager, please ensure that it is at least SDCC 4.0.0; older versions may not have support or only limited support for the Padauk µC.</p>
+
+<h2 id="µc-specific-information-and-pinouts">
+<a href="#%C2%B5c-specific-information-and-pinouts"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> µC-specific Information and Pinouts</h2>
+
+<p>Note: Other µCs than the µCs listed here may be supported.
+If you want to learn more about the naming scheme, <a href="/chips/#naming-scheme">read more here</a>.</p>
+
+<h3 id="mtp-flash-variants">
+<a href="#mtp-flash-variants"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> MTP (Flash) Variants</h3>
+
+<div class="table-responsive">
+    <table>
+    <thead>
+        <tr class="header">
+            <th>MCU</th>
+            <th>OSS Status</th>
+            <th>Arch.</th>
+            <th>max IO</th>
+            <th>ROM</th>
+            <th>RAM</th>
+            <th>Timers</th>
+            <th>PWM</th>
+            <th>CMP</th>
+            <th>ADC</th>
+            <th>Special</th>
+            <th>Padauk Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS154">PFS154</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=66&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PFS154%20datasheet_EN_V106_20230322.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS172">PFS172</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td></td>
+                    <td>
+                        <small>
+                        <a href="https://web.archive.org/web/20220626111504/http://www.padauk.com.tw/en/product/show.aspx?num=108&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="https://web.archive.org/web/20220626111504/http://www.padauk.com.tw/upload/doc/PFS172%20datasheet_EN_V002_20220518.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS173">PFS173</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK15">PDK15</a></td>
+                    <td>18</td>
+                    <td>
+<p>3 KW</p>
+</td>
+                    <td>256</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="https://web.archive.org/web/20220519015553/http://www.padauk.com.tw/en/product/show.aspx?num=90&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="https://web.archive.org/web/20220519015553/http://www.padauk.com.tw/upload/doc/PFS173%20datasheet_v105_EN_20200619.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<h3 id="otp-variants">
+<a href="#otp-variants"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> OTP Variants</h3>
+
+<div class="table-responsive">
+    <table>
+    <thead>
+        <tr class="header">
+            <th>MCU</th>
+            <th>OSS Status</th>
+            <th>Arch.</th>
+            <th>max IO</th>
+            <th>ROM</th>
+            <th>RAM</th>
+            <th>Timers</th>
+            <th>PWM</th>
+            <th>CMP</th>
+            <th>ADC</th>
+            <th>Special</th>
+            <th>Padauk Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS150C">PMS150C</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK13">PDK13</a></td>
+                    <td>6</td>
+                    <td>
+<p>1 KW</p>
+</td>
+                    <td>64</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=4&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS15A,PMS150C%20datasheet_EN_V110_20230216.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+<tr>
+                    <td><strong><a href="/chips/PMS15A">PMS15A</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK13">PDK13</a></td>
+                    <td>6</td>
+                    <td>
+<p>0.5 KW<br> <a href="/chips/PMS15A">(1 KW *)</a></p>
+</td>
+                    <td>64</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=105&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS15A,PMS150C%20datasheet_EN_V110_20230216.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS152">PMS152</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>1.25 KW</p>
+</td>
+                    <td>80</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=7&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS152%20datasheet_EN_V109_20230525.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS154C">PMS154C</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=14&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS154C%20datasheet_EN_V106_20230629.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS171B">PMS171B</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>1.5 KW</p>
+</td>
+                    <td>96</td>
+                    <td>T16<br> T2 T3</td>
+                    <td>2x 8‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=96&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS171B%20datasheet_EN_V104_20230414.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<h2 id="evaluation-boards">
+<a href="#evaluation-boards"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Evaluation Boards</h2>
+
+<p>These are evaluation boards for the online-programmable MTP (as opposed to the OTP parts, which can only be programmed offline and once) Padauk µC.
+<a href="https://github.com/free-pdk/f-eval-boards">free-pdk/f-eval-boards</a>.</p>
+
+<h2 id="instruction-sets-opcodes-and-programming-sequence">
+<a href="#instruction-sets-opcodes-and-programming-sequence"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Instruction Sets, Opcodes, and Programming Sequence</h2>
+
+<p>The different Padauk µCs use either 13, 14, 15, or 16 bit instruction sets.
+The following files provide an overview over the different instruction sets.</p>
+
+<ul>
+  <li><a href="/instruction-sets/PDK13">PDK13</a></li>
+  <li><a href="/instruction-sets/PDK14">PDK14</a></li>
+  <li><a href="/instruction-sets/PDK15">PDK15</a></li>
+  <li><a href="/instruction-sets/PDK16">PDK16</a></li>
+</ul>
+
+<p>More information, including information on the programming sequence, can be found at
+  <a href="https://github.com/free-pdk/fppa-pdk-documentation">free-pdk/fppa-pdk-documentation</a></p>
+
+<h2 id="other-tools">
+<a href="#other-tools"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Other Tools</h2>
+
+<ul>
+  <li>
+<strong>Schematic Symbols</strong>: A collection of schematic symbols for many of the Padauk µCs.
+    <ul>
+      <li>
+<strong>gEDA gschem</strong>: <a href="https://github.com/free-pdk/pdk-gschem-symbols">free-pdk/pdk-gschem-symbols</a>
+</li>
+      <li>
+<strong>KiCad</strong>: <a href="https://github.com/free-pdk/pdk-kicad-symbols">free-pdk/pdk-kicad-symbols</a>
+</li>
+    </ul>
+  </li>
+  <li>
+<strong>Padauk µC Emulator written in VHDL</strong>:
+This project aims to provide a fully functional, timing accurate VHDL model for simulating PADAUK FPPA microcontrollers.
+<a href="https://github.com/free-pdk/fppa-pdk-emulator-vhdl">free-pdk/fppa-pdk-emulator-vhdl</a>
+</li>
+  <li>A bunch more tools are located at
+<a href="https://github.com/free-pdk/fppa-pdk-tools">free-pdk/fppa-pdk-tools</a>.
+    <ul>
+      <li>
+<strong>Disassembler</strong>: dispdk supports 13 bit, 14 bit, 15 bit and 16 bit opcodes</li>
+      <li>
+<strong>Emulator</strong>: emupdk supports 14 bit opcodes, no peripheral support yet requires mapping of processor ID in emucpu.c</li>
+      <li>
+<strong>PDK converter</strong>: depdk convert/deobfuscate any PDK file to binary</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="projects-from-the-community">
+<a href="#projects-from-the-community"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Projects from the Community</h2>
+
+<p>These projects are auto-populated once per day by
+<a href="https://github.com/search?q=topic%3Apadauk%20archived%3Afalse%20sort%3Aupdated%20-repo%3Akaiz16%2Fzg-xkb">searching GitHub for repositories with the <code class="language-plaintext highlighter-rouge">padauk</code> topic</a>.
+Projects that additionally have the <code class="language-plaintext highlighter-rouge">free-pdk</code> topic are highlighted as
+<span class="badge green">Uses Free PDK toolchain</span>.
+Projects that contain <code class="language-plaintext highlighter-rouge">.PRE</code> files are marked as
+<span class="badge orange">Uses proprietary toolchain</span>.</p>
+
+<div class="community-projects">
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/easy-pdk-programmer-software">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>easy-pdk-programmer-software</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Easy PDK programmer for PADAUK microcontroller
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+          <code>pmc150</code>
+        
+          <code>pmc154</code>
+        
+          <code>pms150</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms154</code>
+        
+        <br>
+      
+      updated 4 days ago
+      
+        · 101 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/free-pdk-examples">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>free-pdk-examples</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Code Examples for Padauk MCUs using the free-pdk/SDCC toolchain
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs172</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms152</code>
+        
+          <code>pms154c</code>
+        
+          <code>pms171b</code>
+        
+        <br>
+      
+      updated 4 days ago
+      
+        · 12 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/brainsmoke/ws2812tester">
+    <h4>
+      <span class="owner">brainsmoke</span>
+      <br>
+      <strong>ws2812tester</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Padauk based WS2812 LED tester
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pms150c</code>
+        
+          <code>ws2812</code>
+        
+        <br>
+      
+      updated 3 months ago
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/Yudetamago-AM/clover-timer">
+    <h4>
+      <span class="owner">Yudetamago-AM</span>
+      <br>
+      <strong>clover-timer</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Simple Countdown Timer using Padauk MCU
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pms150g</code>
+        
+        <br>
+      
+      updated 4 months ago
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/pdk-includes">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>pdk-includes</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Device Include files for Padauk MCUs
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs172</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms152</code>
+        
+          <code>pms154c</code>
+        
+          <code>pms15a</code>
+        
+          <code>pms171b</code>
+        
+        <br>
+      
+      updated 9 months ago
+      
+        · 8 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/brainsmoke/softpwmpdk">
+    <h4>
+      <span class="owner">brainsmoke</span>
+      <br>
+      <strong>softpwmpdk</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      3-channel software PWM LED driver
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pms150c</code>
+        
+        <br>
+      
+      updated 11 months ago
+      
+        · 4 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/easy-pdk-showcase-projects">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>easy-pdk-showcase-projects</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Complete showcase projects for PADAUK MCUs using only free and open source tools like the SDCC compiler and the Easy-PDK-Programmer.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs172</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+        <br>
+      
+      updated 1 year ago
+      
+        · 7 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/serisman/pdk-continuity-tester">
+    <h4>
+      <span class="owner">serisman</span>
+      <br>
+      <strong>pdk-continuity-tester</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      A simple standalone continuity tester, based on the ultra-inexpensive Padauk microcontrollers and a piezo buzzer.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms152</code>
+        
+          <code>pms154c</code>
+        
+          <code>pms15a</code>
+        
+        <br>
+      
+      updated 1 year ago
+      
+        · 8 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/serisman/pdk-logic-probe">
+    <h4>
+      <span class="owner">serisman</span>
+      <br>
+      <strong>pdk-logic-probe</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      A simple logic probe, based on the ultra-inexpensive Padauk microcontrollers.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms152</code>
+        
+          <code>pms154c</code>
+        
+          <code>pms15a</code>
+        
+        <br>
+      
+      updated 1 year ago
+      
+        · 2 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/serisman/pdk-digital-clock">
+    <h4>
+      <span class="owner">serisman</span>
+      <br>
+      <strong>pdk-digital-clock</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      A 4-digit 7-segment digital clock, based on the inexpensive Padauk microcontrollers
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms152</code>
+        
+          <code>pms154c</code>
+        
+        <br>
+      
+      updated 1 year ago
+      
+        · 10 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/brainsmoke/charliepdk">
+    <h4>
+      <span class="owner">brainsmoke</span>
+      <br>
+      <strong>charliepdk</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Charlieplexed led array driven using a Padauk, animation / 9600 baud uart input
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>charlieplexing</code>
+        
+          <code>pfs154</code>
+        
+          <code>pms150c</code>
+        
+        <br>
+      
+      updated 1 year ago
+      
+        · 7 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/1500WK1500/platform-padauk">
+    <h4>
+      <span class="owner">1500WK1500</span>
+      <br>
+      <strong>platform-padauk</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>platformio</code>
+        
+          <code>platformio-platform</code>
+        
+        <br>
+      
+      updated 2 years ago
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/jjflash65/Padauk-pfs154">
+    <h4>
+      <span class="owner">jjflash65</span>
+      <br>
+      <strong>Padauk-pfs154</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      An Arduino based programmer for PFS154. Programmer is realised with external switching regulator and OP-Amp LM358 (like Easy-PDK-Programmer). For now, the progammer can only flash the PFS154. I'm analyzing programming sequence for PFS173 but for the moment I have no idea to realise it. Perhaps in the future. A complete toolchain is include so you can change to a project directory and execute a "make" and a "make flash". Sorry that all comments are in german language, and sorry that this project works only in Linux (and not in Windows)
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+        <br>
+      
+      updated 2 years ago
+      
+        · 19 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/easy-pdk-programmer-lite-hardware">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>easy-pdk-programmer-lite-hardware</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      A version of the easy pdk programmer that can be fully assembled using the JLCPCB assembly service.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+      updated 3 years ago
+      
+        · 9 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/serisman/pdk-temp-pwm-fan">
+    <h4>
+      <span class="owner">serisman</span>
+      <br>
+      <strong>pdk-temp-pwm-fan</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      A temperature controlled PWM fan controller using an ultra-inexpensive (3 cent) Padauk microcontroller.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pms150c</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 6 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/pacmancoder/easy-pdk-mini">
+    <h4>
+      <span class="owner">pacmancoder</span>
+      <br>
+      <strong>easy-pdk-mini</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Padauk MCU programmer variant for hand soldering.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>hardware</code>
+        
+          <code>programmer</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 13 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/cpldcpu/Addressable_7-Segment">
+    <h4>
+      <span class="owner">cpldcpu</span>
+      <br>
+      <strong>Addressable_7-Segment</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Addressable 7 Segment Display based on the Padauk PFS154 Microcontroller
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 3 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/Kashouryo/Padauk-tone">
+    <h4>
+      <span class="owner">Kashouryo</span>
+      <br>
+      <strong>Padauk-tone</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Turn your Padauk microcontroller into a cheap melody IC! Crude implementation of tone function in padauk micro. 
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pms150c</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 1 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/asjadenet/padauk-serial-read-write">
+    <h4>
+      <span class="owner">asjadenet</span>
+      <br>
+      <strong>padauk-serial-read-write</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge green">Uses Free PDK toolchain</span>
+      </div>
+    
+    <p>
+      Serial port read-write sample, based on the inexpensive Padauk microcontrollers
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 4 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/easy-pdk-programmer-hardware">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>easy-pdk-programmer-hardware</strong>
+    </h4>
+    
+    <p>
+      Easy PDK programmer for PADAUK microcontroller. EDA, schematic, gerber, bom, housing stl, firmware
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+          <code>pmc150</code>
+        
+          <code>pmc154</code>
+        
+          <code>pms150</code>
+        
+          <code>pms154</code>
+        
+        <br>
+      
+      updated 2 months ago
+      
+        · 170 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/cmfcmf/ic-pinout-diagram-generator">
+    <h4>
+      <span class="owner">cmfcmf</span>
+      <br>
+      <strong>ic-pinout-diagram-generator</strong>
+    </h4>
+    
+    <p>
+      Generate beautiful pinout diagrams for integrated circuits.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>ic</code>
+        
+          <code>microcontroller</code>
+        
+          <code>mikrocontroller</code>
+        
+          <code>pinout-diagram</code>
+        
+        <br>
+      
+      updated 11 months ago
+      
+        · 58 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/serisman/pdk-device-json">
+    <h4>
+      <span class="owner">serisman</span>
+      <br>
+      <strong>pdk-device-json</strong>
+    </h4>
+    
+    <p>
+      .json files describing Padauk microcontrollers, generated from Padauk IDE .INC files.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs172</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms152</code>
+        
+          <code>pms154c</code>
+        
+          <code>pms171b</code>
+        
+        <br>
+      
+      updated 1 year ago
+      
+        · 2 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/piotr-go/PADAUK">
+    <h4>
+      <span class="owner">piotr-go</span>
+      <br>
+      <strong>PADAUK</strong>
+    </h4>
+    
+    <p>
+      
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+      updated 1 year ago
+      
+        · 6 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/screwbreaker/MDmod">
+    <h4>
+      <span class="owner">screwbreaker</span>
+      <br>
+      <strong>MDmod</strong>
+    </h4>
+    
+    <p>
+      Another Mega Drive switchless MOD
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>megadrive</code>
+        
+          <code>mod</code>
+        
+          <code>pfs173</code>
+        
+          <code>pfs173-s14</code>
+        
+          <code>pic</code>
+        
+          <code>pic16f630</code>
+        
+          <code>sega</code>
+        
+          <code>sega-genesis</code>
+        
+          <code>sega-mega-drive</code>
+        
+          <code>switchless</code>
+        
+        <br>
+      
+      updated 1 year ago
+      
+        · 1 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/fppa-pdk-tools">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>fppa-pdk-tools</strong>
+    </h4>
+    
+    <p>
+      PDK FPPA disassembler, simulator, ... 
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+      updated 3 years ago
+      
+        · 41 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/xbwpc/CheaPADAUK">
+    <h4>
+      <span class="owner">xbwpc</span>
+      <br>
+      <strong>CheaPADAUK</strong>
+    </h4>
+    
+    <p>
+      Low cost PADAUK MCU programmer
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+      updated 3 years ago
+      
+        · 5 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/Kashouryo/FreePDK-WRITER">
+    <h4>
+      <span class="owner">Kashouryo</span>
+      <br>
+      <strong>FreePDK-WRITER</strong>
+    </h4>
+    
+    <p>
+      Easy to use GUI frontend for easypdkprog cli. Written in C# with WPF
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms15a</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 4 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/pdk-kicad-symbols">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>pdk-kicad-symbols</strong>
+    </h4>
+    
+    <p>
+      KiCad schematic symbol library for Padauk MCUs
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms152</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 6 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/serisman/Padauk">
+    <h4>
+      <span class="owner">serisman</span>
+      <br>
+      <strong>Padauk</strong>
+    </h4>
+    
+    <p>
+      A toolchain and library with example projects for the ultra cheap Padauk MCUs
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pfs173</code>
+        
+          <code>pms150c</code>
+        
+          <code>pms152</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 3 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/LovelyA72/EZPDK8">
+    <h4>
+      <span class="owner">LovelyA72</span>
+      <br>
+      <strong>EZPDK8</strong>
+    </h4>
+    
+    <p>
+      Minimalist 8 pin Padauk MCU breakout board with pin labelled and a sharpie field
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>breakout-board</code>
+        
+          <code>kicad</code>
+        
+          <code>pcb</code>
+        
+          <code>pfs154</code>
+        
+          <code>pms150c</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 2 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/kaweksl/pdk-codebucket">
+    <h4>
+      <span class="owner">kaweksl</span>
+      <br>
+      <strong>pdk-codebucket</strong>
+    </h4>
+    
+    <p>
+      Some code for Padauk uC's , mostly using I2C slave
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pms150c</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 10 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/cpldcpu/SimPad">
+    <h4>
+      <span class="owner">cpldcpu</span>
+      <br>
+      <strong>SimPad</strong>
+    </h4>
+    
+    <p>
+      Work towards an open source programmer for Padauk MCUs
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pfs154</code>
+        
+          <code>pms150c</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 69 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/pacmancoder/vpadauk">
+    <h4>
+      <span class="owner">pacmancoder</span>
+      <br>
+      <strong>vpadauk</strong>
+    </h4>
+    
+    <p>
+      Padauk mcu emulator
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+      updated 3 years ago
+      
+        · 6 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/fppa-pdk-emulator-vhdl">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>fppa-pdk-emulator-vhdl</strong>
+    </h4>
+    
+    <p>
+      VHDL simulation model for PADAUK PDK microcontrollers 
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+      updated 3 years ago
+      
+        · 18 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/retiredfeline/codeblocks-wizard-pdk">
+    <h4>
+      <span class="owner">retiredfeline</span>
+      <br>
+      <strong>codeblocks-wizard-pdk</strong>
+    </h4>
+    
+    <p>
+      Wizard directory for Padauk projects using SDCC for the code::blocks IDE
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>pdk-wizard</code>
+        
+        <br>
+      
+      updated 3 years ago
+      
+        · 1 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/benlhy/Padauk">
+    <h4>
+      <span class="owner">benlhy</span>
+      <br>
+      <strong>Padauk</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge orange">Uses proprietary toolchain</span>
+      </div>
+    
+    <p>
+      Example code for Padauk Microcontrollers.
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+        
+          <code>low-cost</code>
+        
+          <code>microcontrollers</code>
+        
+        <br>
+      
+      updated 1 year ago
+      
+        · 21 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/free-pdk/fppa-code-examples">
+    <h4>
+      <span class="owner">free-pdk</span>
+      <br>
+      <strong>fppa-code-examples</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge orange">Uses proprietary toolchain</span>
+      </div>
+    
+    <p>
+      
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+      updated 3 years ago
+      
+        · 15 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+
+<div>
+  <a class="card" href="https://github.com/AndersBNielsen/pms150c-projects">
+    <h4>
+      <span class="owner">AndersBNielsen</span>
+      <br>
+      <strong>pms150c-projects</strong>
+    </h4>
+    
+      <div class="badges">
+        <span class="badge orange">Uses proprietary toolchain</span>
+      </div>
+    
+    <p>
+      Small Padauk Mini-C projects
+    </p>
+    <div class="spacer"></div>
+    <div class="meta">
+      
+      
+      updated 4 years ago
+      
+        · 34 <img class="emoji" title=":star:" alt=":star:" src="https://github.githubassets.com/images/icons/emoji/unicode/2b50.png" height="20" width="20">
+      
+    </div>
+  </a>
+</div>
+
+</div>
+
+<h2 id="latest-activity">
+<a href="#latest-activity"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Latest Activity</h2>
+
+<p>The latest activity in the <code class="language-plaintext highlighter-rouge">free-pdk</code> GitHub organization is fetched at least once per day and displayed below.</p>
+
+<div class="card github-activity">
+  
+  
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> commented on pull request
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/pull/75">free-pdk/easy-pdk-programmer-software#75</a>
+          <br>
+          <strong>
+            Added .gitignore to ignore binary files
+          </strong>
+          <br>
+          Does make sense.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/b99c6a9f93c9521da268c2779333daa787ff550a">b99c6a9</a>
+                Added .gitignore to ignore binary files
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/c63d96d42df8dbb90a3c516ffecd71ec89459901">c63d96d</a>
+                Merge pull request #75 from JShabtai/addGitIgnore<br>
+<br>
+Added .gitignore to ignore binary files
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> commented on pull request
+          <a href="https://github.com/free-pdk/free-pdk-examples/pull/12">free-pdk/free-pdk-examples#12</a>
+          <br>
+          <strong>
+            Added SleepWake example
+          </strong>
+          <br>
+          Nice, thank you! Merged!
+<br>
+
+<br>
+Btw, there is also this example, possibly I should add it as well:
+<br>
+https://cpldcpu.wordpress.com/2021/02/07/ultra-low-power-led-flasher/
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/4086406?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/cpldcpu" class="user-mention">@cpldcpu</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk-examples">free-pdk/free-pdk-examples</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk-examples/commit/5689a8da1fecd2e46b8572abc375c5428a7b6d0e">5689a8d</a>
+                Added SleepWake example
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk-examples/commit/b05d435343b2bfe72fc2be05fecd71cc2f8b90dd">b05d435</a>
+                Merge pull request #12 from JShabtai/addSleepWake<br>
+<br>
+Added SleepWake example
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-lite-hardware/issues/2">free-pdk/easy-pdk-programmer-lite-hardware#2</a>
+          <br>
+          <strong>
+            Pcb , schematic files
+          </strong>
+          <br>
+          https://github.com/free-pdk/easy-pdk-programmer-lite-hardware/tree/master/EasyEDA
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-hardware/issues/29">free-pdk/easy-pdk-programmer-hardware#29</a>
+          <br>
+          <strong>
+            Pcb ,  schematic file
+          </strong>
+          <br>
+          https://github.com/free-pdk/easy-pdk-programmer-hardware/tree/master/easyeda
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> pushed to <a href="https://api.github.com/repos/free-pdk/sdcc-pdk-code-examples">free-pdk/sdcc-pdk-code-examples</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/sdcc-pdk-code-examples/commit/e0870444688b977fcfd98aa5b2e25f49e2116a29">e087044</a>
+                Port examples to more devices (by datasheets only, not yet tested on hardware).
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> pushed to <a href="https://api.github.com/repos/free-pdk/fppa-pdk-documentation">free-pdk/fppa-pdk-documentation</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/fppa-pdk-documentation/commit/25560196e0776bfba9e6ad2da7ced17795c578fb">2556019</a>
+                Add PFS132, PGS134.
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> commented on issue
+          <a href="https://github.com/free-pdk/f-eval-boards/issues/6">free-pdk/f-eval-boards#6</a>
+          <br>
+          <strong>
+            A board for 24-pin SOIC devices
+          </strong>
+          <br>
+          We'll need symbols for them:
+<br>
+https://github.com/free-pdk/pdk-gschem-symbols/issues/5
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> pushed to <a href="https://api.github.com/repos/free-pdk/f-eval-boards">free-pdk/f-eval-boards</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/f-eval-boards/commit/5648c6c15380c83d6a299e12467b9399ecf094ba">5648c6c</a>
+                Update table for PGS134 and PGS152.
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> pushed to <a href="https://api.github.com/repos/free-pdk/f-eval-boards">free-pdk/f-eval-boards</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/f-eval-boards/commit/562540956f31905cab4a8064209303a9f0d31ca8">5625409</a>
+                Update table for PFC460, PFS132 and PFS252.
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> pushed to <a href="https://api.github.com/repos/free-pdk/f-eval-boards">free-pdk/f-eval-boards</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/f-eval-boards/commit/2feee963198945ca4500939cf2a86b2785d8ff5a">2feee96</a>
+                Update table for PFS122 and PFS123.
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> pushed to <a href="https://api.github.com/repos/free-pdk/easy-pdk-programmer-software">free-pdk/easy-pdk-programmer-software</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/c26098f766d6179c81830fa5bcf82e079dff3200">c26098f</a>
+                Use write timeout for write command<br>
+<br>
+Writing to "larger" devices can fail with the non-obvious "ERROR:<br>
+Write failed." because the read timeout is applied to the write<br>
+command.
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/5d11e24efdf96d92ee716aa18c2229f53048322b">5d11e24</a>
+                Increase write timeout to 4s<br>
+<br>
+PFC161 has 4KiB flash; this takes a while to write. On a new chip<br>
+writing takes about 2.8s. To be on the safe side we bump the timeout<br>
+to 4s.
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/easy-pdk-programmer-software/commit/85f5a7b452fa4c1fce34eeefad5bdcb7f096c1ed">85f5a7b</a>
+                Merge pull request #68 from silbe/fix-large-flash-write<br>
+<br>
+Fix writing devices with 4KiB flash
+<br>
+I've checked that this indeed fixes writing the whole flash on PFC161 for me.
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> pushed to <a href="https://api.github.com/repos/free-pdk/free-pdk-examples">free-pdk/free-pdk-examples</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk-examples/commit/9f73847c7ad541cb54a9976e1b180da1812ced9a">9f73847</a>
+                Made startup code compatible with old and new versions of SDCC
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk-examples/commit/913d4a1ab861fcd42a7d60c37164ab679d9a6496">913d4a1</a>
+                Added comment for startup macro
+              </li>
+            
+              <li>
+                <a href="https://github.com/free-pdk/free-pdk-examples/commit/82a6731c3931314582834b586f185f456101aabf">82a6731</a>
+                Merge pull request #11 from JShabtai/sdccStartupFunction<br>
+<br>
+Made startup code compatible with old and new versions of SDCC
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/issues/71">free-pdk/easy-pdk-programmer-software#71</a>
+          <br>
+          <strong>
+            Integrating the PFS132
+          </strong>
+          <br>
+          If you have access to the original Padauk programmer (where are you located?), use an oscilloscope to see what happens when programming the PFS132?
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <p>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> commented on issue
+          <a href="https://github.com/free-pdk/easy-pdk-programmer-software/issues/69">free-pdk/easy-pdk-programmer-software#69</a>
+          <br>
+          <strong>
+            PFS132 support
+          </strong>
+          <br>
+          &gt;     * why not use the original programmer?
+<br>
+
+<br>
+The original Padauk programmer is neither free nor cheap, but bulky instead. easypdkprog ic small, free and relatively cheap.
+<br>
+
+<br>
+&gt;     * Project here looks unmaintained
+<br>
+
+<br>
+Not much activity recently, but I guess it could be revived.
+<br>
+
+<br>
+&gt;     * Budget seems low (effort high for just one chip)
+<br>
+
+<br>
+Kind of. But once you implement support for one chip, the experience should help with adding support for more (there are open feature requests for support for many more chips).
+<br>
+
+<br>
+&gt;     * one needs the original programmer and software, the open-source programmer and the PFS132 (and possibly some other chips for reference).
+<br>
+
+<br>
+Depending on location, others working on Padauk support could be willing to provide these.
+        </p>
+      
+    </div>
+    
+      <hr>
+    
+  
+    <div>
+      <img src="https://avatars.githubusercontent.com/u/10352947?" alt="avatar image">
+      
+        <div>
+          <a href="https://github.com/spth" class="user-mention">@spth</a> pushed to <a href="https://api.github.com/repos/free-pdk/fppa-pdk-documentation">free-pdk/fppa-pdk-documentation</a>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/free-pdk/fppa-pdk-documentation/commit/74750d8873140cee3c2846564c0bcd73fe897847">74750d8</a>
+                Add new PMC152E and PMS160 devices.
+              </li>
+            
+          </ul>
+        </div>
+      
+    </div>
+    
+  
+</div>
+
+  </div>
+
+</article>
+
+<div class="edit-page">
+  <a href="https://github.com/free-pdk/free-pdk.github.io/edit/production/index.md">
+    Edit this page on GitHub
+  </a>
+  <br>
+  <small>
+    Checkout <a href="/doc-style">/doc-style</a> for more information on some of the special Markdown formatting features we use.
+  </small>
+</div>
+
+</div>
+
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Free PDK</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Free PDK</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/free-pdk"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">free-pdk</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Free PDK is an effort to create an open source alternative to the proprietary
+Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

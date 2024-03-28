@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Chips | Free PDK</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Chips" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:description" content="Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs." />
+<meta property="og:site_name" content="Free PDK" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Chips" />
+<script type="application/ld+json">
+{"description":"Free PDK is an effort to create an open source alternative to the proprietary Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.","url":"/chips/","@type":"WebPage","headline":"Chips","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Free PDK" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">Free PDK</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/tutorial">Tutorial</a><a class="page-link" href="/undocumented-features">Undocumented Features</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+  <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Chips</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="mtp-flash-variants">
+<a href="#mtp-flash-variants"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> MTP (Flash) Variants</h2>
+
+<div class="table-responsive">
+    <table>
+    <thead>
+        <tr class="header">
+            <th>MCU</th>
+            <th>OSS Status</th>
+            <th>Arch.</th>
+            <th>max IO</th>
+            <th>ROM</th>
+            <th>RAM</th>
+            <th>Timers</th>
+            <th>PWM</th>
+            <th>CMP</th>
+            <th>ADC</th>
+            <th>Special</th>
+            <th>Padauk Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS154">PFS154</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=66&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PFS154%20datasheet_EN_V106_20230322.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS172">PFS172</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td></td>
+                    <td>
+                        <small>
+                        <a href="https://web.archive.org/web/20220626111504/http://www.padauk.com.tw/en/product/show.aspx?num=108&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="https://web.archive.org/web/20220626111504/http://www.padauk.com.tw/upload/doc/PFS172%20datasheet_EN_V002_20220518.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PFS173">PFS173</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK15">PDK15</a></td>
+                    <td>18</td>
+                    <td>
+<p>3 KW</p>
+</td>
+                    <td>256</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="https://web.archive.org/web/20220519015553/http://www.padauk.com.tw/en/product/show.aspx?num=90&amp;kind=42">Product Page</a>
+                        <br>
+                        <a href="https://web.archive.org/web/20220519015553/http://www.padauk.com.tw/upload/doc/PFS173%20datasheet_v105_EN_20200619.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<h2 id="otp-variants">
+<a href="#otp-variants"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> OTP Variants</h2>
+
+<div class="table-responsive">
+    <table>
+    <thead>
+        <tr class="header">
+            <th>MCU</th>
+            <th>OSS Status</th>
+            <th>Arch.</th>
+            <th>max IO</th>
+            <th>ROM</th>
+            <th>RAM</th>
+            <th>Timers</th>
+            <th>PWM</th>
+            <th>CMP</th>
+            <th>ADC</th>
+            <th>Special</th>
+            <th>Padauk Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS150C">PMS150C</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK13">PDK13</a></td>
+                    <td>6</td>
+                    <td>
+<p>1 KW</p>
+</td>
+                    <td>64</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=4&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS15A,PMS150C%20datasheet_EN_V110_20230216.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+<tr>
+                    <td><strong><a href="/chips/PMS15A">PMS15A</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK13">PDK13</a></td>
+                    <td>6</td>
+                    <td>
+<p>0.5 KW<br> <a href="/chips/PMS15A">(1 KW *)</a></p>
+</td>
+                    <td>64</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=105&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS15A,PMS150C%20datasheet_EN_V110_20230216.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS152">PMS152</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>1.25 KW</p>
+</td>
+                    <td>80</td>
+                    <td>T16<br>T2</td>
+                    <td>1x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=7&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS152%20datasheet_EN_V109_20230525.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS154C">PMS154C</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>2 KW</p>
+</td>
+                    <td>128</td>
+                    <td>T16<br>T2 T3</td>
+                    <td>2x 8‑Bit<br>3x 11‑Bit</td>
+                    <td>1</td>
+                    <td>‑</td>
+                    <td>LCD</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=14&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS154C%20datasheet_EN_V106_20230629.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+            <tr>
+                    <td><strong><a href="/chips/PMS171B">PMS171B</a></strong></td>
+                    <td>Supported</td>
+                    <td><a href="/instruction-sets/PDK14">PDK14</a></td>
+                    <td>14</td>
+                    <td>
+<p>1.5 KW</p>
+</td>
+                    <td>96</td>
+                    <td>T16<br> T2 T3</td>
+                    <td>2x 8‑Bit</td>
+                    <td>1</td>
+                    <td>8‑Bit</td>
+                    <td>-</td>
+                    <td>
+                        <small>
+                        <a href="http://www.padauk.com.tw/en/product/show.aspx?num=96&amp;kind=41">Product Page</a>
+                        <br>
+                        <a href="https://www.padauk.com.cn/upload/doc/PMS171B%20datasheet_EN_V104_20230414.pdf">Datasheet</a>
+                        </small>
+                    </td>
+                </tr>
+        
+    </tbody>
+    </table>
+</div>
+
+<h2 id="naming-scheme">
+<a href="#naming-scheme"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Naming Scheme</h2>
+
+<p>Padauk’s µCs are usually named according to this scheme:</p>
+
+<p><code class="language-plaintext highlighter-rouge">P{G,F,M}{C,S}nNN(c)</code></p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">F</code>: MTP (Flash)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">G</code>: MTP (Flash + EEPROM)</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">M</code>: OTP</p>
+  </li>
+  <li>
+<code class="language-plaintext highlighter-rouge">C</code>: High ESD and high noise tolerance</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">S</code>: Low ESD and low noise tolerance</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">n</code>: Number of hardware threads (“FPPAs”)</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">NN</code>: Part number suffix, numeric</p>
+  </li>
+  <li>
+<code class="language-plaintext highlighter-rouge">(c)</code>: Optional part number suffix, alphabetic; possibly a revision code.</li>
+</ul>
+
+<h3 id="xdmfsss-chips">
+<a href="#xdmfsss-chips"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> XDM{F}{SSS} chips</h3>
+
+<p><code class="language-plaintext highlighter-rouge">XDM{F}{SSS}</code> chips are a combination of regular Padauk µCs with additional hardware inside a single package.
+An overview of available chips can be found <a href="http://www.zhienchina.com/product/MCU.html">here</a>.
+The naming scheme is <code class="language-plaintext highlighter-rouge">XDM</code>:</p>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">F</code>: 1 = MOS, 2 = Power, 3 = Communication, 4 = Memory/Flash, 5 = drive (? Chinese name is 驱动)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">SSS</code>: Number to differentiate parts
+Below is a list of available chips and the included additional hardware:</li>
+</ul>
+
+<div class="table-responsive">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Included Padauk µC</th>
+        <th>Additional Hardware</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>XDM1101</td>
+        <td><a href="/chips/PMS150C">PMS150C</a></td>
+        <td>2302 (2A NMOS)</td>
+      </tr>
+      <tr>
+        <td>XDM1102</td>
+        <td><a href="/chips/PMS150C">PMS150C</a></td>
+        <td>2300 (3A NMOS)</td>
+      </tr>
+      <tr>
+        <td>XDM2101</td>
+        <td>PMS132B</td>
+        <td>78L05 (5V Regulator)</td>
+      </tr>
+      <tr>
+        <td>XDM2102</td>
+        <td><a href="/chips/PMS150C">PMS150C</a></td>
+        <td>2300 (3A NMOS) + 4056 (Lithium Battery Charger)</td>
+      </tr>
+      <tr>
+        <td>XDM2801</td>
+        <td>PMS164</td>
+        <td>78L05 (5V Regulator)</td>
+      </tr>
+      <tr>
+        <td>XDM4101</td>
+        <td><a href="/chips/PFS172">PFS172</a></td>
+        <td>24C02 (2K EEPROM)</td>
+      </tr>
+      <tr>
+        <td>XDM4102</td>
+        <td>PMS132B</td>
+        <td>24C02 (2K EEPROM)</td>
+      </tr>
+      <tr>
+        <td>XDM4103</td>
+        <td><a href="/chips/PMS152">PMS152</a></td>
+        <td>24C02 (2K EEPROM)</td>
+      </tr>
+      <tr>
+        <td>XDM4104</td>
+        <td><a href="/chips/PFS154">PFS154</a></td>
+        <td>24C02 (2K EEPROM)</td>
+      </tr>
+      <tr>
+        <td>XDM4105</td>
+        <td><a href="/chips/PFS173">PFS173</a></td>
+        <td>24C02 (2K EEPROM)</td>
+      </tr>
+      <tr>
+        <td>XDM4106</td>
+        <td>PMS171</td>
+        <td>24C02 (2K EEPROM)</td>
+      </tr>
+      <tr>
+        <td>XDM4107</td>
+        <td>PMS134</td>
+        <td>24C02 (2K EEPROM)</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<h3 id="oddities">
+<a href="#oddities"><img class="emoji" title=":link:" alt=":link:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png" height="20" width="20"></a> Oddities</h3>
+
+<p>As always, no rule is without exception, and we discovered or found references to a few odd µCs:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">PES50N(c)</code>
+No further information is known.</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">PGR431</code>
+No further information is known.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">XN1{2,3}{1,2}0(c)</code>
+No further information is known.</p>
+  </li>
+  <li>
+<code class="language-plaintext highlighter-rouge">PDK22CNN(c)</code>
+A lot of these were supported by older versions of Mini-C; since then support for all of them has been dropped.
+    <ul>
+      <li>
+<code class="language-plaintext highlighter-rouge">NN</code>: Part number suffix, numeric</li>
+      <li>
+<code class="language-plaintext highlighter-rouge">(c)</code>: Optional part number suffic, alphabetic.</li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">P201C{D,S}1{4,6}A</code>
+Some of these were supported by older versions of Mini-C; since then support for all but one has been dropped.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">P23{2,4}C(cnn)</code>
+Many of these were supported by older versions of Mini-C; since then support for all but one has been dropped.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">EV_2</code>, <code class="language-plaintext highlighter-rouge">ip5{d,c}</code>, <code class="language-plaintext highlighter-rouge">MCU371</code>, <code class="language-plaintext highlighter-rouge">MCU390</code>, <code class="language-plaintext highlighter-rouge">PDK82C1{2,3}</code>, <code class="language-plaintext highlighter-rouge">PDK_3S_EV</code>, <code class="language-plaintext highlighter-rouge">PDK_EV5</code>, <code class="language-plaintext highlighter-rouge">PDK82S_EV</code>
+These are only known from Mini-C files. Nothing else is known about them.,</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">DF329</code>, <code class="language-plaintext highlighter-rouge">DF69</code>, <code class="language-plaintext highlighter-rouge">MCS11</code>
+These are missing from Mini-C and the catalog, but there are datasheets. All of them are pdk16 devies with 8 hardware threads.</p>
+  </li>
+  <li>
+<code class="language-plaintext highlighter-rouge">DF319</code>, <code class="language-plaintext highlighter-rouge">DF339</code>
+These are missing from Mini-C and the catalog, but there are datasheets. However, the datsheets contain little information.
+These are probably pre-programmed OTP devices for use as motor controllers.</li>
+</ul>
+
+  </div>
+
+</article>
+
+<div class="edit-page">
+  <a href="https://github.com/free-pdk/free-pdk.github.io/edit/production/chips/index.md">
+    Edit this page on GitHub
+  </a>
+  <br>
+  <small>
+    Checkout <a href="/doc-style">/doc-style</a> for more information on some of the special Markdown formatting features we use.
+  </small>
+</div>
+
+</div>
+
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Free PDK</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Free PDK</li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list"><li><a href="https://github.com/free-pdk"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">free-pdk</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Free PDK is an effort to create an open source alternative to the proprietary
+Padauk µC programmer, as well as adding support to SDCC for Padauk µCs.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
