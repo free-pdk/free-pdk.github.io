@@ -60,7 +60,7 @@ module GitHubPadaukTopics
         log_rate_limit(client)
         repos = stringify_keys(result.items.map(&:to_hash))
 
-        projects = Parallel.map(repos, in_threads: 10) do |repo|
+        projects = Parallel.map(repos, in_threads: 2) do |repo|
           type = "unknown"
           # Only fetch repository files if we have an access token, because we run into rate limits otherwise.
           if access_token then
