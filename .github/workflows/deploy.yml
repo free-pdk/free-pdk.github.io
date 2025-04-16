@@ -22,6 +22,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      # Manually install libffi7 to maintain compatibility with old ruby version
+      - name: Install libffi7
+        run: sudo apt-get update && sudo apt-get install -y libffi7
+
       - name: 💎 setup ruby
         uses: ruby/setup-ruby@v1
         with:
