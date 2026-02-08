@@ -20,6 +20,7 @@ module GitHubPadaukTopics
     # Exclude projects that use the padauk tag but are not actually about Padauk microcontrollers
     excluded_projects = [
       'kaiz16/zg-xkb',
+      'Gold-man-020/BitNet',
     ]
 
     QUERY = 'topic:padauk archived:false sort:updated ' + excluded_projects.map { |name| "-repo:#{name}" }.join(" ")
