@@ -29,6 +29,13 @@ All sources for the programmer are available at:
 - [Easy PDK Programmer Hardware](https://github.com/free-pdk/easy-pdk-programmer-hardware)
 - [Easy PDK Programmer Software](https://github.com/free-pdk/easy-pdk-programmer-software)
 
+### Lite Version for Automated Assembly
+
+In addition to the fully featured original Easy PDK programmer, there is also a "lite" version available. This version uses a slightly simplified BOM and selects smaller components that are more suitable for automated assembly. You can upload the design files to JLCPCB and get a mostly assembled programmer delivered to you in weeks. Some parts have to be added manually. It uses the same software as the normal programmer.
+
+- [Easy PDK Programmer Lite Hardware](https://github.com/free-pdk/easy-pdk-programmer-lite-hardware)
+
+
 ## SDCC-based Open Source Tool-Chain
 
 Padauk's own tool-chain is based on a custom programming language called "Mini-C" with a syntax based on the C-language. This language is only supported by their own tool-chain, including IDE ("Padauk Developer Studio") and programmer ("Writer"). The tool-chain also uses a custom binary format with encryption/obfuscation. Should you be interested in code samples in that custom language, take a look at [free-pdk/fppa-code-examples](https://github.com/free-pdk/fppa-code-examples).
